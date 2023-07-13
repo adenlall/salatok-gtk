@@ -1,0 +1,20 @@
+Source: salatokapp
+Section: utils
+Priority: optional
+Maintainer: adenlall <lalladen@naver.com>
+Build-Depends: debhelper-compat (= 13), dh-buildinfo, libgtk-4-dev, libgjs-dev
+Standards-Version: 4.5.0
+
+Package: salatokapp
+Architecture: i386
+Depends: ${shlibs:Depends}, ${misc:Depends}, gjs
+Description: SalatokApp gtk4 linux native application.
+	*******************************.
+	Get salat timing at your linux desktop.
+	with full control over the methods adjustment.
+	this app work with praytimes.org libary under GPL-3.0-or-later thats mean this app can work without connection or sending your personal ip adress to random servers to provide you salat timing.
+	*******************************.
+	we use nomination.openstreetmaps.org to proved you an api that can return lat & long from your given adress.
+	we recommend you to read privacy policy pf nomination api.
+	*******************************.
+	this SOFTWARE is under GPL-3.0-or-later see COPYING file for more information.

@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<gresources>
+	<gresource prefix="/app/salatok/gtk">
+	     <file>ui/window.ui</file>
+	     <file>css/salatWidget.css</file>
+	</gresource>
+</gresources>
+
+

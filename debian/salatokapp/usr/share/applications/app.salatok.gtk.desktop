@@ -1,0 +1,11 @@
+[Desktop Entry]
+Name=Salatok App
+Comment=Get salat timing at your linux desktop
+Icon=app.salatok.gtk
+Exec=/usr/bin/app.salatok.gtk
+Type=Application
+DBusActivatable=true
+Categories=Tools;
+# Translators: Search terms to find this application. Do NOT translate or localize the semicolons! The list MUST also end with a semicolon!
+Keywords=Salat;Clock;
+

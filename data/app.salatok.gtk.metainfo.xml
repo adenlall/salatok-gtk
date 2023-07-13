@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<component type="desktop-application">
+	<id>@APP_ID@</id>
+
+	<name>Salatok App</name>
+	<summary>Get salat timing at your linux desktop</summary>
+	<description>
+		<p>A privacy-first application designed for simplicity as well as full featured controls over the app.</p>
+	</description>
+
+	<metadata_license>CC-BY-SA-4.0</metadata_license>
+	<project_license>GPL-3.0-or-later</project_license>
+
+	<launchable type="desktop-id">@APP_ID@.desktop</launchable>
+	<provides>
+		<binary>@APP_ID@</binary>
+		<dbus type="user">@APP_ID@</dbus>
+	</provides>
+	<translation type="gettext">@APP_ID@</translation>
+</component>
+

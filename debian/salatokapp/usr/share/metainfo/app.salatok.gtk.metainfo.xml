@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<component type="desktop-application">
+  <id>app.salatok.gtk</id>
+  <name>Salatok App</name>
+  <summary>Get salat timing at your linux desktop</summary>
+  <description>
+    <p>A privacy-first application designed for simplicity as well as full featured controls over the app.</p>
+  </description>
+  <metadata_license>CC-BY-SA-4.0</metadata_license>
+  <project_license>GPL-3.0-or-later</project_license>
+  <launchable type="desktop-id">app.salatok.gtk.desktop</launchable>
+  <provides>
+    <binary>app.salatok.gtk</binary>
+    <dbus type="user">app.salatok.gtk</dbus>
+  </provides>
+  <translation type="gettext">app.salatok.gtk</translation>
+</component>
