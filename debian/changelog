@@ -1,6 +1,13 @@
-salatokapp (0.8) distribution; urgency=medium
+salatokapp (0.9) pre-release alpha;
+
+  * fix salats timing issues.
+  * fix midnight errors.
+  * add city country row in settings
+
+ -- adenlall <lalladen@naver.com>  Fri, 14 Jul 2023 23:00:00 +0000
+
+salatokapp (0.8) pre-release alpha;
 
   * initialisation version
 
  -- adenlall <lalladen@naver.com>  Mon, 11 Jul 2023 15:00:00 +0000
-

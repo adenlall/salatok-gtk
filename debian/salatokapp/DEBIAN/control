@@ -1,18 +1,15 @@
 Package: salatokapp
-Version: 0.8
-Architecture: i386
+Version: 0.9
+Architecture: all
 Maintainer: adenlall <lalladen@naver.com>
-Installed-Size: 154
+Installed-Size: 155
 Depends: dconf-gsettings-backend | gsettings-backend, gjs
 Section: utils
 Priority: optional
 Description: SalatokApp gtk4 linux native application.
- *******************************.
  Get salat timing at your linux desktop.
  with full control over the methods adjustment.
  this app work with praytimes.org libary under GPL-3.0-or-later thats mean this app can work without connection or sending your personal ip adress to random servers to provide you salat timing.
- *******************************.
  we use nomination.openstreetmaps.org to proved you an api that can return lat & long from your given adress.
  we recommend you to read privacy policy pf nomination api.
- *******************************.
- this SOFTWARE is under GPL-3.0-or-later see COPYING file for more information.
+ ***this SOFTWARE is under GPL-3.0-or-later see COPYING file for more information.***

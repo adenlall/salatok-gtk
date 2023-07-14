@@ -27,16 +27,15 @@ export class Helper {
         return adj;
     }
     
-    Parse(raw, enabled, f){ // todo fix after 00:00 but befor midnight
+    Parse(raw, enabled, f){
         let arr = [];
         let date = new Date();
-        let h = 23//date.getHours();
-        let m = 55//date.getMinutes();
+        let h = date.getHours();
+        let m = date.getMinutes();
         let ff = f === "Float" ? "." : ":";
         if(f === "12h" || f === "12hNS"){
           h = h % 12 || 12;
         }
-        
         let next = {};
         let status;
         let trace = {
@@ -53,7 +52,6 @@ export class Helper {
                 trace.i = i;
                 let H = parseInt(`${raw[enabled[i][0]]}`.split(ff)[0]);
                 let M = parseInt(`${raw[enabled[i][0]]}`.split(ff)[1]);
-                
                 tt = this.#correctTime(H,h,M,m,trace);
                 status = this.#getStatus(tt.hh,trace);
                 if ((status === "come" || status === "still")&& trace.next) {
@@ -92,10 +90,8 @@ export class Helper {
       }else{
         return "come"
       }
-      
       console.error('undefined', hh, trace);
     }
-    
     #trace(status, trace){
       if (status === "come" || status === "still") {
         trace.past = false;
@@ -114,30 +110,15 @@ export class Helper {
     #correctTime(H,h,M,m,trace){
       let hh = H-h;
       let mm = M-m;
-      console.log('lohg');
-      
-      console.log(H,h,M,m);
-      console.log('message');
-      
       if (hh>0) {
         trace.plus = true;
       }
-      if (trace.plus && hh<0) {
+      if (trace.plus && hh<0 || hh<-20) {
         hh=H+24-h;
       }
-      
       if (mm<0) {
-        mm=hh>0?60+mm:'';
-        mm=hh=0 ?:-(60+mm)
-        if (hh<0) {
-          //TODO
-        }
-        
-        if (hh>0) {
           hh=hh-1;
-        }else if(hh<0) {
-          hh=hh+1;
-        }
+          mm=60+mm
       }
       return {hh:hh,mm:mm};
     }
@@ -151,6 +132,5 @@ export class Helper {
         return "past";
       }
     }
-    
 }
 

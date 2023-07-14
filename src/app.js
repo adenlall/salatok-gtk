@@ -37,11 +37,8 @@ export const salatApp = GObject.registerClass({
   window;
   setting = new Setting();
   
-  
-  
    vfunc_startup() {
-    //this.setting.reset();
-    
+    this.setting.reset();
 		this.initActions(this, [
             {
                 name: 'setsalatpage',
@@ -72,14 +69,7 @@ export const salatApp = GObject.registerClass({
 	  this.window.myPageSalats.append(core.widget());
 		this.window.present();
 		this.#ini();
-		
-		
-		
 	}
-  _new(){
-    console.log('newwwwwwwwwwwwwwww');
-    
-  }
   #loadStylesheet() {
 		const provider = new Gtk.CssProvider();
 		provider.load_from_resource('/app/salatok/gtk/css/salatWidget.css');
@@ -96,7 +86,7 @@ export const salatApp = GObject.registerClass({
 	  this.window.timezone_check.set_active(this.setting.getConfigKey("check_timezone"));
 	  this.window.long.set_value(this.setting.getConfigKey("timezone"));
 	  
-	  this.window.citycountry.label = this.setting.getConfigKey("country")+' - '+this.setting.getConfigKey("city");
+	  this.window.citycountry.label = this.setting.getConfigKey("city")+' - '+this.setting.getConfigKey("country");
 	  
 	  this.window.timezone_check.connect("state-set", (check, state)=>{this.setting.setConfigKey(state,"check_timezone");this.updateFine();});
 	  this.window.timezone.connect("value-changed", (spiner)=>{this.setting.setConfigKey(spiner.get_value(), "timezone");this.updateFine();});
@@ -173,7 +163,7 @@ export const salatApp = GObject.registerClass({
 	  this.window.showmidnight.connect("toggled", (check)=>{this.setting.setShowTime(check.get_active(),"midnight");this.updateCore();});
 	  
 	  this.window.showborder.set_active(this.setting.getSetting("showborder"));
-	  this.window.showborder.connect("toggled", (check)=>{this.setting.getSetting(check.get_active(),"showborder");this.updateCore();});
+	  this.window.showborder.connect("toggled", (check)=>{this.setting.setSetting(check.get_active(),"showborder");this.updateCore();});
 	  
 	  
 	   // hundel comboboxes

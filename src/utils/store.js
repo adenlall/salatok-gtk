@@ -6,8 +6,7 @@ export class Store {
 
      /*  Public Methods  */
      setup(){
-     
-       if (1==1) {
+       if (!this.#checkDir("salatokapp", true)) {
             let data = new Data();
             this.write("user.json", "salatokapp", {
               config: data.config,
@@ -50,7 +49,7 @@ export class Store {
           const directoryPath = GLib.build_filenamev([GLib.get_user_config_dir(), name]);
           if (!GLib.file_test(directoryPath, GLib.FileTest.EXISTS)) {
             if(create){
-               this.#mkdir("salatok");
+               this.#mkdir("salatokapp");
             }
             return false;
           }else{

@@ -4,44 +4,44 @@ export class Data {
 
     /*   Default Data for ini     */
      config = {
-          coordinates: [43, -80],
+          coordinates: ["32.6507792","-8.4242087"],
           city: "Sidi Bennour",
-          country: "Morocco",
+          country: "MOROCCO",
           timezone: 0,
-          chack_timezone: false,
+          check_timezone: false,
           dst: "auto",
           format: "24h",
           settings:{
             showborder: true,
           },
           enabled: [
-		                ['imsak' , true],
-		                ['fajr' , false],
+		                ['imsak' , false],
+		                ['fajr' , true],
 		                ['sunrise' , true],
-		                ['dhuhr' , false],
+		                ['dhuhr' , true],
 		                ['asr' , true],
 		                ['sunset' , false],
 		                ['maghrib' , true],
 		                ['isha' , true],
-		                ['midnight' , true],
+		                ['midnight' , false],
 	                ],
      }
      method = {
           method:"MWL",
           midnight: "Standard",
-          highlat:"None",
+          highlat:"NightMiddle",
      }
      adjusting = {
           imsak   : [18      ,false],
-          fajr    : [-11     ,true ],
+          fajr    : [18      ,false],
           dhuhr   : [2       ,false],
           asr     : ["Hanafi",false],
-          maghrib : [4       ,true ],
+          maghrib : [4       ,false],
           isha    : [18      ,false],
      }
      offsets = {
-          sunrise: -1,
-          sunset :  3.5,
+          sunrise: 0,
+          sunset : 0,
      }
 
 
