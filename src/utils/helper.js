@@ -53,7 +53,7 @@ export class Helper {
                 let H = parseInt(`${raw[enabled[i][0]]}`.split(ff)[0]);
                 let M = parseInt(`${raw[enabled[i][0]]}`.split(ff)[1]);
                 tt = this.#correctTime(H,h,M,m,trace);
-                status = this.#getStatus(tt.hh,trace);
+                status = this.#getStatus(tt.hh,tt.mm, trace);
                 if ((status === "come" || status === "still")&& trace.next) {
                   next.name = enabled[i][0];
                   next.time = raw[enabled[i][0]];
@@ -69,7 +69,11 @@ export class Helper {
         return {data:arr, next:next};
     }
     
-    #getStatus(hh,trace){
+    #getStatus(hh, mm, trace){
+      if (hh===0 && mm<0) {
+        return "past";
+      }
+
       if ((hh<=2&&hh>=0) && trace.come) {
         trace.past = false;
         trace.come_traced = true;
@@ -117,8 +121,12 @@ export class Helper {
         hh=H+24-h;
       }
       if (mm<0) {
+        if (hh>0) {
           hh=hh-1;
-          mm=60+mm
+          mm=60+mm;
+        } else if(hh<0) {
+          mm=(-1)*mm;
+        }
       }
       return {hh:hh,mm:mm};
     }
