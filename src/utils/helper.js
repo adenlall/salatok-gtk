@@ -73,7 +73,6 @@ export class Helper {
       if (hh===0 && mm<0) {
         return "past";
       }
-
       if ((hh<=2&&hh>=0) && trace.come) {
         trace.past = false;
         trace.come_traced = true;

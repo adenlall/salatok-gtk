@@ -1,0 +1,94 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<interface>
+	<template class="QuranWidget">
+          <property name="layout-manager">
+		          <object class="GtkBoxLayout">
+                 <property name="orientation">vertical</property>
+		          </object>
+          </property>
+          <child>
+              <object class="GtkBox">
+                 <property name="orientation">vertical</property>
+                 <property name="valign">0</property>
+                 <property name="halign">0</property>
+                 <property name="margin-start">10</property>
+                 <property name="margin-end">10</property>
+                 <property name="margin-top">10</property>
+                 <property name="margin-bottom">10</property>
+                <child>
+                    <object class="GtkBox">
+                      <property name="spacing">5</property>
+
+                      <child>
+                        <object class="GtkBox">
+                          <property name="halign">start</property>
+                          <property name="hexpand">1</property>
+
+                          <child>
+                            <object class="GtkBox">
+                              <property name="halign">start</property>
+                              <property name="spacing">5</property>
+                              <child>
+                                <object class="GtkButton" id="qprev">
+                                 <property name="icon-name">go-previous-symbolic</property>
+                                </object>
+                              </child>
+                              <child>
+                                <object class="GtkButton" id="qnext">
+                                 <property name="icon-name">go-next-symbolic</property>
+                                </object>
+                              </child>
+                            </object>
+                          </child>
+
+                        </object>
+                      </child>
+
+                      <child>
+                        <object class="GtkComboBoxText" id="qcombo">
+                        </object>
+                      </child>
+
+                      <child>
+                        <object class="GtkBox">
+                          <property name="halign">end</property>
+                          <property name="hexpand">1</property>
+                          <child>
+                            <object class="GtkLabel" id="qfull">
+                              <property name="width-request">70</property>
+                              <property name="label">...</property>
+                            </object>
+                          </child>
+                        </object>
+                      </child>
+
+                    </object>
+                  </child>
+
+                  <child>
+                    <object class="GtkScrolledWindow">
+                      <property name="hscrollbar-policy">never</property>
+                      <property name="min-content-height">200</property>
+                      <property name="hexpand">1</property>
+                      <property name="vexpand">1</property>
+                      <property name="margin-top">10</property>
+                      <child>
+                        <object class="GtkLabel" id="quran">
+                          <property name="wrap">1</property>
+                          <property name="vexpand">1</property>
+                          <property name="hexpand">1</property>
+                          <property name="justify">3</property>
+                          <style>
+                            <class name="label-18"/>
+                            <class name="line-h-40"/>
+                          </style>
+                        </object>
+                      </child>
+                    </object>
+                  </child>
+
+            </object>
+          </child>
+</template>
+</interface>
+

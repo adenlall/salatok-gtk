@@ -1,8 +1,8 @@
 Package: salatokapp
-Version: 0.9
+Version: 0.9.5
 Architecture: all
 Maintainer: adenlall <lalladen@naver.com>
-Installed-Size: 155
+Installed-Size: 1490
 Depends: dconf-gsettings-backend | gsettings-backend, gjs
 Section: utils
 Priority: optional

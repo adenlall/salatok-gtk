@@ -1,3 +1,14 @@
+.line-h-40{
+  line-height: 40px
+}.line-h-30{
+  line-height: 30px
+}.line-h-20{
+  line-height: 20px
+}.line-h-10{
+  line-height: 10px
+}.line-h-0{
+  line-height: 0px
+}
 .label-30{
      font-size: 30px;
 }.label-25{

@@ -2,7 +2,10 @@
 <gresources>
 	<gresource prefix="/app/salatok/gtk">
 	     <file>ui/window.ui</file>
+	     <file>ui/quran.ui</file>
 	     <file>css/salatWidget.css</file>
+	     <file>quran/index-u.txt</file>
+	     <file>quran/draft.txt</file>
 	</gresource>
 </gresources>
 

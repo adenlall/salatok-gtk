@@ -1,10 +1,10 @@
 be966cdc7895cab3b963f835451089d4  usr/bin/app.salatok.gtk
-e3dbcabc6ca8de8117a8981a4a926f1f  usr/share/app.salatok.gtk/app.salatok.gtk.data.gresource
-27c071407085285eec7c3128b8c8660e  usr/share/app.salatok.gtk/app.salatok.gtk.src.gresource
+abd09cb60a8bc6dd7734fb602cc1b689  usr/share/app.salatok.gtk/app.salatok.gtk.data.gresource
+1fe8fc9ff5d6d31a58a1e7a793bf4f5b  usr/share/app.salatok.gtk/app.salatok.gtk.src.gresource
 02295a0271a2f3de86c48441ac8369be  usr/share/applications/app.salatok.gtk.desktop
 986dadaf9997b2221fa2df25a4a4d240  usr/share/dbus-1/services/app.salatok.gtk.service
-4aa0172487348ceb87a21ec70a03d967  usr/share/doc/salatokapp/changelog.gz
+a2ffc3924e9f825ef06af022fd75e9af  usr/share/doc/salatokapp/changelog.gz
 9571905f738b0b9db8ac19d7451cf0b7  usr/share/glib-2.0/schemas/app.salatok.gtk.gschema.xml
-06c13173bd2b035e590399b40f98f274  usr/share/icons/hicolor/scalable/apps/app.salatok.gtk.svg
-06c13173bd2b035e590399b40f98f274  usr/share/icons/hicolor/symbolic/apps/app.salatok.gtk.symbolic.svg
+c0f759fa3bc0b2bd7aedad53e864f40b  usr/share/icons/hicolor/scalable/apps/app.salatok.gtk.svg
+37508df5b11e2d9c7663b338fdc15b96  usr/share/icons/hicolor/symbolic/apps/app.salatok.gtk.symbolic.svg
 ea75e28228795e3476b6e7545ea2616d  usr/share/metainfo/app.salatok.gtk.metainfo.xml
