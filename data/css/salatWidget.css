@@ -1,4 +1,11 @@
-.line-h-40{
+.cco{
+  color:purple;
+}
+.line-h-60{
+  line-height: 60px
+}.line-h-50{
+  line-height: 50px
+}.line-h-40{
   line-height: 40px
 }.line-h-30{
   line-height: 30px
@@ -6,13 +13,29 @@
   line-height: 20px
 }.line-h-10{
   line-height: 10px
-}.line-h-0{
-  line-height: 0px
+}.line-h-00{
+  line-height: 1px
 }
 .label-30{
      font-size: 30px;
+}.label-29{
+     font-size: 29px;
+}.label-28{
+     font-size: 28px;
+}.label-27{
+     font-size: 27px;
+}.label-26{
+     font-size: 26px;
 }.label-25{
      font-size: 25px;
+}.label-24{
+     font-size: 24px;
+}.label-23{
+     font-size: 23px;
+}.label-22{
+     font-size: 22px;
+}.label-21{
+     font-size: 21px;
 }.label-20{
      font-size: 20px;
 }.label-19{
@@ -159,3 +182,4 @@
 .extrabold{
   font-weight: 700;
 }
+

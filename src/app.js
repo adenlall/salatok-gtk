@@ -26,6 +26,7 @@ import Gio from 'gi://Gio';
 
 import { Window     }  from './window.js';
 import { Core       }  from './salat/core.js';
+import { Store      }  from './utils/store.js';
 import { Setting    }  from './utils/setting.js';
 import { Nomination }  from './utils/nomination.api.js';
 
@@ -82,8 +83,22 @@ export const salatApp = GObject.registerClass({
 	}
 	
 	#ini(){
-	  
-	  this.window.refresh.connect("clicked", ()=>{this.updateFine()});
+    let st = new Store();
+    let quran_s = st.getAllFilesInDir(".local/share/quran/salatokapp/");
+    for (let i = 0; i < quran_s.length; i++) {
+      this.window.qlanguage.append(""+i, quran_s[i].split(".")[0]+" - "+quran_s[i].split(".")[1]);
+    }
+
+	  this.window.qlanguage.set_active(this.setting.getSetting("qlanguage")?this.setting.getSetting("qlanguage"):"0");
+	  this.window.qlanguage.connect("changed", (combo)=>{this.setting.setSetting(combo.get_active(), "qlanguage")});
+
+	  this.window.fonttype.set_active(this.setting.getSetting("fonttype")?this.setting.getSetting("fonttype"):"0");
+	  this.window.fonttype.connect("changed", (combo)=>{this.setting.setSetting(combo.get_active(), "fonttype")});
+
+	  this.window.fontsize.set_value(this.setting.getSetting("fontsize"));
+	  this.window.fontsize.connect("value-changed", (range)=>{this.setting.setSetting(range.get_value(), "fontsize")});
+
+    this.window.refresh.connect("clicked", ()=>{this.updateFine()});
 	  this.window.timezone_check.set_active(this.setting.getConfigKey("check_timezone"));
 	  this.window.long.set_value(this.setting.getConfigKey("timezone"));
 	  
@@ -150,7 +165,6 @@ export const salatApp = GObject.registerClass({
 	  this.window.showmaghreb.set_active(this.setting.getShowTime("maghrib"));
 	  this.window.showisha.set_active(this.setting.getShowTime("isha"));
 	  this.window.showmidnight.set_active(this.setting.getShowTime("midnight"));
-
 	
 	  // ini salat this.settings
 	  this.window.showimsak.connect_after("toggled", (check)=>{this.setting.setShowTime(check.get_active(),"imsak"); this.updateCore();});

@@ -78,10 +78,8 @@
                           <property name="vexpand">1</property>
                           <property name="hexpand">1</property>
                           <property name="justify">3</property>
-                          <style>
-                            <class name="label-18"/>
-                            <class name="line-h-40"/>
-                          </style>
+                          <property name="selectable">1</property>
+                          <property name="label">Loading...</property>
                         </object>
                       </child>
                     </object>
