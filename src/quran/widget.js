@@ -33,8 +33,8 @@ export const QuranWidget = GObject.registerClass({
 	GTypeName: 'QuranWidget',
 	Template: 'resource:///app/salatok/gtk/ui/quran.ui',
 	Children: [
-	  'quran', 'qnext', 'qprev', 'qfull',
-	  'qcombo',
+	  'quran', 'qnext', 'qprev',
+	  'qcombo', 'qlanguage', 'fonttype', 'fontsize', 'qselectable'
 	],
 }, class extends Gtk.Widget {
 
@@ -42,49 +42,100 @@ export const QuranWidget = GObject.registerClass({
   s = new Setting();
 
   q = "";
-  qindex = 0;
+  qindex = 1;
   qq = "Loading...";
+  nn;
 
   vfunc_realize(){
 		super.vfunc_realize();
-		let s = new Store();
-		let arr = s.getAllFilesInDir(".local/share/quran/salatokapp/");
-    const Gfile = Gio.File.new_for_path(GLib.build_filenamev([GLib.get_home_dir(), ".local", "share", "quran", "salatokapp", arr[this.#getValid(""+this.s.getSetting("qlanguage"),0)]]));
-    Gfile.load_contents_async(null, (file, res) => {
-      try {
-        const [, contents] = file.load_contents_finish(res);
-        let ss = new String(contents);
-        this.q = ss.split(/\n/g);
-		    this.#setupCombo();
-        this.#setQ(1);
-        this.qnext.connect("clicked", ()=>{this.#setQ(this.qindex+1)});
-        this.qprev.connect("clicked", ()=>{this.#setQ(this.qindex-1)});
-        this.qcombo.connect("changed", (combobox)=>{this.#setQ(combobox.get_active_id())});
-      } catch (error) {
-        console.log('*********************');
-        console.log('errrrrrrrrrrrrrrrror');
-        console.log('*********************');
-        console.error(error);
-      }
-    });
-
+    this.quran.selectable = this.#getValid(this.s.getSetting("qselectable"),false);
+		this.#hardUpdate();
+		this.#fineUpdate();
+    this.#initConnect();
   }
 
-  vfunc_map(){
-    super.vfunc_map();
-    this.#setUpdate();
+  #initConnect(){
+
+    this.qselectable.set_active(this.#getValid(this.s.getSetting("qselectable"),false));
+	  this.qselectable.connect("toggled", (check)=>{
+	    this.s.setSetting(check.get_active(), "qselectable");
+	    this.quran.selectable = check.get_active();
+	  });
+
+    let store = new Store();
+    let quran_s = store.getAllFilesInDir(".local/share/quran/salatokapp/");
+    for (let i = 0; i < quran_s.length; i++) {
+      this.qlanguage.append(""+i, quran_s[i].split(".")[0]+" - "+quran_s[i].split(".")[1]);
+    }
+
+
+    this.qlanguage.set_active(this.#getValid(""+this.s.getSetting("qlanguage"),"0"));
+	  this.qlanguage.connect("changed", (combo)=>{this.s.setSetting(combo.get_active(), "qlanguage");this.#hardUpdate();});
+
+	  this.fonttype.set_active(this.s.getSetting("fonttype")?this.s.getSetting("fonttype"):"0");
+	  this.fonttype.connect("changed", (combo)=>{
+	  	this.quran.label = "loading...";
+	    this.s.setSetting(combo.get_active(), "fonttype");
+	    this.#fineUpdate();
+	    this.quran.label = this.qq;
+	  });
+
+	  this.fontsize.set_value(this.s.getSetting("fontsize"));
+	  this.fontsize.connect("value-changed", (range)=>{
+	    this.quran.label = "loading...";
+	    this.s.setSetting(range.get_value(), "fontsize");
+	    this.#fineUpdate();
+	    this.quran.label = this.qq;
+	  });
+
+    this.qnext.connect("clicked", ()=>{this.#setQ(this.qindex+1)});
+    this.qprev.connect("clicked", ()=>{this.#setQ(this.qindex-1)});
+    this.qcombo.connect("changed", (combobox)=>{this.#setQ(combobox.get_active_id())});
+
   }
 
   #setupCombo(){
-    console.log('this.qcombo : ', this.qcombo);
-
     for (let i = 1; i < QuranData.Sura.length-1; i++) {
       this.qcombo.append(""+i, QuranData.Sura[i][5]);
     }
   }
 
+  #hardUpdate(){
+    let s = new Store();
+		let arr = s.getAllFilesInDir(".local/share/quran/salatokapp/");
+    this.nn = arr[this.#getValid(""+this.s.getSetting("qlanguage"),0)];
+    const Gfile = Gio.File.new_for_path(GLib.build_filenamev([GLib.get_home_dir(), ".local", "share", "quran", "salatokapp", this.nn]));
+    Gfile.load_contents_async(null, (file, res) => {
+      try {
+        const [, contents] = file.load_contents_finish(res);
+        let ss = new String(contents);
+        this.q = ss.split(/\n/g);
+        this.#setupCombo();
+        this.#setQ(this.qindex);
+      } catch (error) {
+        console.error('****error****');
+        console.error(error);
+      }
+    });
+  }
+
+	#fineUpdate(){
+    let context = this.quran.get_pango_context();
+    let fd = context.get_font_description();
+    if (this.nn[0]+this.nn[1]==="ar") {
+      fd.set_family(this.#getValid(QuranData.Fonts[this.s.getSetting("fonttype")], "system"));
+    }else{
+      fd.set_family("");
+    }
+    fd.set_size(this.#getValid(this.s.getSetting("fontsize"), 20) *Pango.SCALE);
+    context.set_font_description(fd);
+	}
+
+
 	#setQ(surah){
 	  surah = parseInt(surah);
+	  console.log(surah);
+
 	  if (surah > 0 && surah <= 114) {
 	    this.quran.label = "Loading...";
 	    let tts = QuranData.Sura[surah];
@@ -94,29 +145,11 @@ export const QuranWidget = GObject.registerClass({
           this.qq = this.qq + " ["+ayyah+"] " + this.q[i];
           ayyah = ayyah+1;
       }
-      this.qfull.label = "ayyat : "+tts[1];
       this.quran.label = this.qq;
       this.qcombo.set_active_id(""+surah);
       this.qindex = surah;
+
 	  }
-	}
-
-	#setUpdate(){
-
-    this.quran.label = "Loading...";
-
-    let context = this.quran.get_pango_context();
-    let fd = context.get_font_description();
-
-    fd.set_family(this.#getValid(QuranData.Fonts[this.s.getSetting("fonttype")], "system"));
-    fd.set_size(this.#getValid(this.s.getSetting("fontsize"), 20) *Pango.SCALE);
-
-    //this.quran.set_css_classes([""]);
-    //this.quran.add_css_class("line-h-"+this.#getValid(""+this.s.getSetting("lineheight"), "4")+"0");
-
-    context.set_font_description(fd);
-
-    this.quran.label = this.qq;
 	}
 
 	#getValid(a,b){

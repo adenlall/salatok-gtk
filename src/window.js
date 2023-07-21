@@ -37,7 +37,6 @@ export const Window = GObject.registerClass({
 	  'search', 'searchcontainer',
 	  'timezone_check', 'timezone',
 	  'refreshbutton', 'stack1', 'mainstack', 'showchild', 'refresh', 'citycountry',
-	  'fontsize', 'fonttype', 'qlanguage',
 	],
 }, class extends Gtk.Window {
 
