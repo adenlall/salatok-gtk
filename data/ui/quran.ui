@@ -68,7 +68,6 @@
                                     </object>
                               </child>
 
-
                     <child>
                       <object class="GtkMenuButton">
                         <property name="focusable">1</property>
@@ -148,12 +147,6 @@
                                                           </child>
                                                           <child>
                                                             <object class="GtkComboBoxText" id="fonttype">
-                                                               <items>
-                                                                    <item id="2">Hafs</item>
-                                                                    <item id="3">Warsh</item>
-                                                                    <item id="4">KSA</item>
-                                                                    <item id="1">Kufi</item>
-                                                                </items>
                                                             </object>
                                                           </child>
                                                         </object>

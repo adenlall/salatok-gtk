@@ -63,11 +63,19 @@ export const QuranWidget = GObject.registerClass({
 	  });
 
     let store = new Store();
-    let quran_s = store.getAllFilesInDir(".local/share/quran/salatokapp/");
-    for (let i = 0; i < quran_s.length; i++) {
-      this.qlanguage.append(""+i, quran_s[i].split(".")[0]+" - "+quran_s[i].split(".")[1]);
-    }
+    try {
+      let quran_s = store.getAllFilesInDir(".local/share/quran/salatokapp/");
+      for (let i = 0; i < quran_s.length; i++) {
+        this.qlanguage.append(""+i, quran_s[i].split(".")[0]+" - "+quran_s[i].split(".")[1]);
+      }
 
+      let fonts_s = store.getAllFilesInDir(".local/share/fonts/salatokapp/");
+      for (let i = 0; i < fonts_s.length; i++) {
+        this.fonttype.append(""+i, fonts_s[i].split(".")[0]);
+      }
+    } catch (err) {
+        console.error(err);
+    }
 
     this.qlanguage.set_active(this.#getValid(""+this.s.getSetting("qlanguage"),"0"));
 	  this.qlanguage.connect("changed", (combo)=>{this.s.setSetting(combo.get_active(), "qlanguage");this.#hardUpdate();});

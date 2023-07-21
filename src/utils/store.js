@@ -8,25 +8,9 @@ export class Store {
      /*  Public Methods  */
      setup(){
 
-
        if (!this.#checkDir("salatokapp", true)) {
-          let dir = Gio.File.new_for_uri("resource:///app/salatok/gtk/quran");
-          let fileEnum;
-          try {
-              fileEnum = dir.enumerate_children('standard::name,standard::type',
-                                                Gio.FileQueryInfoFlags.NONE, null);
-          } catch (e) {
-              fileEnum = null;
-          }
-          if (fileEnum != null) {
-              let info;
-              while (info = fileEnum.next_file(null)){
-                  if (this.#getExtension(info.get_display_name())==="txt") {
-                      this.#write_File_to_local_dir(fileEnum.get_child(info), info.get_display_name());
-                  }
-              }
-          }
-          console.log("setup");
+          console.log("setup started");
+            this.#installQuran();
             for (let i = 0; i < QuranData.Fonts.length; i++) {
               this.installFonts(QuranData.Fonts[i]);
             }
@@ -84,6 +68,24 @@ export class Store {
 
 
      /*  Private Methods  */
+     #installQuran(){
+        let dir = Gio.File.new_for_uri("resource:///app/salatok/gtk/quran");
+        let fileEnum;
+        try {
+            fileEnum = dir.enumerate_children('standard::name,standard::type',
+                                              Gio.FileQueryInfoFlags.NONE, null);
+        } catch (e) {
+            fileEnum = null;
+        }
+        if (fileEnum != null) {
+            let info;
+            while (info = fileEnum.next_file(null)){
+                if (this.#getExtension(info.get_display_name())==="txt") {
+                    this.#write_File_to_local_dir(fileEnum.get_child(info), info.get_display_name());
+                }
+            }
+        }
+     }
      #mkdir(name){
           const directoryPath = GLib.build_filenamev([GLib.get_user_config_dir(), name]);
           const result = GLib.mkdir_with_parents(directoryPath, 0o755);
