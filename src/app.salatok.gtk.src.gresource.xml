@@ -12,8 +12,8 @@
 		<file>utils/helper.js</file>
 		<file>utils/setting.js</file>
 		<file>utils/nomination.api.js</file>
+		<file>quran/metadata.js</file>
+		<file>quran/widget.js</file>
 	</gresource>
 </gresources>
-
-
 

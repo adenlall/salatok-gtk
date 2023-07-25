@@ -26,8 +26,11 @@ import Gio from 'gi://Gio';
 
 import { Window     }  from './window.js';
 import { Core       }  from './salat/core.js';
+import { Store      }  from './utils/store.js';
 import { Setting    }  from './utils/setting.js';
 import { Nomination }  from './utils/nomination.api.js';
+
+import './quran/widget.js';
 
 
 export const salatApp = GObject.registerClass({
@@ -37,7 +40,7 @@ export const salatApp = GObject.registerClass({
   window;
   setting = new Setting();
   
-   vfunc_startup() {
+  vfunc_startup() {
     this.setting.reset();
 		this.initActions(this, [
             {
@@ -54,7 +57,6 @@ export const salatApp = GObject.registerClass({
                 activate: this._dev,
             }
     ]);
-    
 		super.vfunc_startup();
 		this.#loadStylesheet();
 	}
@@ -64,10 +66,10 @@ export const salatApp = GObject.registerClass({
     this.window.stack1.set_visible_child_full(this.setting.getSetting("showchild") === 1 ? "salatsday" : "next", Gtk.StackTransitionType.NONE);
 	  this.window.stack1.set_transition_type(Gtk.StackTransitionType.SLIDE_UP_DOWN);
 	  this.window.mainstack.set_transition_type(Gtk.StackTransitionType.SLIDE_LEFT_RIGHT);
-    
 		let core = new Core();
 	  this.window.myPageSalats.append(core.widget());
 		this.window.present();
+
 		this.#ini();
 	}
   #loadStylesheet() {
@@ -81,8 +83,8 @@ export const salatApp = GObject.registerClass({
 	}
 	
 	#ini(){
-	  
-	  this.window.refresh.connect("clicked", ()=>{this.updateFine()});
+
+    this.window.refresh.connect("clicked", ()=>{this.updateFine()});
 	  this.window.timezone_check.set_active(this.setting.getConfigKey("check_timezone"));
 	  this.window.long.set_value(this.setting.getConfigKey("timezone"));
 	  
@@ -149,7 +151,6 @@ export const salatApp = GObject.registerClass({
 	  this.window.showmaghreb.set_active(this.setting.getShowTime("maghrib"));
 	  this.window.showisha.set_active(this.setting.getShowTime("isha"));
 	  this.window.showmidnight.set_active(this.setting.getShowTime("midnight"));
-
 	
 	  // ini salat this.settings
 	  this.window.showimsak.connect_after("toggled", (check)=>{this.setting.setShowTime(check.get_active(),"imsak"); this.updateCore();});
@@ -255,5 +256,6 @@ export const salatApp = GObject.registerClass({
   }
 
 });
+
 
 

@@ -366,23 +366,8 @@
 				<property name="name">quran</property>
 				<property name="title" translatable="1">quran</property>
 				<property name="child">
-          <object class="GtkBox">
-            <property name="halign">center</property>
-              <child>
-                <object class="GtkBox" id="salatbox">
-                  <property name="halign">center</property>
-                  <child>
-                      <object class="GtkLabel">
-                        <property name="label">Soon ...</property>
-                        <style>
-                          <class name="title-2"/>
-                        </style>
-                      </object>
-                  </child>
-                </object>
-            </child>
-            
-          </object>
+           <object class="QuranWidget">
+           </object>
         </property>
 		</object>
 		</child>
@@ -815,9 +800,8 @@
                     
                   </object>
                 </child>
-                
-                
-          
+
+
                   <child>
                     <object class="GtkLabel">
                       <property name="label">Adjusting</property>
