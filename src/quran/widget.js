@@ -45,13 +45,14 @@ export const QuranWidget = GObject.registerClass({
   qindex = 1;
   qq = "Loading...";
   nn;
+  ttt = [];
 
   vfunc_realize(){
 		super.vfunc_realize();
-    this.quran.selectable = this.#getValid(this.s.getSetting("qselectable"),false);
+		this.quran.selectable = this.#getValid(this.s.getSetting("qselectable"),false);
+		this.#initConnect();
 		this.#hardUpdate();
 		this.#fineUpdate();
-    this.#initConnect();
   }
 
   #initConnect(){
@@ -68,10 +69,10 @@ export const QuranWidget = GObject.registerClass({
       for (let i = 0; i < quran_s.length; i++) {
         this.qlanguage.append(""+i, quran_s[i].split(".")[0]+" - "+quran_s[i].split(".")[1]);
       }
-
       let fonts_s = store.getAllFilesInDir(".local/share/fonts/salatokapp/");
       for (let i = 0; i < fonts_s.length; i++) {
-        this.fonttype.append(""+i, fonts_s[i].split(".")[0]);
+      	this.ttt.push(fonts_s[i].split(".")[0]);
+        this.fonttype.append(""+i, fonts_s[i].split(".")[0]+" - "+fonts_s[i].split(".")[1][0]+fonts_s[i].split(".")[1][1]);
       }
     } catch (err) {
         console.error(err);
@@ -80,7 +81,7 @@ export const QuranWidget = GObject.registerClass({
     this.qlanguage.set_active(this.#getValid(""+this.s.getSetting("qlanguage"),"0"));
 	  this.qlanguage.connect("changed", (combo)=>{this.s.setSetting(combo.get_active(), "qlanguage");this.#hardUpdate();});
 
-	  this.fonttype.set_active(this.s.getSetting("fonttype")?this.s.getSetting("fonttype"):"0");
+	  this.fonttype.set_active(this.ttt[this.#getValid(this.s.getSetting("fonttype"),0)]);
 	  this.fonttype.connect("changed", (combo)=>{
 	  	this.quran.label = "loading...";
 	    this.s.setSetting(combo.get_active(), "fonttype");
@@ -110,9 +111,9 @@ export const QuranWidget = GObject.registerClass({
 
   #hardUpdate(){
     let s = new Store();
-		let arr = s.getAllFilesInDir(".local/share/quran/salatokapp/");
-    this.nn = arr[this.#getValid(""+this.s.getSetting("qlanguage"),0)];
-    const Gfile = Gio.File.new_for_path(GLib.build_filenamev([GLib.get_home_dir(), ".local", "share", "quran", "salatokapp", this.nn]));
+	let arr = s.getAllFilesInDir(".local/share/quran/salatokapp/");
+    this.nn = arr[this.#getValid(this.s.getSetting("qlanguage"),0)];
+    const Gfile = Gio.File.new_for_path(GLib.build_filenamev([GLib.get_home_dir(), ".local", "share", "quran", "salatokapp", this.#getValid(this.nn, 0)]));
     Gfile.load_contents_async(null, (file, res) => {
       try {
         const [, contents] = file.load_contents_finish(res);
@@ -121,7 +122,7 @@ export const QuranWidget = GObject.registerClass({
         this.#setupCombo();
         this.#setQ(this.qindex);
       } catch (error) {
-        console.error('****error****');
+        print('ERROR!');
         console.error(error);
       }
     });
@@ -130,34 +131,27 @@ export const QuranWidget = GObject.registerClass({
 	#fineUpdate(){
     let context = this.quran.get_pango_context();
     let fd = context.get_font_description();
-    if (this.nn[0]+this.nn[1]==="ar") {
-      fd.set_family(this.#getValid(QuranData.Fonts[this.s.getSetting("fonttype")], "system"));
-    }else{
-      fd.set_family("");
-    }
+    fd.set_family(this.ttt[this.#getValid(this.s.getSetting("fonttype"),0)]);
     fd.set_size(this.#getValid(this.s.getSetting("fontsize"), 20) *Pango.SCALE);
     context.set_font_description(fd);
 	}
 
 
 	#setQ(surah){
-	  surah = parseInt(surah);
-	  console.log(surah);
-
-	  if (surah > 0 && surah <= 114) {
-	    this.quran.label = "Loading...";
-	    let tts = QuranData.Sura[surah];
-	    this.qq="";
-	    let ayyah = 0;
-	    for (let i = tts[0]; i < tts[0]+tts[1]; i++) {
-          this.qq = this.qq + " ["+ayyah+"] " + this.q[i];
-          ayyah = ayyah+1;
-      }
-      this.quran.label = this.qq;
-      this.qcombo.set_active_id(""+surah);
-      this.qindex = surah;
-
-	  }
+		surah = parseInt(surah);
+		if (surah > 0 && surah <= 114) {
+			this.quran.label = "Loading...";
+			let tts = QuranData.Sura[surah];
+			this.qq="";
+			let ayyah = 0;
+			for (let i = tts[0]; i < tts[0]+tts[1]; i++) {
+				this.qq = this.qq + " ["+ayyah+"] " + this.q[i];
+				ayyah = ayyah+1;
+			}
+			this.quran.label = this.qq;
+			this.qcombo.set_active_id(""+surah);
+			this.qindex = surah;
+		}
 	}
 
 	#getValid(a,b){

@@ -4,10 +4,18 @@
 	     <file>ui/window.ui</file>
 	     <file>ui/quran.ui</file>
 	     <file>css/salatWidget.css</file>
-	     <file>fonts/KFGQPC HAFS Uthmanic Script.ttf</file>
-	     <file>fonts/KFGQPC WARSH Uthmanic Script.ttf</file>
-	     <file>fonts/KFGQPC KSA Extra Ultar-Bold.ttf</file>
-	     <file>fonts/KFGQPC Kufi Stylistic.ttf</file>
+
+	     <file>fonts/KFGQPC HAFS Uthmanic Script.arabic.ttf</file>
+	     <file>fonts/KFGQPC WARSH Uthmanic Script.arabic.ttf</file>
+	     <file>fonts/KFGQPC KSA Extra Ultar-Bold.arabic.ttf</file>
+	     <file>fonts/KFGQPC Kufi Stylistic.arabic.ttf</file>
+	     <file>fonts/Amiri.arabic.ttf</file>
+
+	     <file>fonts/Agave.latin.ttf</file>
+	     <file>fonts/Caladea.latin.ttf</file>
+	     <file>fonts/IBM 3270.latin.ttf</file>
+	     <file>fonts/Latin Modern Roman Dunhill Oblique.latin.otf</file>
+	     <file>fonts/Latin Modern Roman Unslanted.latin.otf</file>
 
 	     <file>quran/ar.tanzil.txt</file>
 	     <file>quran/ar.muyassar.txt</file>
@@ -37,6 +45,9 @@
 	     <file>quran/tt.nugman.txt</file>
 	     <file>quran/ur.ahmedali.txt</file>
 	     <file>quran/uz.sodik.txt</file>
+
+	     <file>metadata.json</file>
+
 	</gresource>
 </gresources>
 

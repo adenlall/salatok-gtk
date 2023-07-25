@@ -1,3 +1,12 @@
+salatokapp (0.9.10) beta;
+
+  * full implementation of Quran into the app.
+  * add multiple translations of Quran.
+  * add Quran fonts.
+  * fixes of salat calculations.
+
+ -- adenlall <lalladen@naver.com>  Fri, 21 Jul 2023 16:23:00
+
 salatokapp (0.9.5) pre-release alpha;
 
   * fix salats timing issues.

@@ -1,0 +1,9 @@
+{
+	"app":{
+		"id": "app.salatok.gtk",
+		"dev": "adenDev-adenlall",
+		"name": "salatokapp",
+		"version": "0.9.12-beta",
+		"license": "GPL-3.0-or-later"
+	}
+}
