@@ -42,10 +42,6 @@ export const salatApp = GObject.registerClass({
   
   vfunc_startup() {
     this.setting.reset();
-  	if (this.setting.getSetting("fisttime")) {
-  		this._setsettingpage();
-  		this.setting.setSetting(false,"fisttime")
-  	}
 		this.initActions(this, [
             {
                 name: 'setsalatpage',
@@ -67,6 +63,10 @@ export const salatApp = GObject.registerClass({
 
 	vfunc_activate() {
     this.window = new Window({ application: this });
+    if (this.setting.getSetting("firsttime")) {
+  		this._setsettingpage();
+  		this.setting.setSetting(false,"firsttime")
+  	}
     this.window.stack1.set_visible_child_full(this.setting.getSetting("showchild") === 1 ? "salatsday" : "next", Gtk.StackTransitionType.NONE);
 	  this.window.stack1.set_transition_type(Gtk.StackTransitionType.SLIDE_UP_DOWN);
 	  this.window.mainstack.set_transition_type(Gtk.StackTransitionType.SLIDE_LEFT_RIGHT);
