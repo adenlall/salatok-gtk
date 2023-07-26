@@ -1,11 +1,11 @@
 [Desktop Entry]
 Name=Salatok App
 Comment=Get salat timing at your linux desktop
-Icon=app.salatok.gtk.colorful
+Icon=@APP_ID@.colorful
 Exec=@BINDIR@/@APP_ID@
 Type=Application
 DBusActivatable=true
-Categories=Tools;
+Categories=Science;Tools;Other;
 # Translators: Search terms to find this application. Do NOT translate or localize the semicolons! The list MUST also end with a semicolon!
 Keywords=Tools;Education;Other;
 
