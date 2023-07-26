@@ -14,7 +14,6 @@
 	     <file>fonts/Agave.latin.ttf</file>
 	     <file>fonts/Caladea.latin.ttf</file>
 	     <file>fonts/IBM 3270.latin.ttf</file>
-	     <file>fonts/Latin Modern Roman Dunhill Oblique.latin.otf</file>
 	     <file>fonts/Latin Modern Roman Unslanted.latin.otf</file>
 
 	     <file>quran/ar.tanzil.txt</file>
@@ -45,6 +44,15 @@
 	     <file>quran/tt.nugman.txt</file>
 	     <file>quran/ur.ahmedali.txt</file>
 	     <file>quran/uz.sodik.txt</file>
+	     <file>quran/de.aburida.txt</file>
+	     <file>quran/de.bubenheim.txt</file>
+	     <file>quran/es.bornez.txt</file>
+	     <file>quran/id.muntakhab.txt</file>
+	     <file>quran/it.piccardo.txt</file>
+	     <file>quran/ja.japanese.txt</file>
+	     <file>quran/ko.korean.txt</file>
+	     <file>quran/ru.kalam.txt</file>
+	     <file>quran/sq.mehdiu.txt</file>
 
 	     <file>metadata.json</file>
 

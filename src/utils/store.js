@@ -83,7 +83,6 @@ export class Store {
             let info;
             while (info = fileEnum.next_file(null)){
                 if (this.#getExtension(info.get_display_name())==="txt") {
-                	console.log('fileee : ',info.get_display_name());
                     this.#write_File_to_local_dir(fileEnum.get_child(info), info.get_display_name());
                 }
             }

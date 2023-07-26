@@ -42,6 +42,10 @@ export const salatApp = GObject.registerClass({
   
   vfunc_startup() {
     this.setting.reset();
+  	if (this.setting.getSetting("fisttime")) {
+  		this._setsettingpage();
+  		this.setting.setSetting(false,"fisttime")
+  	}
 		this.initActions(this, [
             {
                 name: 'setsalatpage',
@@ -83,7 +87,7 @@ export const salatApp = GObject.registerClass({
 	}
 	
 	#ini(){
-
+	this.setting = new Setting();
     this.window.refresh.connect("clicked", ()=>{this.updateFine()});
 	  this.window.timezone_check.set_active(this.setting.getConfigKey("check_timezone"));
 	  this.window.long.set_value(this.setting.getConfigKey("timezone"));
@@ -166,15 +170,13 @@ export const salatApp = GObject.registerClass({
 	  this.window.showborder.set_active(this.setting.getSetting("showborder"));
 	  this.window.showborder.connect("toggled", (check)=>{this.setting.setSetting(check.get_active(),"showborder");this.updateCore();});
 	  
-	  
 	   // hundel comboboxes
 	  this.window.showchild.set_active(this.setting.getSetting("showchild") === 1 ? 1 : 0);
 	  this.window.showchild.connect("changed", (combobox)=>{this.setting.setSetting(combobox.get_active(),"showchild")});
 	 
-	 
-	  
 	  this.window.nextsalat.label = this.setting.getSetting("next").name;
-	  this.window.nextcount.label = this.setting.getSetting("next").time;
+	  this.window.nextcount.label = this.setting.getSetting("next").countdown;
+	  this.window.nexttime.label = this.setting.getSetting("next").time;
 	  this.window.refreshbutton.connect("clicked", ()=>{this.updateCore()});
 	  
 	}
@@ -186,12 +188,13 @@ export const salatApp = GObject.registerClass({
 	  if (this.window.searchcontainer.get_last_child()) {
 	    this.window.searchcontainer.remove(this.window.searchcontainer.get_last_child());
 	  }
-	  let n = new Nomination();
-	  let dd = n.widget(n.getByQ(q));
-	  if (dd) {
-	      this.window.searchcontainer.append(dd);
+	  if (q&&q!=="") {
+		  let n = new Nomination();
+		  let dd = n.widget(n.getByQ(q));
+		  if (dd) {
+			  this.window.searchcontainer.append(dd);
+		  }
 	  }
-	  
 	}
 	
 	updateCore(){
@@ -201,7 +204,8 @@ export const salatApp = GObject.registerClass({
 	  let core = new Core();
 	  this.window.myPageSalats.append(core.widget());
 	  this.window.nextsalat.label = this.setting.getSetting("next").name;
-	  this.window.nextcount.label = this.setting.getSetting("next").time;
+	  this.window.nextcount.label = this.setting.getSetting("next").countdown;
+	  this.window.nexttime.label = this.setting.getSetting("next").time;
 	}
 	updateFine(){
 	  // TODO

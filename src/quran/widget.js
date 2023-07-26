@@ -28,6 +28,7 @@ import Pango   from 'gi://Pango';
 import { QuranData  }  from './metadata.js';
 import { Store      }  from './../utils/store.js';
 import { Setting    }  from './../utils/setting.js';
+import { Helper     }  from './../utils/helper.js';
 
 export const QuranWidget = GObject.registerClass({
 	GTypeName: 'QuranWidget',
@@ -46,6 +47,7 @@ export const QuranWidget = GObject.registerClass({
   qq = "Loading...";
   nn;
   ttt = [];
+  qqq = [];
 
   vfunc_realize(){
 		super.vfunc_realize();
@@ -53,6 +55,7 @@ export const QuranWidget = GObject.registerClass({
 		this.#initConnect();
 		this.#hardUpdate();
 		this.#fineUpdate();
+        this.#setupCombo();
   }
 
   #initConnect(){
@@ -65,9 +68,9 @@ export const QuranWidget = GObject.registerClass({
 
     let store = new Store();
     try {
-      let quran_s = store.getAllFilesInDir(".local/share/quran/salatokapp/");
-      for (let i = 0; i < quran_s.length; i++) {
-        this.qlanguage.append(""+i, quran_s[i].split(".")[0]+" - "+quran_s[i].split(".")[1]);
+      this.qqq = store.getAllFilesInDir(".local/share/quran/salatokapp/");
+      for (let i = 0; i < this.qqq.length; i++) {
+        this.qlanguage.append(""+i, this.qqq[i].split(".")[0]+" - "+this.qqq[i].split(".")[1]);
       }
       let fonts_s = store.getAllFilesInDir(".local/share/fonts/salatokapp/");
       for (let i = 0; i < fonts_s.length; i++) {
@@ -78,8 +81,12 @@ export const QuranWidget = GObject.registerClass({
         console.error(err);
     }
 
-    this.qlanguage.set_active(this.#getValid(""+this.s.getSetting("qlanguage"),"0"));
-	  this.qlanguage.connect("changed", (combo)=>{this.s.setSetting(combo.get_active(), "qlanguage");this.#hardUpdate();});
+
+    this.qlanguage.set_active(this.#getValid(this.s.getSetting("qlanguage"),Helper.getKey(this.qqq, "ar.tanzil.txt")));
+	this.qlanguage.connect("changed", (combo)=>{
+	  		this.s.setSetting(combo.get_active(), "qlanguage");
+	  		this.#hardUpdate();
+  	});
 
 	  this.fonttype.set_active(this.ttt[this.#getValid(this.s.getSetting("fonttype"),0)]);
 	  this.fonttype.connect("changed", (combo)=>{
@@ -110,16 +117,13 @@ export const QuranWidget = GObject.registerClass({
   }
 
   #hardUpdate(){
-    let s = new Store();
-	let arr = s.getAllFilesInDir(".local/share/quran/salatokapp/");
-    this.nn = arr[this.#getValid(this.s.getSetting("qlanguage"),0)];
-    const Gfile = Gio.File.new_for_path(GLib.build_filenamev([GLib.get_home_dir(), ".local", "share", "quran", "salatokapp", this.#getValid(this.nn, 0)]));
+    this.nn = this.qqq[this.#getValid(this.s.getSetting("qlanguage"),Helper.getKey(this.qqq, "ar.tanzil.txt"))];
+    const Gfile = Gio.File.new_for_path(GLib.build_filenamev([GLib.get_home_dir(), ".local", "share", "quran", "salatokapp", this.nn]));
     Gfile.load_contents_async(null, (file, res) => {
       try {
         const [, contents] = file.load_contents_finish(res);
         let ss = new String(contents);
         this.q = ss.split(/\n/g);
-        this.#setupCombo();
         this.#setQ(this.qindex);
       } catch (error) {
         print('ERROR!');
@@ -155,7 +159,7 @@ export const QuranWidget = GObject.registerClass({
 	}
 
 	#getValid(a,b){
-	    if (!a) {
+	    if (a!==0&&!a) {
 	      return b;
 	    }
 	    return a;

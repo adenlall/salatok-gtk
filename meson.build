@@ -1,7 +1,7 @@
 # Define our project
 project(
 	'salatokapp',
-	version: '0.9.12-beta',
+	version: '0.9.13 hot-release',
 	license: ['GPL-3.0-or-later'],
 	meson_version: '>= 0.59.0'
 )

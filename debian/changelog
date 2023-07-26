@@ -1,3 +1,10 @@
+salatokapp (1.0.0) stable;
+
+  * major bugs fixes.
+  * more Quran translations.
+
+ -- adenlall <lalladen@naver.com>  Wed, 26 Jul 2023 13:53:00
+
 salatokapp (0.9.10) beta;
 
   * full implementation of Quran into the app.
