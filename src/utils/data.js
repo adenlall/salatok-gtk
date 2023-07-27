@@ -13,6 +13,7 @@ export class Data {
           format: "24h",
           settings:{
             showborder: true,
+            firsttime: true,
           },
           enabled: [
 		                ['imsak' , false],
@@ -52,9 +53,9 @@ export class Data {
   
      config : {
         format: [
-	                '24h',         // 24-hour format
-	                '12h',         // 12-hour format
-	                '12hNS',       // 12-hour format with no suffix
+	                '24h',           // 24-hour format
+	                //'12h',         // 12-hour format
+	                //'12hNS',       // 12-hour format with no suffix
                 ],
       },
    method : {

@@ -4,8 +4,58 @@
 	     <file>ui/window.ui</file>
 	     <file>ui/quran.ui</file>
 	     <file>css/salatWidget.css</file>
-	     <file>quran/index-u.txt</file>
-	     <file>quran/draft.txt</file>
+
+	     <file>fonts/KFGQPC HAFS Uthmanic Script.arabic.ttf</file>
+	     <file>fonts/KFGQPC WARSH Uthmanic Script.arabic.ttf</file>
+	     <file>fonts/KFGQPC KSA Extra Ultar-Bold.arabic.ttf</file>
+	     <file>fonts/KFGQPC Kufi Stylistic.arabic.ttf</file>
+	     <file>fonts/Amiri.arabic.ttf</file>
+
+	     <file>fonts/Agave.latin.ttf</file>
+	     <file>fonts/Caladea.latin.ttf</file>
+	     <file>fonts/IBM 3270.latin.ttf</file>
+	     <file>fonts/Latin Modern Roman Unslanted.latin.otf</file>
+
+	     <file>quran/ar.tanzil.txt</file>
+	     <file>quran/ar.muyassar.txt</file>
+	     <file>quran/en.daryabadi.txt</file>
+	     <file>quran/en.shakir.txt</file>
+	     <file>quran/ru.kuliev.txt</file>
+	     <file>quran/tr.bulac.txt</file>
+	     <file>quran/fr.hamidullah.txt</file>
+	     <file>quran/nl.keyzer.txt</file>
+	     <file>quran/az.mammadaliyev.txt</file>
+	     <file>quran/bg.theophanov.txt</file>
+	     <file>quran/bn.hoque.txt</file>
+	     <file>quran/bs.korkut.txt</file>
+	     <file>quran/cs.hrbek.txt</file>
+	     <file>quran/fa.ansarian.txt</file>
+	     <file>quran/hi.farooq.txt</file>
+	     <file>quran/id.indonesian.txt</file>
+	     <file>quran/ml.abdulhameed.txt</file>
+	     <file>quran/no.berg.txt</file>
+	     <file>quran/pl.bielawskiego.txt</file>
+	     <file>quran/ps.abdulwali.txt</file>
+	     <file>quran/ro.grigore.txt</file>
+	     <file>quran/sq.nahi.txt</file>
+	     <file>quran/sv.bernstrom.txt</file>
+	     <file>quran/sw.barwani.txt</file>
+	     <file>quran/th.thai.txt</file>
+	     <file>quran/tt.nugman.txt</file>
+	     <file>quran/ur.ahmedali.txt</file>
+	     <file>quran/uz.sodik.txt</file>
+	     <file>quran/de.aburida.txt</file>
+	     <file>quran/de.bubenheim.txt</file>
+	     <file>quran/es.bornez.txt</file>
+	     <file>quran/id.muntakhab.txt</file>
+	     <file>quran/it.piccardo.txt</file>
+	     <file>quran/ja.japanese.txt</file>
+	     <file>quran/ko.korean.txt</file>
+	     <file>quran/ru.kalam.txt</file>
+	     <file>quran/sq.mehdiu.txt</file>
+
+	     <file>metadata.json</file>
+
 	</gresource>
 </gresources>
 

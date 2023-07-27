@@ -33,7 +33,7 @@ export const Window = GObject.registerClass({
 	  'showimsak','showfajr','showsunrise','showduhr','showasr','showmaghreb','showsunset','showisha','showmidnight',
 	  'long','lat',
 	  'showborder',
-	  'nextcount', 'nextsalat',
+	  'nextcount', 'nextsalat', 'nexttime',
 	  'search', 'searchcontainer',
 	  'timezone_check', 'timezone',
 	  'refreshbutton', 'stack1', 'mainstack', 'showchild', 'refresh', 'citycountry',

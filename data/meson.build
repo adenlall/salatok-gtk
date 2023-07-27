@@ -23,6 +23,11 @@ install_data(
 	install_dir: get_option('datadir') / 'icons' / 'hicolor' / 'symbolic' / 'apps'
 )
 
+install_data(
+	'icons' / APP_ID + '.colorful.svg',
+	install_dir: get_option('datadir') / 'icons' / 'hicolor' / 'scalable' / 'apps'
+)
+
 # Translate and install the desktop file
 i18n.merge_file(
 	type: 'desktop',
@@ -67,4 +72,3 @@ i18n.merge_file(
 	install: true,
 	install_dir: get_option('datadir') / 'metainfo'
 )
-

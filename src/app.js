@@ -26,6 +26,7 @@ import Gio from 'gi://Gio';
 
 import { Window     }  from './window.js';
 import { Core       }  from './salat/core.js';
+import { Store      }  from './utils/store.js';
 import { Setting    }  from './utils/setting.js';
 import { Nomination }  from './utils/nomination.api.js';
 
@@ -62,6 +63,10 @@ export const salatApp = GObject.registerClass({
 
 	vfunc_activate() {
     this.window = new Window({ application: this });
+    if (this.setting.getSetting("firsttime")) {
+  		this._setsettingpage();
+  		this.setting.setSetting(false,"firsttime")
+  	}
     this.window.stack1.set_visible_child_full(this.setting.getSetting("showchild") === 1 ? "salatsday" : "next", Gtk.StackTransitionType.NONE);
 	  this.window.stack1.set_transition_type(Gtk.StackTransitionType.SLIDE_UP_DOWN);
 	  this.window.mainstack.set_transition_type(Gtk.StackTransitionType.SLIDE_LEFT_RIGHT);
@@ -82,8 +87,8 @@ export const salatApp = GObject.registerClass({
 	}
 	
 	#ini(){
-	  
-	  this.window.refresh.connect("clicked", ()=>{this.updateFine()});
+	this.setting = new Setting();
+    this.window.refresh.connect("clicked", ()=>{this.updateFine()});
 	  this.window.timezone_check.set_active(this.setting.getConfigKey("check_timezone"));
 	  this.window.long.set_value(this.setting.getConfigKey("timezone"));
 	  
@@ -150,7 +155,6 @@ export const salatApp = GObject.registerClass({
 	  this.window.showmaghreb.set_active(this.setting.getShowTime("maghrib"));
 	  this.window.showisha.set_active(this.setting.getShowTime("isha"));
 	  this.window.showmidnight.set_active(this.setting.getShowTime("midnight"));
-
 	
 	  // ini salat this.settings
 	  this.window.showimsak.connect_after("toggled", (check)=>{this.setting.setShowTime(check.get_active(),"imsak"); this.updateCore();});
@@ -166,15 +170,13 @@ export const salatApp = GObject.registerClass({
 	  this.window.showborder.set_active(this.setting.getSetting("showborder"));
 	  this.window.showborder.connect("toggled", (check)=>{this.setting.setSetting(check.get_active(),"showborder");this.updateCore();});
 	  
-	  
 	   // hundel comboboxes
 	  this.window.showchild.set_active(this.setting.getSetting("showchild") === 1 ? 1 : 0);
 	  this.window.showchild.connect("changed", (combobox)=>{this.setting.setSetting(combobox.get_active(),"showchild")});
 	 
-	 
-	  
 	  this.window.nextsalat.label = this.setting.getSetting("next").name;
-	  this.window.nextcount.label = this.setting.getSetting("next").time;
+	  this.window.nextcount.label = this.setting.getSetting("next").countdown;
+	  this.window.nexttime.label = this.setting.getSetting("next").time;
 	  this.window.refreshbutton.connect("clicked", ()=>{this.updateCore()});
 	  
 	}
@@ -186,12 +188,13 @@ export const salatApp = GObject.registerClass({
 	  if (this.window.searchcontainer.get_last_child()) {
 	    this.window.searchcontainer.remove(this.window.searchcontainer.get_last_child());
 	  }
-	  let n = new Nomination();
-	  let dd = n.widget(n.getByQ(q));
-	  if (dd) {
-	      this.window.searchcontainer.append(dd);
+	  if (q&&q!=="") {
+		  let n = new Nomination();
+		  let dd = n.widget(n.getByQ(q));
+		  if (dd) {
+			  this.window.searchcontainer.append(dd);
+		  }
 	  }
-	  
 	}
 	
 	updateCore(){
@@ -201,7 +204,8 @@ export const salatApp = GObject.registerClass({
 	  let core = new Core();
 	  this.window.myPageSalats.append(core.widget());
 	  this.window.nextsalat.label = this.setting.getSetting("next").name;
-	  this.window.nextcount.label = this.setting.getSetting("next").time;
+	  this.window.nextcount.label = this.setting.getSetting("next").countdown;
+	  this.window.nexttime.label = this.setting.getSetting("next").time;
 	}
 	updateFine(){
 	  // TODO
@@ -256,6 +260,3 @@ export const salatApp = GObject.registerClass({
   }
 
 });
-
-
-

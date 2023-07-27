@@ -473,24 +473,47 @@ QuranData.Page = [
 //------------------ Sajda Data ---------------------
 
 QuranData.Sajda = [
-	// [sura, aya, type]
-	[],
-	[7, 206, 'recommended'],
-	[13, 15, 'recommended'],
-	[16, 50, 'recommended'],
+	[7,  206, 'recommended'],
+	[13, 15,  'recommended'],
+	[16, 50,  'recommended'],
 	[17, 109, 'recommended'],
-	[19, 58, 'recommended'],
-	[22, 18, 'recommended'],
-	[22, 77, 'recommended'],
-	[25, 60, 'recommended'],
-	[27, 26, 'recommended'],
-	[32, 15, 'obligatory'],
-	[38, 24, 'recommended'],
-	[41, 38, 'obligatory'],
-	[53, 62, 'obligatory'],
-	[84, 21, 'recommended'],
-	[96, 19, 'obligatory'],
+	[19, 58,  'recommended'],
+	[22, 18,  'recommended'],
+	[22, 77,  'recommended'],
+	[25, 60,  'recommended'],
+	[27, 26,  'recommended'],
+	[32, 15,  'obligatory'],
+	[38, 24,  'recommended'],
+	[41, 38,  'obligatory'],
+	[53, 62,  'obligatory'],
+	[84, 21,  'recommended'],
+	[96, 19,  'obligatory'],
 ];
 
 
+/* metadata.js
+ *
+ * Copyright 2023 adenlall <adenlall@outlook.sa>
+ *
+ * This piece of code is free software: you can redistribute it and/or modify
+ * it under the terms of the GNU General Public License as published by
+ * the Free Software Foundation, either version 3 of the License, or
+ * (at your option) any later version.
+ *
+ * This piece of code is distributed in the hope that it will be useful,
+ * but WITHOUT ANY WARRANTY; without even the implied warranty of
+ * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+ * GNU General Public License for more details.
+ *
+ * You should have received a copy of the GNU General Public License
+ * along with this program.  If not, see <http://www.gnu.org/licenses/>.
+ *
+ * SPDX-License-Identifier: GPL-3.0-or-later
+ */
 
+QuranData.Fonts = [
+  "KFGQPC HAFS Uthmanic Script",
+  "KFGQPC WARSH Uthmanic Script",
+  "KFGQPC KSA Extra Ultar-Bold",
+  "KFGQPC Kufi Stylistic",
+];

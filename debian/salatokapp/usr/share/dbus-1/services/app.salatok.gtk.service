@@ -1,4 +1,0 @@
-[D-BUS Service]
-Name=app.salatok.gtk
-Exec=/usr/bin/app.salatok.gtk --gapplication-service
-

@@ -57,6 +57,7 @@ export class Helper {
                 if ((status === "come" || status === "still")&& trace.next) {
                   next.name = enabled[i][0];
                   next.time = raw[enabled[i][0]];
+                  next.countdown = tt.hh+"h "+tt.mm+"min";
                   trace.next = false;
                 }
                 arr.push([enabled[i][0], raw[enabled[i][0]],  tt.hh+"h "+tt.mm+"min", status ? status : "past"]);
@@ -65,6 +66,7 @@ export class Helper {
         if (trace.next) {
           next.name = "fajr";
           next.time = "next day";
+          next.countdown = "next day";
         }
         return {data:arr, next:next};
     }
@@ -93,22 +95,12 @@ export class Helper {
       }else{
         return "come"
       }
-      console.error('undefined', hh, trace);
     }
     #trace(status, trace){
       if (status === "come" || status === "still") {
         trace.past = false;
       }
       return trace;
-    }
-    #next(bool, hh, enabled, raw, i){
-      let next={};
-      if(bool && hh>=0){
-        next.name = enabled[i][0];
-        next.time = raw[enabled[i][0]];
-        bool = false;
-      }
-      return next;
     }
     #correctTime(H,h,M,m,trace){
       let hh = H-h;
@@ -129,7 +121,15 @@ export class Helper {
       }
       return {hh:hh,mm:mm};
     }
-    
+    static getKey(arr, key){
+    	for (let i = 0; i < arr.length; i++) {
+    		if (arr[i] === key) {
+    			return i;
+    		}
+    	}
+    	console.error('NOT FOUND ['+key+'] IN Array >>>', arr);
+    	return 0;
+    }
     static getStatus(h, H){
       if (H-h > 2) {
         return "still";
