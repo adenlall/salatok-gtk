@@ -473,8 +473,6 @@ QuranData.Page = [
 //------------------ Sajda Data ---------------------
 
 QuranData.Sajda = [
-	// [sura, aya, type]
-	[],
 	[7,  206, 'recommended'],
 	[13, 15,  'recommended'],
 	[16, 50,  'recommended'],

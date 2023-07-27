@@ -837,8 +837,6 @@
                     
                   </object>
                 </child>
-
-
                   <child>
                     <object class="GtkLabel">
                       <property name="label">Adjusting</property>
@@ -1301,3 +1299,4 @@
 
   </template>
 </interface>
+
