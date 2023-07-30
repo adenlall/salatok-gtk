@@ -60,15 +60,16 @@ configure_file(
 # Translate and install the AppStream metadata
 i18n.merge_file(
 	input: configure_file(
-		input: APP_ID + '.metainfo.xml',
-		output: APP_ID + '.metainfo.xml.in',
+		input: APP_ID + '.appdata.xml',
+		output: APP_ID + '.appdata.xml.in',
 		configuration: {
 			'APP_ID': APP_ID,
 		}
 	),
-	output: APP_ID + '.metainfo.xml',
+	output: APP_ID + '.appdata.xml',
 	type: 'xml',
 	po_dir: meson.project_source_root() / 'po',
 	install: true,
 	install_dir: get_option('datadir') / 'metainfo'
+
 )

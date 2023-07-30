@@ -7,6 +7,7 @@ project(
 )
 
 APP_ID = 'app.salatok.gtk'
+ APP_BIN = 'salatokapp'
 
 # Import the modules
 gnome = import('gnome')
@@ -14,7 +15,6 @@ i18n = import('i18n')
 
 # Load instructions from subdirectories
 subdir('data')
-#subdir('po')
 subdir('src')
 
 # Post installation tasks 

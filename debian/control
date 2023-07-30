@@ -1,17 +1,39 @@
 Source: salatokapp
 Section: utils
 Priority: optional
-Maintainer: adenlall <lalladen@naver.com>
-Build-Depends: debhelper-compat (= 13), dh-buildinfo, libgtk-4-dev, libgjs-dev
-Standards-Version: 4.5.0
+Maintainer: aden lall <lalladen@naver.com>
+Uploaders: aden lall <lalladen@naver.com>
+Build-Depends-Indep: desktop-file-utils <!nocheck>,
+                     geoclue-2.0,
+                     gjs (>= 1.71.0),
+                     itstool,
+                     libgdk-pixbuf-2.0-dev,
+                     libgirepository1.0-dev (>= 1.35.9),
+                     libgjs-dev (>= 1.50.0),
+                     libglib2.0-dev,
+                     libgtk-4-dev (>= 4.5),
+                     libxml2-utils,
+                     meson (>= 0.50),
+                     pkg-config (>= 0.22)
+Rules-Requires-Root: no
+Standards-Version: 4.6.0
+Vcs-Browser: https://github.com/adenlall/salatok-gtk
+Vcs-Git: https://github.com/adenlall/salatok-gtk.git
+Homepage: https://github.com/adenlall/salatok-gtk
 
 Package: salatokapp
 Architecture: all
-Depends: ${shlibs:Depends}, ${misc:Depends}, gjs
-Description: SalatokApp gtk4 linux native application.
-	Get salat timing at your linux desktop.
-	with full control over the methods adjustment.
-	this app work with praytimes.org libary under GPL-3.0-or-later thats mean this app can work without connection or sending your personal ip adress to random servers to provide you salat timing.
-	we use nomination.openstreetmaps.org to proved you an api that can return lat & long from your given adress.
-	we recommend you to read privacy policy pf nomination api.
-	***this SOFTWARE is under GPL-3.0-or-later see COPYING file for more information.***
+Depends: geoclue-2.0 (>= 2.3.1),
+         gir1.2-geoclue-2.0 (>= 0.12.99),
+         gir1.2-glib-2.0 (>= 1.35.9),
+         gir1.2-gtk-4.0 (>= 4.5),
+         gir1.2-gweather-4.0 (>= 3.90.0),
+         gjs (>= 1.71.0),
+         libglib2.0-bin (>= 2.40),
+         ${misc:Depends}
+Description: SalatokApp gtk4 Muslim prayer time manager.
+ Get salat timing at your linux desktop
+ with full control over the methods adjustment
+ this app work with praytimes.org libary under GPL-3.0-or-later thats mean this app can work without connection or sending your personal ip adress to random servers to provide you salat timing
+ we use nomination.openstreetmaps.org to proved you an api that can return lat & long from your given adress
+ we recommend you to read privacy policy pf nomination api.

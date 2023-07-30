@@ -1,0 +1,49 @@
+This package wasm developed & maintained by adenlall <lalladen@naver.com> on
+ressources used in this package Quran translations and salat calculation methods by tanzil.net & praytimes.org
+Mon, 11 Jul 2023 15:00 +0000
+
+Format: https://www.debian.org/doc/packaging-manuals/copyright-format/1.0/
+Source: https://github.com/adenlall/salatok-gtk
+
+Files: *
+Copyright: 2023, adenlall <lalladen@naver.com>
+Author: adenlall <lalladen@naver.com>
+License: GPL-3+
+
+Files:
+ src/quran/metadata.js
+ data/quran/*
+Copyright: 2007–2023, tanzil <tanzil.net>
+License: Creative Commons Attribution 3.0
+
+Files:
+ src/salat/PrayTimes.org.js
+Copyright: 2007–2023, praytimes <praytimes.org>
+License: LGPL-3
+
+Files:
+ data/fonts/KFGQPC HAFS Uthmanic Script.arabic.ttf
+ data/fonts/KFGQPC KSA Extra Ultar-Bold.arabic.ttf
+ data/fonts/KFGQPC Kufi Stylistic.arabic.ttf
+ data/fonts/KFGQPC WARSH Uthmanic Script.arabic.ttf
+Copyright: King Fahd Glorious Quran Printing Complex <fonts.qurancomplex.gov.sa>
+License: ELECTRONIC END-USER LICENSE AGREEMENT
+
+Copyright:
+
+   This package is free software; you can redistribute it and/or modify
+   it under the terms of the GNU General Public License as published by
+   the Free Software Foundation; version 2 dated June, 1991.
+
+   This package is distributed in the hope that it will be useful,
+   but WITHOUT ANY WARRANTY; without even the implied warranty of
+   MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+   GNU General Public License for more details.
+
+   You should have received a copy of the GNU General Public License
+   along with this package; if not, write to the Free Software
+   Foundation, Inc., 51 Franklin St, Fifth Floor, Boston,
+   MA 02110-1301, USA.
+
+On Debian systems, the complete text of the GNU General
+Public License can be found in `/usr/share/common-licenses/GPL-3'

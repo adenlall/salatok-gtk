@@ -1,0 +1,4 @@
+[D-BUS Service]
+Name=app.salatok.gtk
+Exec=/usr/bin/salatokapp --gapplication-service
+

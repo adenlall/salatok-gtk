@@ -1,0 +1,14 @@
+[Desktop Entry]
+Name=Salatok App
+GenericName=Muslim Pray Times
+Comment=Get salat timing & Quran reader at your linux desktop
+Icon=app.salatok.gtk.colorful
+Exec=/usr/bin/salatokapp
+StartupNotify=true
+Type=Application
+Terminal=false
+DBusActivatable=true
+Categories=GNOME;GTK;Accessibility;Core;
+# Translators: Search terms to find this application. Do NOT translate or localize the semicolons! The list MUST also end with a semicolon!
+Keywords=Salat;Quran;Prayer;Islam;Time;
+
