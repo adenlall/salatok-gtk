@@ -4,7 +4,6 @@ import { Helper } from './helper.js';
 
 
 export class Setting {
-    
     data = new Data();
     store = new Store();
     /* Getters */

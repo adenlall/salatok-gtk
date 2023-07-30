@@ -7,32 +7,55 @@ import { QuranData } from './../quran/metadata.js';
 export class Store {
 
      /*  Public Methods  */
-	setup(){
-		const metadata = Gio.File.new_for_uri("resource:///app/salatok/gtk/metadata.json");
-		const [, fc] = metadata.load_contents(null);
-		const newV = JSON.parse(fc).app.version;
-		const s = new Setting();
-		const curV = s.getSetting("appversion");
-		const force = s.getSetting("reset");
-
-		if (!this.#checkDir("salatokapp", true) || newV !== curV || force) {
-          	print('SETUP');
-          	print('NEW VERSION INSTALLED : ', newV);
-          	this.#cleanDir("fonts");
-          	this.#cleanDir("quran");
-            this.#installQuran();
-            this.#installFonts();
-            let data = new Data();
-            this.write("user.json", "salatokapp", {
-              config: data.config,
-              method: data.method,
-              adjusting: data.adjusting,
-              check_adjusting: data.check_adjusting,
-              offsets: data.offsets,
-            });
-            s.setSetting(newV, "appversion");
-            s.setSetting(false, "reset");
-       }
+     setup(){
+     	let ff = Gio.File.new_for_path(GLib.build_filenamev([GLib.get_user_config_dir(), "salatokapp", "user.json"]));
+     	if (!ff.query_exists(null)){
+     		print("FILE `user.json` NOT FOUND !");
+     		print("TRYING RESET");
+     		this.reset("master");
+     	}
+     	let update = false;
+     	let newv;
+     	const s = new Setting();
+     	try{
+		 	const metadata = Gio.File.new_for_uri("resource:///app/salatok/gtk/metadata.json");
+			const [, fc] = metadata.load_contents(null);
+ 			newv = JSON.parse(fc).app.version;
+		 	const curv = s.getSetting("appversion");
+		 	const force = s.getSetting("reset");
+			if (curv !== newv || force) {
+				update = true;
+			}
+     	} catch (err) {
+     		console.error('error try catch startchecks');
+     		console.error(err);
+			update = true;
+     	}
+     	if (update) {
+     		print("UPDATE");
+     		this.reset(newv);
+     	}
+     }
+     reset(newversion){
+      	print('SETUP');
+      	print('NEW VERSION INSTALLED : ', newversion);
+      	this.#cleanDir("fonts");
+      	this.#cleanDir("quran");
+        this.#installQuran();
+        this.#installFonts();
+        let data = new Data();
+        this.write("user.json", "salatokapp", {
+          config: data.config,
+          method: data.method,
+          adjusting: data.adjusting,
+          check_adjusting: data.check_adjusting,
+          offsets: data.offsets,
+          setting:{
+          	force:false,
+          	appversion: newversion && "master",
+          	reset: false,
+          }
+        });
      }
      write(file, dir, jsonData){
           let exist = this.#checkDir(dir, true);
@@ -54,9 +77,12 @@ export class Store {
               fileEnum = dir.enumerate_children('standard::name,standard::type',
                                                 Gio.FileQueryInfoFlags.NONE, null);
           } catch (e) {
-              fileEnum = null;
+          		console.error('error');
+          		print(e)
+              	fileEnum = null;
           }
           let arr = [];
+
           if (fileEnum != null) {
               let info;
               while (info = fileEnum.next_file(null)){

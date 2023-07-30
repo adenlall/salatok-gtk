@@ -3,11 +3,13 @@ Section: utils
 Priority: optional
 Maintainer: aden lall <lalladen@naver.com>
 Uploaders: aden lall <lalladen@naver.com>
+Build-Depends: debhelper-compat (= 13)
 Build-Depends-Indep: desktop-file-utils <!nocheck>,
                      geoclue-2.0,
                      gjs (>= 1.71.0),
                      itstool,
                      libgdk-pixbuf-2.0-dev,
+                     libge0.12.99),
                      libgirepository1.0-dev (>= 1.35.9),
                      libgjs-dev (>= 1.50.0),
                      libglib2.0-dev,
