@@ -8,19 +8,19 @@ export class Store {
 
      /*  Public Methods  */
      setup(){
-     	let ff = Gio.File.new_for_path(GLib.build_filenamev([GLib.get_user_config_dir(), "salatokapp", "user.json"]));
+	 	const metadata = Gio.File.new_for_uri("resource:///app/salatok/gtk/metadata.json");
+		const [, fc] = metadata.load_contents(null);
+		const newv = JSON.parse(fc).app.version;
+
+		let ff = Gio.File.new_for_path(GLib.build_filenamev([GLib.get_user_config_dir(), "salatokapp", "user.json"]));
      	if (!ff.query_exists(null)){
      		print("FILE `user.json` NOT FOUND !");
      		print("TRYING RESET");
-     		this.reset("master");
+     		this.reset(newv);
      	}
      	let update = false;
-     	let newv;
-     	const s = new Setting();
-     	try{
-		 	const metadata = Gio.File.new_for_uri("resource:///app/salatok/gtk/metadata.json");
-			const [, fc] = metadata.load_contents(null);
- 			newv = JSON.parse(fc).app.version;
+     	let s = new Setting();
+		try{
 		 	const curv = s.getSetting("appversion");
 		 	const force = s.getSetting("reset");
 			if (curv !== newv || force) {
@@ -50,12 +50,9 @@ export class Store {
           adjusting: data.adjusting,
           check_adjusting: data.check_adjusting,
           offsets: data.offsets,
-          setting:{
-          	force:false,
-          	appversion: newversion && "master",
-          	reset: false,
-          }
         });
+     	let st = new Setting();
+     	st.setSetting(newversion ,"appversion");
      }
      write(file, dir, jsonData){
           let exist = this.#checkDir(dir, true);
@@ -207,4 +204,5 @@ export class Store {
         return spl[spl.length-1];
      }
 }
+
 

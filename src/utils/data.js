@@ -12,6 +12,9 @@ export class Data {
           dst: "auto",
           format: "24h",
           settings:{
+          	force:false,
+          	appversion: "master",
+          	reset: false,
             showborder: true,
             firsttime: true,
           },
