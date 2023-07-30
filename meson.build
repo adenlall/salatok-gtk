@@ -15,7 +15,6 @@ i18n = import('i18n')
 
 # Load instructions from subdirectories
 subdir('data')
-#subdir('po')
 subdir('src')
 
 # Post installation tasks 
