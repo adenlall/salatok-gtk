@@ -71,4 +71,5 @@ i18n.merge_file(
 	po_dir: meson.project_source_root() / 'po',
 	install: true,
 	install_dir: get_option('datadir') / 'metainfo'
+
 )

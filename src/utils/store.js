@@ -79,7 +79,6 @@ export class Store {
               	fileEnum = null;
           }
           let arr = [];
-
           if (fileEnum != null) {
               let info;
               while (info = fileEnum.next_file(null)){
@@ -204,5 +203,3 @@ export class Store {
         return spl[spl.length-1];
      }
 }
-
-

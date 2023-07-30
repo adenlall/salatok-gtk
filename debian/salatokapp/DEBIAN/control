@@ -1,0 +1,15 @@
+Package: salatokapp
+Version: 1.0.0
+Architecture: all
+Maintainer: aden lall <lalladen@naver.com>
+Installed-Size: 51113
+Depends: geoclue-2.0 (>= 2.3.1), gir1.2-geoclue-2.0 (>= 0.12.99), gir1.2-glib-2.0 (>= 1.35.9), gir1.2-gtk-4.0 (>= 4.5), gir1.2-gweather-4.0 (>= 3.90.0), gjs (>= 1.71.0), libglib2.0-bin (>= 2.40), dconf-gsettings-backend | gsettings-backend
+Section: utils
+Priority: optional
+Homepage: https://github.com/adenlall/salatok-gtk
+Description: SalatokApp gtk4 Muslim prayer time manager.
+ Get salat timing at your linux desktop
+ with full control over the methods adjustment
+ this app work with praytimes.org libary under GPL-3.0-or-later thats mean this app can work without connection or sending your personal ip adress to random servers to provide you salat timing
+ we use nomination.openstreetmaps.org to proved you an api that can return lat & long from your given adress
+ we recommend you to read privacy policy pf nomination api.
