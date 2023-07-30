@@ -16,7 +16,7 @@ GNOME app for Muslims prayer times; Get salat timing at your linux desktop with 
 
 For Debian/Ubuntu :
      download the .deb package from releases and install it.
-     then install needed ressources : 
+     for more install ressources ( optional ) :
           **Quran**
                visit : https://tanzil.net/trans/ and select "Text" for file format, and download all you need from the list there.
                then copy all .txt files downloaded into this location `$HOME/.local/share/quran/salatokapp/`
