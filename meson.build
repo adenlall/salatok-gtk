@@ -7,7 +7,7 @@ project(
 )
 
 APP_ID = 'app.salatok.gtk'
-APP_BIN = 'salatokapp'
+ APP_BIN = 'salatokapp'
 
 # Import the modules
 gnome = import('gnome')
