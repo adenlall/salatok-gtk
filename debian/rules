@@ -2,10 +2,3 @@
 
 %:
 	dh $@
-
-override_dh_auto_install:
-	# Copy your application files to the appropriate directories
-	dh_auto_install --destdir=debian/salatokapp
-	cp -r /home/al/Videos/app.salatok.gtk/ /usr/share/salatokapp/
-
-

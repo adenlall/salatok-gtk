@@ -113,7 +113,7 @@
                                 <property name="margin-bottom">2</property>
                                 <property name="label" translatable="1">...</property>
                                 <style>
-                                  <class name="label-30"/>
+                                  <class name="label-35"/>
                                   <class name="extrabold"/>
                                 </style>
                               </object>
@@ -123,28 +123,67 @@
                         <child>
                           <object class="GtkBox">
                             <property name="vexpand">1</property>
-                            <property name="halign">center</property>
+                            <property name="halign">start</property>
+                            <property name="hexpand">1</property>
                             <property name="spacing">10</property>
                             <child>
                               <object class="GtkLabel">
-                                <property name="label" translatable="1">IN : </property>
+                                <property name="halign">start</property>
+                                <property name="hexpand">1</property>
+                                <property name="label" translatable="1">come In : </property>
+                                <style>
+                                  <class name="label-15"/>
+                                </style>
                               </object>
                             </child>
                             <child>
                               <object class="GtkLabel" id="nextcount">
+                                <property name="halign">end</property>
                                 <property name="label" translatable="1">00 h 15 min</property>
                                 <style>
                                   <class name="bold"/>
                                   <class name="come"/>
+                                  <class name="label-15"/>
                                 </style>
                               </object>
                             </child>
                             <style>
                               <class name="card-thin"/>
-                              <class name="card-color"/>
                             </style>
                           </object>
                         </child>
+                            <child>
+                              <object class="GtkBox">
+                                <property name="vexpand">1</property>
+                                <property name="halign">start</property>
+                                <property name="hexpand">1</property>
+                                <property name="spacing">10</property>
+                                <child>
+                                  <object class="GtkLabel">
+                                    <property name="hexpand">1</property>
+                                    <property name="halign">start</property>
+                                    <property name="label" translatable="1">come at : </property>
+                                    <style>
+                                      <class name="label-15"/>
+                                    </style>
+                                  </object>
+                                </child>
+                                <child>
+                                  <object class="GtkLabel" id="nexttime">
+                                    <property name="halign">end</property>
+                                    <property name="label" translatable="1">15:25</property>
+                                    <style>
+                                      <class name="bold"/>
+                                      <class name="come"/>
+                                      <class name="label-15"/>
+                                    </style>
+                                  </object>
+                                </child>
+                                <style>
+                                  <class name="card-thin"/>
+                                </style>
+                              </object>
+                            </child>
                       </object>
                     </property>
                   </object>
@@ -728,8 +767,6 @@
                                    <object class="GtkComboBoxText" id="formatcombobox">
                                      <items>
                                           <item id="24h">24h (22:00)</item>
-                                          <item id="12h">12h (10:00 pm)</item>
-                                          <item id="12hNS">12h no suffix (10:00)</item>
                                         </items>
                                    </object>
                                 </child>
@@ -800,180 +837,6 @@
                     
                   </object>
                 </child>
-                
-                <child>
-                  <object class="GtkLabel">
-                    <property name="margin-top">30</property>
-                    <property name="margin-bottom">10</property>
-                    <property name="label">Quran</property>
-                    <property name="xalign">0</property>
-                    <style>
-                      <class name="title-2"/>
-                    </style>
-                  </object>
-                </child>
-                <child>
-                  <object class="GtkFrame">
-                    <child>
-                      <object class="GtkListBox">
-                        <property name="selection-mode">none</property>
-                        <property name="show-separators">1</property>
-                        <style>
-                          <class name="rich-list"/>
-                        </style>
-
-                        <child>
-                          <object class="GtkListBoxRow">
-                            <property name="activatable">0</property>
-                            <child>
-                              <object class="GtkBox">
-                                <child>
-                                  <object class="GtkLabel">
-                                    <property name="label" translatable="yes">Font size</property>
-                                    <property name="xalign">0</property>
-                                    <property name="halign">start</property>
-                                    <property name="valign">center</property>
-                                    <property name="hexpand">1</property>
-                                  </object>
-                                </child>
-                                <child>
-                                 <object class="GtkScale" id="fontsize">
-                                   <property name="width-request">180</property>
-                                   <property name="round-digits">0</property>
-                                   <property name="draw-value">0</property>
-                                   <property name="value-pos">2</property>
-                                   <property name="adjustment">
-                                      <object class="GtkAdjustment">
-                                        <property name="upper">20</property>
-                                        <property name="value">10</property>
-                                        <property name="step-increment">1</property>
-                                        <property name="page-increment">2</property>
-                                      </object>
-                                   </property>
-                                   <marks>
-                                     <mark value="0"  position="bottom"></mark>
-                                     <mark value="2"  position="bottom"></mark>
-                                     <mark value="4"  position="bottom"></mark>
-                                     <mark value="6"  position="bottom"></mark>
-                                     <mark value="8"  position="bottom"></mark>
-                                     <mark value="10" position="bottom"></mark>
-                                     <mark value="12" position="bottom"></mark>
-                                     <mark value="14" position="bottom"></mark>
-                                     <mark value="16" position="bottom"></mark>
-                                     <mark value="18" position="bottom"></mark>
-                                     <mark value="20" position="bottom"></mark>
-                                   </marks>
-                                   <layout>
-                                     <property name="column">1</property>
-                                     <property name="row">2</property>
-                                   </layout>
-                                 </object>
-                              </child>
-                              </object>
-                            </child>
-                          </object>
-                        </child>
-
-                        <child>
-                          <object class="GtkListBoxRow">
-                            <property name="activatable">0</property>
-                            <child>
-                              <object class="GtkBox">
-                                <child>
-                                  <object class="GtkLabel">
-                                    <property name="label" translatable="yes">Line Height</property>
-                                    <property name="xalign">0</property>
-                                    <property name="halign">start</property>
-                                    <property name="valign">center</property>
-                                    <property name="hexpand">1</property>
-                                  </object>
-                                </child>
-                                <child>
-                                 <object class="GtkScale" id="lineheight">
-                                   <property name="width-request">180</property>
-                                   <property name="round-digits">0</property>
-                                   <property name="draw-value">0</property>
-                                   <property name="value-pos">2</property>
-                                   <property name="adjustment">
-                                      <object class="GtkAdjustment">
-                                        <property name="upper">40</property>
-                                        <property name="value">30</property>
-                                        <property name="step-increment">10</property>
-                                        <property name="page-increment">10</property>
-                                      </object>
-                                   </property>
-                                   <marks>
-                                     <mark value="0"   position="bottom"></mark>
-                                     <mark value="10"  position="bottom"></mark>
-                                     <mark value="20"  position="bottom"></mark>
-                                     <mark value="30"  position="bottom"></mark>
-                                     <mark value="40"  position="bottom"></mark>
-                                   </marks>
-                                   <layout>
-                                     <property name="column">1</property>
-                                     <property name="row">2</property>
-                                   </layout>
-                                 </object>
-                              </child>
-                              </object>
-                            </child>
-                          </object>
-                        </child>
-
-                        <child>
-                          <object class="GtkListBoxRow">
-                            <property name="activatable">0</property>
-                            <child>
-                              <object class="GtkBox">
-                                <child>
-                                  <object class="GtkLabel">
-                                    <property name="label" translatable="yes">Font Color</property>
-                                    <property name="xalign">0</property>
-                                    <property name="halign">start</property>
-                                    <property name="valign">center</property>
-                                    <property name="hexpand">1</property>
-                                  </object>
-                                </child>
-                                <child>
-                                 <object class="GtkColorButton" id="fontcolor">
-                                 </object>
-                              </child>
-                              </object>
-                            </child>
-                          </object>
-                        </child>
-
-                        <child>
-                          <object class="GtkListBoxRow">
-                            <property name="activatable">0</property>
-                            <child>
-                              <object class="GtkBox">
-                                <child>
-                                  <object class="GtkLabel">
-                                    <property name="label" translatable="yes">Font Type</property>
-                                    <property name="xalign">0</property>
-                                    <property name="halign">start</property>
-                                    <property name="valign">center</property>
-                                    <property name="hexpand">1</property>
-                                  </object>
-                                </child>
-                                <child>
-                                 <object class="GtkColorButton" id="fonttype">
-                                 </object>
-                              </child>
-                              </object>
-                            </child>
-                          </object>
-                        </child>
-
-                      </object>
-                    </child>
-
-                  </object>
-                </child>
-
-
-
                   <child>
                     <object class="GtkLabel">
                       <property name="label">Adjusting</property>
@@ -1436,3 +1299,4 @@
 
   </template>
 </interface>
+
