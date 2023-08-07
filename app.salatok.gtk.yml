@@ -1,7 +1,7 @@
 app-id: app.salatok.gtk
 runtime: org.gnome.Platform
 runtime-version: '40'
-sdk: org.gnome.Sdk
+sdk: org.gnome.Sdk/i386
 command: salatokapp
 
 finish-args:

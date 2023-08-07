@@ -16,7 +16,9 @@
 }.line-h-00{
   line-height: 1px
 }
-.label-30{
+.label-35{
+     font-size: 35px;
+}.label-30{
      font-size: 30px;
 }.label-29{
      font-size: 29px;
@@ -86,9 +88,6 @@
      padding: 3px;
      font-weight: 400;
      border-radius: 10px;
-}
-.card-thin:hover{
-     background: #333322;
 }
 .card-come:hover{
      background: #f9f06b;
@@ -182,4 +181,5 @@
 .extrabold{
   font-weight: 700;
 }
+
 

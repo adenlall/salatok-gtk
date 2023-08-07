@@ -23,6 +23,11 @@ install_data(
 	install_dir: get_option('datadir') / 'icons' / 'hicolor' / 'symbolic' / 'apps'
 )
 
+install_data(
+	'icons' / APP_ID + '.colorful.svg',
+	install_dir: get_option('datadir') / 'icons' / 'hicolor' / 'scalable' / 'apps'
+)
+
 # Translate and install the desktop file
 i18n.merge_file(
 	type: 'desktop',
@@ -55,15 +60,16 @@ configure_file(
 # Translate and install the AppStream metadata
 i18n.merge_file(
 	input: configure_file(
-		input: APP_ID + '.metainfo.xml',
-		output: APP_ID + '.metainfo.xml.in',
+		input: APP_ID + '.appdata.xml',
+		output: APP_ID + '.appdata.xml.in',
 		configuration: {
 			'APP_ID': APP_ID,
 		}
 	),
-	output: APP_ID + '.metainfo.xml',
+	output: APP_ID + '.appdata.xml',
 	type: 'xml',
 	po_dir: meson.project_source_root() / 'po',
 	install: true,
 	install_dir: get_option('datadir') / 'metainfo'
+
 )
