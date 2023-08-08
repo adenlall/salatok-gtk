@@ -493,7 +493,7 @@ QuranData.Sajda = [
 
 /* metadata.js
  *
- * Copyright 2023 adenlall <adenlall@outlook.sa>
+ * Copyright 2023 adenlall <adenlall@skiff.com>
  *
  * This piece of code is free software: you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by

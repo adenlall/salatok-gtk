@@ -5,7 +5,7 @@ salatokapp (1.0.0) unstable; urgency=medium
   * fix cache issues.
   * add more Quran translations and fix salat time issues
 
- -- aden lall <lalladen@naver.com>  Wed, 26 Jul 2023 13:53:00 +0000
+ -- aden lall <adenlall@skiff.com>  Wed, 26 Jul 2023 13:53:00 +0000
 
 salatokapp (0.9.10) unstable; urgency=low
 
@@ -14,7 +14,7 @@ salatokapp (0.9.10) unstable; urgency=low
   * add Quran fonts.
   * fixes of salat calculations.
 
- -- aden lall <lalladen@naver.com>  Fri, 21 Jul 2023 16:23:00 +0000
+ -- aden lall <adenlall@skiff.com>  Fri, 21 Jul 2023 16:23:00 +0000
 
 salatokapp (0.9.5) unstable; urgency=low
 
@@ -22,7 +22,7 @@ salatokapp (0.9.5) unstable; urgency=low
   * fix bugs and errors.
   * add quran navigator
 
- -- aden lall <lalladen@naver.com>  Fri, 14 Jul 2023 23:00:00 +0000
+ -- aden lall <adenlall@skiff.com>  Fri, 14 Jul 2023 23:00:00 +0000
 
 salatokapp (0.9) unstable; urgency=low
 
@@ -30,10 +30,10 @@ salatokapp (0.9) unstable; urgency=low
   * fix midnight errors.
   * add city country row in settings
 
- -- aden lall <lalladen@naver.com>  Fri, 14 Jul 2023 23:00:00 +0000
+ -- aden lall <adenlall@skiff.com>  Fri, 14 Jul 2023 23:00:00 +0000
 
 salatokapp (0.8) unstable; urgency=low
 
   * initialisation version
 
- -- aden lall <lalladen@naver.com>  Mon, 11 Jul 2023 15:00:00 +0000
+ -- aden lall <adenlall@skiff.com>  Mon, 11 Jul 2023 15:00:00 +0000
