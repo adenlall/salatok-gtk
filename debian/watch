@@ -1,3 +1,2 @@
 version=4
-https://github.com/adenlall/salatok-gtk/tags \
-(?:.*?/)adenlall-?@ANY_VERSION@@ARCHIVE_EXT@
+https://github.com/adenlall/salatok-gtk/tags .*/v?(\d.*)@ARCHIVE_EXT@

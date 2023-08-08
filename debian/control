@@ -17,9 +17,9 @@ Build-Depends-Indep: desktop-file-utils <!nocheck>,
                      pkg-config (>= 0.22)
 Rules-Requires-Root: no
 Standards-Version: 4.6.0
-Vcs-Browser: https://github.com/adenlall/salatok-gtk
-Vcs-Git: https://github.com/adenlall/salatok-gtk.git
-Homepage: https://github.com/adenlall/salatok-gtk
+Vcs-Browser: https://salsa.debian.org/adenlall/salatok-gtk4
+Vcs-Git: https://salsa.debian.org/adenlall/salatok-gtk4.git
+Homepage: https://salatok.vercek.app/
 
 Package: salatokapp
 Architecture: all
@@ -31,7 +31,7 @@ Depends: geoclue-2.0 (>= 2.3.1),
          gjs (>= 1.71.0),
          libglib2.0-bin (>= 2.40),
          ${misc:Depends}
-Description: get fully controlled Muslims pray times anywhere everywhere.
+Description: fully controlled Muslims pray times and Quran reader.
  Get pray times at your desktop.
  with full control over the methods adjustment.
  this app can work without connection or sending your IP address anywhere.
