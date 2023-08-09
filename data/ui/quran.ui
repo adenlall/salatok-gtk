@@ -70,28 +70,11 @@
 
                     <child>
                       <object class="GtkMenuButton">
-                        <property name="focusable">1</property>
-                        <property name="focus-on-click">1</property>
                         <property name="halign">end</property>
                         <property name="valign">center</property>
                         <property name="popover">
                             <object class="GtkPopover">
-                              <child>
 
-				                        <object class="GtkScrolledWindow">
-                                  <property name="hscrollbar-policy">never</property>
-                                  <property name="min-content-height">150</property>
-                                  <property name="hexpand">0</property>
-                                  <property name="vexpand">1</property>
-                                  <child>
-                                    <object class="GtkViewport">
-                                      <property name="scroll-to-focus">1</property>
-                                      <child>
-                                        <object class="GtkBox">
-                                          <property name="orientation">vertical</property>
-
-                                          <child>
-                                            <object class="GtkFrame">
                                               <child>
                                                 <object class="GtkListBox">
                                                   <property name="selection-mode">none</property>
@@ -99,6 +82,8 @@
                                                   <style>
                                                     <class name="rich-list"/>
                                                   </style>
+
+
 
                                                   <child>
                                                     <object class="GtkListBoxRow">
@@ -127,26 +112,6 @@
                                                     </object>
                                                   </child>
 
-
-                                                  <child>
-                                                   <object class="GtkMenuButton">
-                                                      <property name="focusable">1</property>
-                                                      <property name="focus-on-click">1</property>
-                                                      <property name="halign">end</property>
-                                                      <property name="valign">center</property>
-                                                      <property name="popover">
-                                                          <object class="GtkPopover">
-                                                            <child>
-                                                            <object class="GtkLabel">
-                                                              <property name="label">Hellw</property>
-                                                            </object>
-                                                            </child>
-                                                          </object>
-                                                      </property>
-                                                    </object>
-                                                  </child>
-
-
                                                   <child>
                                                     <object class="GtkListBoxRow">
                                                     <property name="activatable">0</property>
@@ -154,87 +119,32 @@
                                                         <object class="GtkBox">
                                                           <child>
                                                             <object class="GtkLabel">
-                                                              <property name="label" translatable="yes">Arabic Font Type</property>
+                                                              <property name="label" translatable="yes">ayah between</property>
                                                               <property name="xalign">0</property>
                                                               <property name="halign">start</property>
                                                               <property name="valign">center</property>
                                                               <property name="hexpand">1</property>
                                                             </object>
                                                           </child>
+
                                                           <child>
-                                                            <object class="GtkComboBoxText" id="fonttype">
-                                                            </object><!--TODO-->
-                                                            <object class="GtkMenuButton" id="fonttype">
-                                                              <property name="focusable">1</property>
-                                                              <property name="focus-on-click">1</property>
+                                                            <object class="GtkEntry" id="ayahbetween">
                                                               <property name="halign">end</property>
+                                                              <property name="max_length">10</property>
                                                               <property name="valign">center</property>
-                                                              <property name="popover">
-                                                                  <object class="GtkPopover">
-                                                                    <child>
-                                                                    <object class="GtkLabel">
-                                                                      <property name="label">Hellw</property>
-                                                                    </object>
-                                                                    </child>
-                                                                  </object>
-                                                              </property>
+                                                              <property name="placeholder-text">%i = ayah number</property>
                                                             </object>
                                                           </child>
+
                                                         </object>
                                                       </child>
                                                     </object>
                                                   </child>
 
 
-                                                  <child>
-                                                    <object class="GtkListBoxRow">
-                                                    <property name="activatable">0</property>
-                                                      <child>
-                                                        <object class="GtkBox">
-                                                          <child>
-                                                            <object class="GtkLabel">
-                                                              <property name="label" translatable="yes">Font Size</property>
-                                                              <property name="xalign">0</property>
-                                                              <property name="halign">start</property>
-                                                              <property name="valign">center</property>
-                                                              <property name="hexpand">1</property>
-                                                            </object>
-                                                          </child>
-                                                          <child>
-                                                             <object class="GtkScale" id="fontsize">
-                                                               <property name="width-request">180</property>
-                                                               <property name="round-digits">0</property>
-                                                               <property name="draw-value">0</property>
-                                                               <property name="value-pos">2</property>
-                                                               <property name="adjustment">
-                                                                  <object class="GtkAdjustment">
-                                                                    <property name="upper">30</property>
-                                                                    <property name="lower">10</property>
-                                                                    <property name="value">20</property>
-                                                                    <property name="step-increment">1</property>
-                                                                    <property name="page-increment">2</property>
-                                                                  </object>
-                                                               </property>
-                                                               <layout>
-                                                                 <property name="column">1</property>
-                                                                 <property name="row">2</property>
-                                                               </layout>
-                                                             </object>
-                                                          </child>
-                                                        </object>
-                                                      </child>
-                                                    </object>
-                                                  </child>
                                                 </object>
                                               </child>
-                                            </object>
-                                          </child>
-                                          </object>
-                                        </child>
-                                      </object>
-                                    </child>
-                                </object>
-                            </child>
+
                           </object>
                         </property>
                       </object>
@@ -266,9 +176,63 @@
                     </object>
                   </child>
 
+
+                <child>
+                  <object class="GtkBox">
+                 <property name="margin-bottom">0</property>
+                 <property name="margin-top">10</property>
+                <child>
+                  <object class="GtkBox">
+                  <property name="hexpand">1</property>
+                  <property name="halign">start</property>
+                    <child>
+                      <object class="GtkLabel">
+                        <property name="label" translatable="yes">Font Size</property>
+                      </object>
+                    </child>
+                    <child>
+                       <object class="GtkScale" id="fontsize">
+                         <property name="width-request">180</property>
+                         <property name="round-digits">0</property>
+                         <property name="draw-value">0</property>
+                         <property name="value-pos">2</property>
+                         <property name="adjustment">
+                            <object class="GtkAdjustment">
+                              <property name="upper">30</property>
+                              <property name="lower">10</property>
+                              <property name="value">20</property>
+                              <property name="step-increment">1</property>
+                              <property name="page-increment">2</property>
+                            </object>
+                         </property>
+                         <layout>
+                           <property name="column">1</property>
+                           <property name="row">2</property>
+                         </layout>
+                       </object>
+                    </child>
+                  </object>
+                </child>
+
+
+                <child>
+                  <object class="GtkBox">
+                  <property name="halign">end</property>
+                    <child>
+                      <object class="GtkComboBoxText" id="fonttype">
+                      </object>
+                    </child>
+                  </object>
+                </child>
+
+
+            </object>
+          </child>
+
+
+
             </object>
           </child>
 </template>
 </interface>
-
 

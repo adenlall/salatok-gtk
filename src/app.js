@@ -73,13 +73,12 @@ export const salatApp = GObject.registerClass({
 		let core = new Core();
 	  this.window.myPageSalats.append(core.widget());
 		this.window.present();
-
 		this.#ini();
 	}
   #loadStylesheet() {
 		const provider = new Gtk.CssProvider();
 		provider.load_from_resource('/app/salatok/gtk/css/salatWidget.css');
-    Gtk.StyleContext.add_provider_for_display(
+		Gtk.StyleContext.add_provider_for_display(
 			Gdk.Display.get_default(),
 			provider,
 			Gtk.STYLE_PROVIDER_PRIORITY_APPLICATION

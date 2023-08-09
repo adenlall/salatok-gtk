@@ -35,7 +35,7 @@ export const QuranWidget = GObject.registerClass({
 	Template: 'resource:///app/salatok/gtk/ui/quran.ui',
 	Children: [
 	  'quran', 'qnext', 'qprev',
-	  'qcombo', 'qlanguage', 'fonttype', 'fontsize', 'qselectable'
+	  'qcombo', 'qlanguage', 'fonttype', 'fontsize', 'qselectable', 'ayahbetween',
 	],
 }, class extends Gtk.Widget {
 
@@ -51,6 +51,7 @@ export const QuranWidget = GObject.registerClass({
 
   vfunc_realize(){
 		super.vfunc_realize();
+		this.quran.label = "Loading...";
 		this.quran.selectable = this.#getValid(this.s.getSetting("qselectable"),false);
 		this.#initConnect();
 		this.#hardUpdate();
@@ -74,12 +75,19 @@ export const QuranWidget = GObject.registerClass({
       }
       let fonts_s = store.getAllFilesInDir(".local/share/fonts/salatokapp/");
       for (let i = 0; i < fonts_s.length; i++) {
-      	this.ttt.push(fonts_s[i].split(".")[0]);
-        this.fonttype.append(""+i, fonts_s[i].split(".")[0]+" - "+fonts_s[i].split(".")[1][0]+fonts_s[i].split(".")[1][1]);
+      	let txt = fonts_s[i].split(".");
+      	this.ttt.push(txt[0].replace(/_/g, " "));
+        this.fonttype.append(""+i, txt[0].split("_")[0]+this.#getValid(txt[0].split("_")[1],"")+" - "+fonts_s[i].split(".")[1]);
       }
     } catch (err) {
         console.error(err);
     }
+
+	this.ayahbetween.text = this.#getValid(this.s.getSetting("ayahbetween"), "");
+    this.ayahbetween.connect("changed", (editable)=>{
+    	this.s.setSetting(editable.get_text(), "ayahbetween");
+	  	this.#hardUpdate();
+    });
 
 
     this.qlanguage.set_active(this.#getValid(this.s.getSetting("qlanguage"),Helper.getKey(this.qqq, "ar.tanzil.txt")));
@@ -140,7 +148,6 @@ export const QuranWidget = GObject.registerClass({
     context.set_font_description(fd);
 	}
 
-
 	#setQ(surah){
 		surah = parseInt(surah);
 		if (surah > 0 && surah <= 114) {
@@ -148,8 +155,9 @@ export const QuranWidget = GObject.registerClass({
 			let tts = QuranData.Sura[surah];
 			this.qq="";
 			let ayyah = 0;
-			for (let i = tts[0]; i < tts[0]+tts[1]; i++) {
-				this.qq = this.qq + " ["+ayyah+"] " + this.q[i];
+			let between = this.#getValid(this.s.getSetting("ayahbetween"), "["+ayyah+"]");
+			for (let i = tts[0]; i < tts[0]+tts[1]; i++) {//<span foreground="blue" size="x-large">Bt</span>
+				this.qq = this.qq +" "+ between.replace(/%i/g, ayyah) +" "+ this.q[i];
 				ayyah = ayyah+1;
 			}
 			this.quran.label = this.qq;
@@ -166,3 +174,4 @@ export const QuranWidget = GObject.registerClass({
 	}
 
 });
+
