@@ -32,10 +32,12 @@ For Debian/Ubuntu :
                * visit : https://tanzil.net/trans/ and select "Text" for file format, and download all you need from the list there.
                
                * then copy all .txt files downloaded into this location `$HOME/.local/share/quran/salatokapp/`
+               - the file name should be something like : <Language>.<Translator>.txt ex: ar.tanzil.txt
                
           **Fonts**
           
                * download or copy any .ttf or otf font files into `$HOME/.local/share/fonts/salatokapp/`
+               - name the file like his font name plus language of the font. ex: if you have Ubuntu Font, the name should be exactly like this : Ubunutu.latin.ttf
 
                
 For non Debian-based distros :
