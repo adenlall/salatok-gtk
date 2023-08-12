@@ -45,9 +45,6 @@
     <screenshot>
       <image>https://adenlall.vercel.app/screenshot6.png</image>
     </screenshot>
-    <screenshot>
-      <image>https://adenlall.vercel.app/screenshot7.png</image>
-    </screenshot>
   </screenshots>
   <launchable type="desktop-id">@APP_ID@.desktop</launchable>
   <developer_name>adenlall</developer_name>

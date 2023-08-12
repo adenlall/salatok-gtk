@@ -36,6 +36,8 @@ export const QuranWidget = GObject.registerClass({
 	Children: [
 	  'quran', 'qnext', 'qprev',
 	  'qcombo', 'qlanguage', 'fonttype', 'fontsize', 'qselectable', 'ayahbetween',
+	  'qindent',
+	  'qjustifycenter', 'qjustifyfill', 'qjustifyleft', 'qjustifyright',
 	],
 }, class extends Gtk.Widget {
 
@@ -83,9 +85,20 @@ export const QuranWidget = GObject.registerClass({
         console.error(err);
     }
 
+    this.qjustifyleft.connect("clicked", ()=>{this.s.setSetting(0 ,"qjustify");this.quran.justify = this.#getValid(this.s.getSetting("qjustify"), 3)});
+    this.qjustifyright.connect("clicked", ()=>{this.s.setSetting(1 ,"qjustify");this.quran.justify = this.#getValid(this.s.getSetting("qjustify"), 3)});
+    this.qjustifycenter.connect("clicked", ()=>{this.s.setSetting(2 ,"qjustify");this.quran.justify = this.#getValid(this.s.getSetting("qjustify"), 3)});
+    this.qjustifyfill.connect("clicked", ()=>{this.s.setSetting(3 ,"qjustify");this.quran.justify = this.#getValid(this.s.getSetting("qjustify"), 3)});
+
 	this.ayahbetween.text = this.#getValid(this.s.getSetting("ayahbetween"), "");
     this.ayahbetween.connect("changed", (editable)=>{
     	this.s.setSetting(editable.get_text(), "ayahbetween");
+	  	this.#hardUpdate();
+    });
+
+	this.qindent.set_value(this.#getValid(this.s.getSetting("indent"), 5));
+    this.qindent.connect("value-changed", (spiner)=>{
+    	this.s.setSetting(spiner.get_value(), "indent");
 	  	this.#hardUpdate();
     });
 
@@ -141,11 +154,12 @@ export const QuranWidget = GObject.registerClass({
   }
 
 	#fineUpdate(){
-    let context = this.quran.get_pango_context();
-    let fd = context.get_font_description();
-    fd.set_family(this.ttt[this.#getValid(this.s.getSetting("fonttype"),0)]);
-    fd.set_size(this.#getValid(this.s.getSetting("fontsize"), 20) *Pango.SCALE);
-    context.set_font_description(fd);
+		let context = this.quran.get_pango_context();
+		let fd = context.get_font_description();
+		fd.set_family(this.ttt[this.#getValid(this.s.getSetting("fonttype"),0)]);
+		fd.set_size(this.#getValid(this.s.getSetting("fontsize"), 20) *Pango.SCALE);
+		context.set_font_description(fd);
+		this.quran.justify = this.#getValid(this.s.getSetting("qjustify"), 3)
 	}
 
 	#setQ(surah){
@@ -155,8 +169,17 @@ export const QuranWidget = GObject.registerClass({
 			let tts = QuranData.Sura[surah];
 			this.qq="";
 			let ayyah = 0;
-			let between = this.#getValid(this.s.getSetting("ayahbetween"), "["+ayyah+"]");
+			let between = this.#getValid(this.s.getSetting("ayahbetween"), "[%i]");
 			for (let i = tts[0]; i < tts[0]+tts[1]; i++) {//<span foreground="blue" size="x-large">Bt</span>
+				if (i===tts[0]) {
+					let indent = "";
+					for (let i = 0; i < this.#getValid(this.s.getSetting("indent"), 5); i++) {
+						indent = indent + " ";
+					}
+					this.qq = indent+this.q[i];
+					ayyah = ayyah+1;
+					continue;
+				}
 				this.qq = this.qq +" "+ between.replace(/%i/g, ayyah) +" "+ this.q[i];
 				ayyah = ayyah+1;
 			}

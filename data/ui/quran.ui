@@ -83,7 +83,41 @@
                                                     <class name="rich-list"/>
                                                   </style>
 
+                                                  <child>
+                                                    <object class="GtkListBoxRow">
+                                                    <property name="activatable">0</property>
+                                                      <child>
+                                                        <object class="GtkBox">
+                                                          <child>
+                                                            <object class="GtkLabel">
+                                                              <property name="label" translatable="yes">text indent length</property>
+                                                              <property name="xalign">0</property>
+                                                              <property name="halign">start</property>
+                                                              <property name="valign">center</property>
+                                                              <property name="hexpand">1</property>
+                                                            </object>
+                                                          </child>
 
+                                                          <child>
+                                                            <object class="GtkSpinButton" id="qindent">
+                                                              <property name="halign">end</property>
+                                                              <property name="valign">center</property>
+                                                              <property name="adjustment">
+                                                                <object class="GtkAdjustment">
+                                                                  <property name="upper">20</property>
+                                                                  <property name="lower">0</property>
+                                                                  <property name="value">5</property>
+                                                                  <property name="step-increment">1</property>
+                                                                  <property name="page-increment">5</property>
+                                                                </object>
+                                                              </property>
+                                                            </object>
+                                                          </child>
+
+                                                        </object>
+                                                      </child>
+                                                    </object>
+                                                  </child>
 
                                                   <child>
                                                     <object class="GtkListBoxRow">
@@ -214,6 +248,49 @@
                   </object>
                 </child>
 
+
+                <child>
+                  <object class="GtkBox">
+                  <property name="halign">center</property>
+                 <property name="margin-end">5</property>
+                    <child>
+                      <object class="GtkMenuButton">
+                        <property name="label">justify</property>
+                         <property name="popover">
+                            <object class="GtkPopover">
+
+                <child>
+                  <object class="GtkBox">
+                 <property name="spacing">5</property>
+
+                              <child>
+                                <object class="GtkButton" id="qjustifycenter">
+                                   <property name="icon-name">format-justify-center</property>
+                                </object>
+                              </child>
+                              <child>
+                                <object class="GtkButton" id="qjustifyleft">
+                                   <property name="icon-name">format-justify-left</property>
+                                </object>
+                              </child>
+                              <child>
+                                <object class="GtkButton" id="qjustifyright">
+                                   <property name="icon-name">format-justify-right</property>
+                                </object>
+                              </child>
+                              <child>
+                                <object class="GtkButton" id="qjustifyfill">
+                                   <property name="icon-name">format-justify-fill</property>
+                                </object>
+                              </child>
+                            </object>
+                  </child>
+                </object>
+                          </property>
+                      </object>
+                    </child>
+                  </object>
+                </child>
 
                 <child>
                   <object class="GtkBox">

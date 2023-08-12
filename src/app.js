@@ -23,6 +23,7 @@ import Gtk from 'gi://Gtk';
 import GObject from 'gi://GObject';
 import Gdk from 'gi://Gdk';
 import Gio from 'gi://Gio';
+import GLib from 'gi://GLib';
 
 import { Window     }  from './window.js';
 import { Core       }  from './salat/core.js';
@@ -42,21 +43,6 @@ export const salatApp = GObject.registerClass({
   
   vfunc_startup() {
     this.setting.reset();
-		this.initActions(this, [
-            {
-                name: 'setsalatpage',
-                activate: this._setsalatpage,
-            },{
-                name: 'setquranpage',
-                activate: this._setquranpage,
-            },{
-                name: 'setsettingpage',
-                activate: this._setsettingpage,
-            },{
-                name: 'dev',
-                activate: this._dev,
-            }
-    ]);
 		super.vfunc_startup();
 		this.#loadStylesheet();
 	}
@@ -87,7 +73,7 @@ export const salatApp = GObject.registerClass({
 	
 	#ini(){
 	this.setting = new Setting();
-    this.window.refresh.connect("clicked", ()=>{this.updateFine()});
+      this.window.refresh.connect("clicked", ()=>{this.updateFine()});
 	  this.window.timezone_check.set_active(this.setting.getConfigKey("check_timezone"));
 	  this.window.long.set_value(this.setting.getConfigKey("timezone"));
 	  
@@ -211,51 +197,5 @@ export const salatApp = GObject.registerClass({
 	  this.updateCore();
 	}
 	
-	initActions(actionMap, simpleActionEntries, defaultContext = actionMap) {
-    simpleActionEntries.forEach(function (entry) {
-        const {
-            activate = null,
-            change_state = null,
-            context = defaultContext,
-            ...params
-        } = entry;
-        const action = new Gio.SimpleAction(params);
-
-        if (activate)
-            action.connect('activate', activate.bind(context));
-        if (change_state)
-            action.connect('change-state', change_state.bind(context));
-        actionMap.add_action(action);
-    });
-  }
-  _setsalatpage(){
-    this.window.mainstack.set_visible_child_full("salat", Gtk.StackTransitionType.NONE);
-  }
-  _setquranpage(){
-    this.window.mainstack.set_visible_child_full("quran", Gtk.StackTransitionType.NONE);
-  }
-  _setsettingpage(){
-    this.window.mainstack.set_visible_child_full("setting", Gtk.StackTransitionType.NONE);
-  }
-  _about(){
-        let aboutDialog = new Gtk.AboutDialog({
-            authors: ['Giovanni Campagna <gcampagna@src.gnome.org>'],
-            translator_credits: "translator-credits",
-            program_name: "JS Application",
-            comments: "Demo JS Application and template",
-            copyright: 'Copyright 2013 The gjs developers',
-            license_type: Gtk.License.GPL_2_0,
-            logo_icon_name: 'com.example.Gtk.JSApplication',
-            version: pkg.version,
-            website: 'http://www.example.com/gtk-js-app/',
-            wrap_license: true,
-            modal: true,
-            transient_for: this,
-        });
-        aboutDialog.show();
-  }
-  _dev(){
-    console.log('https://github.com/adenlall');
-  }
 
 });

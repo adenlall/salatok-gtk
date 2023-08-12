@@ -2,7 +2,7 @@
 Name=Salatok App
 GenericName=Muslim Pray Times
 Comment=Get salat timing & Quran reader at your linux desktop
-Icon=@APP_ID@.colorful
+Icon=@APP_ID@.gnome
 Exec=@BINDIR@/salatokapp
 StartupNotify=true
 Type=Application
