@@ -1,6 +1,7 @@
-<img alt="salatokapp logo" src="/data/icons/app.salatok.gtk.gnome.svg">
+<img width="180" alt="salatokapp logo" src="/data/icons/app.salatok.gtk.gnome.svg">
 
 # Salatokapp
+
 <a href="https://www.buymeacoffee.com/adenlallI"><img src="https://img.buymeacoffee.com/button-api/?text=Buy me a coffee&emoji=&slug=adenlallI&button_colour=00ff98&font_colour=000000&font_family=Comic&outline_colour=000000&coffee_colour=FFDD00" /></a>
 
 <img alt="salatok app screenshot" src="https://adenlall.vercel.app/screenshot2.png">
