@@ -4,7 +4,6 @@ import { Helper } from './helper.js';
 
 
 export class Setting {
-    
     data = new Data();
     store = new Store();
     /* Getters */
@@ -117,6 +116,7 @@ export class Setting {
       return val.config.settings[key];
     }
     setSetting(value,key){
+    	print("SET SETTING { "+value+" } ON KEY { "+key+" }")
       let val = this.store.read("user.json", "salatokapp");
       val.config.settings[key] = value;
       this.store.write("user.json", "salatokapp", val);

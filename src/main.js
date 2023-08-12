@@ -1,7 +1,7 @@
 /*
  * main.js
  *
- * Copyright 2023 aden lall <lalladen@naver.com>
+ * Copyright 2023 aden lall <adenlall@skiff.com>
  *
  * This program is free software: you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
@@ -27,5 +27,7 @@ import { salatApp } from './app.js';
 export function main(argv) {
 	return new salatApp().run(argv);
 }
+
+
 
 

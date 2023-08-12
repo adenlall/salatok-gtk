@@ -33,14 +33,13 @@ export class SalatAPI {
             let raw = this.salat.getTimes(new Date(), this.coords, this.timezone, this.dst, this.format);
             let h = new Helper();
             let data = h.Parse(raw, this.#showenabled(), this.format);
-            this.setting.setSetting({name:data.next.name, time:data.next.time},"next");
+            this.setting.setSetting(data.next,"next");
             return data.data;
          }
          
          #ini(){
             this.salat = new PrayTimes();
             this.salat.setMethod(this.method);
-            
             this.salat.adjust(Helper.getAdjusting(this.setting.getAdjusting()));
          }
          #showenabled(){

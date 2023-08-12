@@ -1,7 +1,7 @@
 /*
  * main.js
  *
- * Copyright 2023 aden lall <lalladen@naver.com>
+ * Copyright 2023 aden lall <adenlall@skiff.com>
  *
  * This program is free software: you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
@@ -21,6 +21,8 @@
 
 import GObject from 'gi://GObject';
 import Gtk from 'gi://Gtk';
+import Gio from 'gi://Gio';
+import GLib from 'gi://GLib';
 
 export const Window = GObject.registerClass({
 	GTypeName: 'salatWindow',
@@ -33,12 +35,46 @@ export const Window = GObject.registerClass({
 	  'showimsak','showfajr','showsunrise','showduhr','showasr','showmaghreb','showsunset','showisha','showmidnight',
 	  'long','lat',
 	  'showborder',
-	  'nextcount', 'nextsalat',
+	  'nextcount', 'nextsalat', 'nexttime',
 	  'search', 'searchcontainer',
 	  'timezone_check', 'timezone',
 	  'refreshbutton', 'stack1', 'mainstack', 'showchild', 'refresh', 'citycountry',
 	],
-}, class extends Gtk.Window {
+}, class extends Gtk.ApplicationWindow {
+
+
+    constructor(params) {
+        super(params);
+
+        let aboutAction = new Gio.SimpleAction({
+            enabled: true,
+            name: 'about'
+        });
+        aboutAction.connect('activate', () => this._about());
+        this.add_action(aboutAction);
+
+        let sAction = new Gio.SimpleAction({
+            enabled: true,
+            name: 'setsalatpage'
+        });
+        sAction.connect('activate', () => this._setsalatpage());
+        this.add_action(sAction);
+
+        let qAction = new Gio.SimpleAction({
+            enabled: true,
+            name: 'setquranpage'
+        });
+        qAction.connect('activate', () => this._setquranpage());
+        this.add_action(qAction);
+
+        let setAction = new Gio.SimpleAction({
+            enabled: true,
+            name: 'setsettingpage'
+        });
+        setAction.connect('activate', () => this._setsettingpage());
+        this.add_action(setAction);
+    }
+
 
 	vfunc_close_request() {
 		super.vfunc_close_request();
@@ -46,5 +82,35 @@ export const Window = GObject.registerClass({
 	}
 	
 	
+  _about(){
+
+        let aboutDialog = new Gtk.AboutDialog({
+        	artists: ['adenlall <adenlall@skiff.com>'],
+            authors: ['adenlall <adenlall@skiff.com>'],
+            program_name: "salatokapp",
+            comments: "get muslims pray times and Quran reader",
+            copyright: 'Copyright 2023 adenlall, <adenlall@skiff.com>',
+            license_type: Gtk.License.GPL_3_0,
+            logo_icon_name: 'app.salatok.gtk.gnome',
+            version: pkg.version,
+            website: 'http://salatok.vercel.app/',
+            website_label: 'salatok website',
+            wrap_license: true,
+            modal: true,
+            transient_for: this,
+        });
+        aboutDialog.show();
+  }
+
+  _setsalatpage(){
+    this.mainstack.set_visible_child_full("salat", Gtk.StackTransitionType.NONE);
+  }
+  _setquranpage(){
+    this.mainstack.set_visible_child_full("quran", Gtk.StackTransitionType.NONE);
+  }
+  _setsettingpage(){
+    this.mainstack.set_visible_child_full("setting", Gtk.StackTransitionType.NONE);
+  }
+
 });
 

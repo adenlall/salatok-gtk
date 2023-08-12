@@ -23,7 +23,7 @@ export class Nomination {
             ss.send_message(msg);
             return JSON.parse(msg.response_body.data);
           } catch (err) {
-              console.error('Promise Error Nomination@Response');
+              print('Promise Error Nomination@Response');
               console.error(err);
           }
      }
@@ -31,20 +31,22 @@ export class Nomination {
 
      #parse(res){
           let arr=[];
-          for (let i = 0; i<res.length; i++ ) {
-               let region = this.#getOr(res[i].address, ["region","state","province","place"]);
-               let city = this.#getOr(res[i].address, ["city","town","village"]);
-               let country = res[i].address.country;
-               if (!res[i].lat || !res[i].lon || !city || !region || !country) {
-                    if (res[i].importance >= 0.5) {
-                    let city = this.#getValid(res[i].address,"city");
-                    let region = this.#getValid(res[i].address,"region");
-                    arr.push({"name": res[i].display_name,"city":city,"region":region,"country":this.#getValid(res[i].address, "country"), "lat":res[i].lat, "long":res[i].lon});
-                   }
-                  //console.error(res[i]);
-                  continue;
-               }
-               arr.push({"name": res[i].display_name,"city":city,"region":region,"country":country, "lat":res[i].lat, "long":res[i].lon});
+		      if (res) {
+		      for (let i = 0; i<res.length; i++ ) {
+		           let region = this.#getOr(res[i].address, ["region","state","province","place"]);
+		           let city = this.#getOr(res[i].address, ["city","town","village"]);
+		           let country = res[i].address.country;
+		           if (!res[i].lat || !res[i].lon || !city || !region || !country) {
+		                if (res[i].importance >= 0.5) {
+		                let city = this.#getValid(res[i].address,"city");
+		                let region = this.#getValid(res[i].address,"region");
+		                arr.push({"name": res[i].display_name,"city":city,"region":region,"country":this.#getValid(res[i].address, "country"), "lat":res[i].lat, "long":res[i].lon});
+		               }
+		              //console.error(res[i]);
+		              continue;
+		           }
+		           arr.push({"name": res[i].display_name,"city":city,"region":region,"country":country, "lat":res[i].lat, "long":res[i].lon});
+		      }
           }
           return arr;
      }
@@ -107,7 +109,7 @@ export class Nomination {
                 item.hexpand= 1;
                 item.append(new Gtk.Label({ellipsize: Pango.EllipsizeMode.END, label : res[i].city, halign:Gtk.Align.START, valign:Gtk.Align.CENTER, hexpand: 1, vexpand: 1}));
                 item.append(new Gtk.Label({ellipsize: Pango.EllipsizeMode.END, label : res[i].region, halign:Gtk.Align.END, vexpand: 1,}));
-                item.append(new Gtk.Label({label : res[i].country, halign:Gtk.Align.END, vexpand: 1,}));
+                item.append(new Gtk.Label({label : " - "+res[i].country, halign:Gtk.Align.END, vexpand: 1,}));
                 cl.append(item);
                 let button = new Gtk.Button({label : "set this location"});
                 button.connect("clicked", ()=>{this.setting.setValueLatLong(res[i].lat,0);this.setting.setValueLatLong(res[i].long,1);this.setting.setConfigKey(res[i].city, "city");this.setting.setConfigKey(res[i].country, "country");});

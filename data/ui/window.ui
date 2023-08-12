@@ -4,25 +4,21 @@
     <section>
       <item>
         <attribute name="label" translatable="yes">_Salat</attribute>
-        <attribute name="action">app.setsalatpage</attribute>
-        <attribute name="accel">&lt;Primary&gt;s</attribute>
+        <attribute name="action">win.setsalatpage</attribute>
       </item>
       <item>
         <attribute name="label" translatable="yes">_Quran</attribute>
-        <attribute name="action">app.setquranpage</attribute>
-        <attribute name="accel">&lt;Primary&gt;q</attribute>
+        <attribute name="action">win.setquranpage</attribute>
       </item>
       <item>
         <attribute name="label" translatable="yes">_Settings</attribute>
-        <attribute name="action">app.setsettingpage</attribute>
-        <attribute name="accel">&lt;Primary&gt;s</attribute>
+        <attribute name="action">win.setsettingpage</attribute>
       </item>
     </section>
     <section>
       <item>
-        <attribute name="label" translatable="yes">_Developer</attribute>
-        <attribute name="action">app.dev</attribute>
-        <attribute name="accel">&lt;Primary&gt;d</attribute>
+        <attribute name="label" translatable="yes">_About Salatokapp</attribute>
+        <attribute name="action">win.about</attribute>
       </item>
     </section>
   </menu>

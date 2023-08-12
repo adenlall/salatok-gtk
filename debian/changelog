@@ -1,6 +1,7 @@
 salatokapp (1.0.0) unstable; urgency=medium
 
   * major bugs fixes and features update
+
   * fix cache issues.
   * add more Quran translations and fix salat time issues
 

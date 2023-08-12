@@ -1,7 +1,7 @@
 /*
  * main.js
  *
- * Copyright 2023 aden lall <lalladen@naver.com>
+ * Copyright 2023 aden lall <adenlall@skiff.com>
  *
  * This program is free software: you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
@@ -23,9 +23,11 @@ import Gtk from 'gi://Gtk';
 import GObject from 'gi://GObject';
 import Gdk from 'gi://Gdk';
 import Gio from 'gi://Gio';
+import GLib from 'gi://GLib';
 
 import { Window     }  from './window.js';
 import { Core       }  from './salat/core.js';
+import { Store      }  from './utils/store.js';
 import { Setting    }  from './utils/setting.js';
 import { Nomination }  from './utils/nomination.api.js';
 
@@ -41,40 +43,28 @@ export const salatApp = GObject.registerClass({
   
   vfunc_startup() {
     this.setting.reset();
-		this.initActions(this, [
-            {
-                name: 'setsalatpage',
-                activate: this._setsalatpage,
-            },{
-                name: 'setquranpage',
-                activate: this._setquranpage,
-            },{
-                name: 'setsettingpage',
-                activate: this._setsettingpage,
-            },{
-                name: 'dev',
-                activate: this._dev,
-            }
-    ]);
 		super.vfunc_startup();
 		this.#loadStylesheet();
 	}
 
 	vfunc_activate() {
     this.window = new Window({ application: this });
+    if (this.setting.getSetting("firsttime")) {
+  		this._setsettingpage();
+  		this.setting.setSetting(false,"firsttime")
+  	}
     this.window.stack1.set_visible_child_full(this.setting.getSetting("showchild") === 1 ? "salatsday" : "next", Gtk.StackTransitionType.NONE);
 	  this.window.stack1.set_transition_type(Gtk.StackTransitionType.SLIDE_UP_DOWN);
 	  this.window.mainstack.set_transition_type(Gtk.StackTransitionType.SLIDE_LEFT_RIGHT);
 		let core = new Core();
 	  this.window.myPageSalats.append(core.widget());
 		this.window.present();
-
 		this.#ini();
 	}
   #loadStylesheet() {
 		const provider = new Gtk.CssProvider();
 		provider.load_from_resource('/app/salatok/gtk/css/salatWidget.css');
-    Gtk.StyleContext.add_provider_for_display(
+		Gtk.StyleContext.add_provider_for_display(
 			Gdk.Display.get_default(),
 			provider,
 			Gtk.STYLE_PROVIDER_PRIORITY_APPLICATION
@@ -82,8 +72,8 @@ export const salatApp = GObject.registerClass({
 	}
 	
 	#ini(){
-	  
-	  this.window.refresh.connect("clicked", ()=>{this.updateFine()});
+	this.setting = new Setting();
+      this.window.refresh.connect("clicked", ()=>{this.updateFine()});
 	  this.window.timezone_check.set_active(this.setting.getConfigKey("check_timezone"));
 	  this.window.long.set_value(this.setting.getConfigKey("timezone"));
 	  
@@ -150,7 +140,6 @@ export const salatApp = GObject.registerClass({
 	  this.window.showmaghreb.set_active(this.setting.getShowTime("maghrib"));
 	  this.window.showisha.set_active(this.setting.getShowTime("isha"));
 	  this.window.showmidnight.set_active(this.setting.getShowTime("midnight"));
-
 	
 	  // ini salat this.settings
 	  this.window.showimsak.connect_after("toggled", (check)=>{this.setting.setShowTime(check.get_active(),"imsak"); this.updateCore();});
@@ -166,15 +155,13 @@ export const salatApp = GObject.registerClass({
 	  this.window.showborder.set_active(this.setting.getSetting("showborder"));
 	  this.window.showborder.connect("toggled", (check)=>{this.setting.setSetting(check.get_active(),"showborder");this.updateCore();});
 	  
-	  
 	   // hundel comboboxes
 	  this.window.showchild.set_active(this.setting.getSetting("showchild") === 1 ? 1 : 0);
 	  this.window.showchild.connect("changed", (combobox)=>{this.setting.setSetting(combobox.get_active(),"showchild")});
 	 
-	 
-	  
 	  this.window.nextsalat.label = this.setting.getSetting("next").name;
-	  this.window.nextcount.label = this.setting.getSetting("next").time;
+	  this.window.nextcount.label = this.setting.getSetting("next").countdown;
+	  this.window.nexttime.label = this.setting.getSetting("next").time;
 	  this.window.refreshbutton.connect("clicked", ()=>{this.updateCore()});
 	  
 	}
@@ -186,12 +173,13 @@ export const salatApp = GObject.registerClass({
 	  if (this.window.searchcontainer.get_last_child()) {
 	    this.window.searchcontainer.remove(this.window.searchcontainer.get_last_child());
 	  }
-	  let n = new Nomination();
-	  let dd = n.widget(n.getByQ(q));
-	  if (dd) {
-	      this.window.searchcontainer.append(dd);
+	  if (q&&q!=="") {
+		  let n = new Nomination();
+		  let dd = n.widget(n.getByQ(q));
+		  if (dd) {
+			  this.window.searchcontainer.append(dd);
+		  }
 	  }
-	  
 	}
 	
 	updateCore(){
@@ -201,61 +189,13 @@ export const salatApp = GObject.registerClass({
 	  let core = new Core();
 	  this.window.myPageSalats.append(core.widget());
 	  this.window.nextsalat.label = this.setting.getSetting("next").name;
-	  this.window.nextcount.label = this.setting.getSetting("next").time;
+	  this.window.nextcount.label = this.setting.getSetting("next").countdown;
+	  this.window.nexttime.label = this.setting.getSetting("next").time;
 	}
 	updateFine(){
 	  // TODO
 	  this.updateCore();
 	}
 	
-	initActions(actionMap, simpleActionEntries, defaultContext = actionMap) {
-    simpleActionEntries.forEach(function (entry) {
-        const {
-            activate = null,
-            change_state = null,
-            context = defaultContext,
-            ...params
-        } = entry;
-        const action = new Gio.SimpleAction(params);
-
-        if (activate)
-            action.connect('activate', activate.bind(context));
-        if (change_state)
-            action.connect('change-state', change_state.bind(context));
-        actionMap.add_action(action);
-    });
-  }
-  _setsalatpage(){
-    this.window.mainstack.set_visible_child_full("salat", Gtk.StackTransitionType.NONE);
-  }
-  _setquranpage(){
-    this.window.mainstack.set_visible_child_full("quran", Gtk.StackTransitionType.NONE);
-  }
-  _setsettingpage(){
-    this.window.mainstack.set_visible_child_full("setting", Gtk.StackTransitionType.NONE);
-  }
-  _about(){
-        let aboutDialog = new Gtk.AboutDialog({
-            authors: ['Giovanni Campagna <gcampagna@src.gnome.org>'],
-            translator_credits: "translator-credits",
-            program_name: "JS Application",
-            comments: "Demo JS Application and template",
-            copyright: 'Copyright 2013 The gjs developers',
-            license_type: Gtk.License.GPL_2_0,
-            logo_icon_name: 'com.example.Gtk.JSApplication',
-            version: pkg.version,
-            website: 'http://www.example.com/gtk-js-app/',
-            wrap_license: true,
-            modal: true,
-            transient_for: this,
-        });
-        aboutDialog.show();
-  }
-  _dev(){
-    console.log('https://github.com/adenlall');
-  }
 
 });
-
-
-

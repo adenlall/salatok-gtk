@@ -1,12 +1,13 @@
 # Define our project
 project(
 	'salatokapp',
-	version: '1.0.0',
+	version: '1.0.0 unstable',
 	license: ['GPL-3.0-or-later'],
 	meson_version: '>= 0.59.0'
 )
 
 APP_ID = 'app.salatok.gtk'
+ APP_BIN = 'salatokapp'
 
 # Import the modules
 gnome = import('gnome')
@@ -14,7 +15,6 @@ i18n = import('i18n')
 
 # Load instructions from subdirectories
 subdir('data')
-#subdir('po')
 subdir('src')
 
 # Post installation tasks 
