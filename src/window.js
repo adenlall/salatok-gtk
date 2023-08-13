@@ -38,6 +38,7 @@ export const Window = GObject.registerClass({
 	  'nextcount', 'nextsalat', 'nexttime',
 	  'search', 'searchcontainer',
 	  'timezone_check', 'timezone',
+	  'welcomeicon',
 	  'refreshbutton', 'stack1', 'mainstack', 'showchild', 'refresh', 'citycountry',
 	],
 }, class extends Gtk.ApplicationWindow {
@@ -71,8 +72,25 @@ export const Window = GObject.registerClass({
             enabled: true,
             name: 'setsettingpage'
         });
+
+
+        this.welcomeicon.icon_name = this.getTimeIcon(new Date().getHours());
+
         setAction.connect('activate', () => this._setsettingpage());
         this.add_action(setAction);
+    }
+
+    getTimeIcon(i){
+        let hh = i//new Date().getHours();
+        let icon;
+        if (hh < 5 || hh >= 18) {
+        	icon = "weather-clear-night";
+        } else if (hh >= 5 && hh < 8 ) {
+        	icon = "weather-fog";
+		} else {
+        	icon = "weather-clear";
+		}
+		return icon;
     }
 
 
@@ -83,11 +101,10 @@ export const Window = GObject.registerClass({
 	
 	
   _about(){
-
         let aboutDialog = new Gtk.AboutDialog({
+            program_name: "salatokapp lite",
         	artists: ['adenlall <adenlall@skiff.com>'],
             authors: ['adenlall <adenlall@skiff.com>'],
-            program_name: "salatokapp",
             comments: "get muslims pray times and Quran reader",
             copyright: 'Copyright 2023 adenlall, <adenlall@skiff.com>',
             license_type: Gtk.License.GPL_3_0,
