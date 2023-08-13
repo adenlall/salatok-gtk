@@ -1,6 +1,6 @@
 <img alt="salatokapp logo" src="/data/icons/app.salatok.gtk.gnome.svg">
 
-# Salatokapp
+# Salatokapp Lite version
 <a href="https://www.buymeacoffee.com/adenlallI"><img src="https://img.buymeacoffee.com/button-api/?text=Buy me a coffee&emoji=&slug=adenlallI&button_colour=00ff98&font_colour=000000&font_family=Comic&outline_colour=000000&coffee_colour=FFDD00" /></a>
 
 <img alt="salatok app screenshot" src="https://adenlall.vercel.app/screenshot2.png">
@@ -9,6 +9,12 @@ GNOME app for Muslims prayer times; Get salat timing at your linux desktop with 
 
  we use nomination.openstreetmaps.org ( free and open source api ) to proved you an api that can return lat & long from your given adress.
  we recommend you to read privacy policy pf nomination api.
+
+## Lite Version
+
+ this version focus on salat fixing without 50 Mb of Quran translations and font types.
+ 
+ this branch should receive latest features from salat branch.
 
 ## Useful links
 
