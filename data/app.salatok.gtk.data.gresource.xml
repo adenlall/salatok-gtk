@@ -1,8 +1,12 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <gresources>
 	<gresource prefix="/app/salatok/gtk">
+
 	     <file>ui/window.ui</file>
-	     <file>ui/quran.ui</file>
+	     <file>ui/quran/main.ui</file>
+	     <file>ui/quran/reader.ui</file>
+	     <file>ui/quran/player.ui</file>
+
 	     <file>css/salatWidget.css</file>
 
 	     <file>fonts/KFGQPC_HAFS_Uthmanic_Script.arabic.ttf</file>

@@ -403,7 +403,7 @@
 				<property name="child">
            <object class="QuranWidget">
            </object>
-        </property>
+        </property>y>
 		</object>
 		</child>
 
@@ -1294,5 +1294,6 @@
     </property>
 
   </template>
-</interface>
+</interface
+>
 

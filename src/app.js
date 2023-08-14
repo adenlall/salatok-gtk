@@ -31,7 +31,7 @@ import { Store      }  from './utils/store.js';
 import { Setting    }  from './utils/setting.js';
 import { Nomination }  from './utils/nomination.api.js';
 
-import './quran/widget.js';
+import './quran/widgets/main.js';
 
 
 export const salatApp = GObject.registerClass({

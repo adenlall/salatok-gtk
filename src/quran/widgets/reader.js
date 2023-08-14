@@ -1,5 +1,5 @@
 /*
- * main.js
+ * reader.js
  *
  * Copyright 2023 aden lall <adenlall@skiff.com>
  *
@@ -25,14 +25,14 @@ import Gio     from 'gi://Gio';
 import GLib    from 'gi://GLib';
 import Pango   from 'gi://Pango';
 
-import { QuranData  }  from './metadata.js';
-import { Store      }  from './../utils/store.js';
-import { Setting    }  from './../utils/setting.js';
-import { Helper     }  from './../utils/helper.js';
+import { QuranData  }  from './../metadata.js';
+import { Store      }  from './../../utils/store.js';
+import { Setting    }  from './../../utils/setting.js';
+import { Helper     }  from './../../utils/helper.js';
 
-export const QuranWidget = GObject.registerClass({
-	GTypeName: 'QuranWidget',
-	Template: 'resource:///app/salatok/gtk/ui/quran.ui',
+export const QuranReaderWidget = GObject.registerClass({
+	GTypeName: 'QuranReaderWidget',
+	Template: 'resource:///app/salatok/gtk/ui/quran/reader.ui',
 	Children: [
 	  'quran', 'qnext', 'qprev',
 	  'qcombo', 'qlanguage', 'fonttype', 'fontsize', 'qselectable', 'ayahbetween',
@@ -86,10 +86,8 @@ export const QuranWidget = GObject.registerClass({
         console.error(err);
     }
 
-
     this.qlistenbutton.connect("clicked", ()=>{
-    	this.s.setSetting(editable.get_text(), "ayahbetween");
-	  	this.#hardUpdate();
+  		this.get_parent().set_visible_child_name("player");
     });
 
     this.qjustifyleft.connect("clicked", ()=>{this.s.setSetting(0 ,"qjustify");this.quran.justify = this.#getValid(this.s.getSetting("qjustify"), 3)});

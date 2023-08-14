@@ -13,7 +13,9 @@
 		<file>utils/setting.js</file>
 		<file>utils/nomination.api.js</file>
 		<file>quran/metadata.js</file>
-		<file>quran/widget.js</file>
+		<file>quran/widgets/main.js</file>
+		<file>quran/widgets/player.js</file>
+		<file>quran/widgets/reader.js</file>
 	</gresource>
 </gresources>
 

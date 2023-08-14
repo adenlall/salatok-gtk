@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<interface>
+	<template class="QuranWidget">
+          <property name="layout-manager">
+		          <object class="GtkBoxLayout">
+                 <property name="orientation">vertical</property>
+		          </object>
+          </property>
+          <child>
+              <object class="GtkBox">
+                <child>
+                   <object class="GtkStack" id="quranstack">
+                        <property name="hexpand">1</property>
+                        <property name="vexpand">1</property>
+                        <child>
+	                        <object class="GtkStackPage">
+				                    <property name="name">reader</property>
+				                    <property name="title" translatable="1">reader</property>
+		                        <property name="child">
+                               <object class="QuranReaderWidget"></object>
+                            </property>
+                          </object>
+                        </child>
+                        <child>
+	                        <object class="GtkStackPage">
+				                    <property name="name">player</property>
+				                    <property name="title" translatable="1">player</property>
+		                        <property name="child">
+                               <object class="QuranPlayerWidget"></object>
+                            </property>
+                          </object>
+                        </child>
+                   </object>
+
+                </child>
+            </object>
+          </child>
+</template>
+</interface>
+
