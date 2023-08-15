@@ -21,9 +21,6 @@ Copyright: 2007–2023, praytimes.org
 License: LGPL-3
 
 Files: data/fonts/KFGQPC_HAFS_Uthmanic_Script.arabic.ttf
-       data/fonts/KFGQPC_KSAExtra_Ultar-Bold.arabic.ttf
-       data/fonts/KFGQPC_Kufi_Stylistic.arabic.ttf
-       data/fonts/KFGQPC_WARSH_Uthmanic_Script.arabic.ttf
 Copyright: King Fahd Glorious Quran Printing Complex <info@qurancomplex.gov.sa>
 License: EULA
 
@@ -35,23 +32,9 @@ Files: data/fonts/Amiri.arabic.ttf
 Copyright: Amiri typeface (c) 2011-2023, Khaled Hosny <https://www.amirifont.org/>
 License: SIL-OFL
 
-Files: data/fonts/Caladea.latin.ttf
-Copyright: Caladea typeface (c) <https://github.com/huertatipografica/Caladea/>
-License: SIL-OFL
-
 Files: data/fonts/Latin_Modern_Roman_Unslanted.latin.ttf
 Copyright: Latin Modern typeface (c)
 License: GFL
-
-Files: data/fonts/IBM_3270.latin.ttf
-Copyright: Copyright 2022 The 3270font Authors (https://github.com/rbanffy/3270font)
-           Copyright (c) 2011-2022, Ricardo Banffy.
-           Copyright (c) 1993-2011, Paul Mattes.
-           Copyright (c) 2004-2005, Don Russell.
-           Copyright (c) 2004, Dick Altenbern.
-           Copyright (c) 1990, Jeff Sparkes.
-           Copyright (c) 1989, Georgia Tech Research Corporation (GTRC), Atlanta, GA 30332.
-License: SIL-OFL
 
 License: GPL-3+
  This package is free software; you can redistribute it and/or modify
