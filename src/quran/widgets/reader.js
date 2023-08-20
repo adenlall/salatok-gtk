@@ -46,7 +46,7 @@ export const QuranReaderWidget = GObject.registerClass({
   s = new Setting();
 
   q = "";
-  qindex = 1;
+  qindex = this.#getValid(this.s.getSetting("surahnumber"), 1);
   qq = "Loading...";
   nn;
   ttt = [];
@@ -111,6 +111,7 @@ export const QuranReaderWidget = GObject.registerClass({
     this.qlanguage.set_active(this.#getValid(this.s.getSetting("qlanguage"),Helper.getKey(this.qqq, "ar.tanzil.txt")));
 	this.qlanguage.connect("changed", (combo)=>{
 	  		this.s.setSetting(combo.get_active(), "qlanguage");
+	  		this.s.setSetting(this.qqq[combo.get_active()], "qlanguage_name");
 	  		this.#hardUpdate();
   	});
 
@@ -118,6 +119,7 @@ export const QuranReaderWidget = GObject.registerClass({
 	  this.fonttype.connect("changed", (combo)=>{
 	  	this.quran.label = "loading...";
 	    this.s.setSetting(combo.get_active(), "fonttype");
+	    this.s.setSetting(this.ttt[combo.get_active()], "fonttype_name");
 	    this.#fineUpdate();
 	    this.quran.label = this.qq;
 	  });
@@ -132,7 +134,10 @@ export const QuranReaderWidget = GObject.registerClass({
 
     this.qnext.connect("clicked", ()=>{this.#setQ(this.qindex+1)});
     this.qprev.connect("clicked", ()=>{this.#setQ(this.qindex-1)});
-    this.qcombo.connect("changed", (combobox)=>{this.#setQ(combobox.get_active_id())});
+    this.qcombo.connect("changed", (combobox)=>{
+    	this.#setQ(combobox.get_active_id());
+    	this.s.setSetting(combobox.get_active_id(), "surahnumber");
+    });
 
   }
 

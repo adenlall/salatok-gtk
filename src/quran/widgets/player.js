@@ -26,8 +26,11 @@ import Gio        from 'gi://Gio';
 import WebKit     from 'gi://WebKit';
 import Soup       from 'gi://Soup?version=3.0';
 import Gdk        from 'gi://Gdk';
+import Pango      from 'gi://Pango';
 
 import { QuranData  }  from './../metadata.js';
+import { Store      }  from './../../utils/store.js';
+import { Setting    }  from './../../utils/setting.js';
 
 export const QuranPlayerWidget = GObject.registerClass({
 	GTypeName: 'QuranPlayerWidget',
@@ -36,20 +39,29 @@ export const QuranPlayerWidget = GObject.registerClass({
 		'qbackreader', 'qwebview',
 		'qplay', 'qnext', 'qback',
 		'qsurah', 'qayah',
+		'qplabel',
 	],
 }, class extends Gtk.Widget {
 
+  s = new Setting();
   stream;
-  aurl = [1, 1];
+  aurl = [this.#getValid(this.s.getSetting("surahnumber"),1), 1];
   webView = new WebKit.WebView();
+  q = [];
 
   vfunc_realize(){
 		super.vfunc_realize();
 		this.#initConnect();
 		this.#iniWebView();
 		this.#updateMetainfo();
+		this.#setupQ();
   }
-
+  vfunc_map(){
+  	super.vfunc_map();
+  	this.#fineUpdate();
+  	this.aurl = [this.#getValid(this.s.getSetting("surahnumber"),1), 1];
+  	this.#updateAyah();
+  }
 
   #iniWebView(){
 	const html = `<!DOCTYPE html><html><body>
@@ -57,6 +69,10 @@ export const QuranPlayerWidget = GObject.registerClass({
 				 </body></html>`;
 	this.webView.load_html(html, null);
 	this.qwebview.append(this.webView);
+	this.webView.evaluate_javascript(`document.getElementById('audio-element').load();`,
+									  -1, null, 'console.log("error playing the audio")', null, null);
+	this.webView.evaluate_javascript("document.getElementById('audio-element').play();",
+									  48, null, 'console.log("error playing the audio")', null, null);
   }
 
   #nextAyah(){
@@ -70,6 +86,7 @@ export const QuranPlayerWidget = GObject.registerClass({
 
   #updateAyah(){
   	this.#updateMetainfo();
+  	this.qplabel.label = this.q[QuranData.Sura[this.aurl[0]][0]+this.aurl[1]-1];
   	this.webView.evaluate_javascript("document.getElementById('audio-element').pause();", 48, null,
 										 'console.log("error playing the audio")', null, null);
 	this.webView.evaluate_javascript(`document.getElementById('audio-element').src="${this.#getUrl()}";
@@ -115,7 +132,7 @@ export const QuranPlayerWidget = GObject.registerClass({
 	}
 
 	#updateMetainfo(){
-		this.qayah.label = this.#getThreeNumber(this.aurl[1]);
+		this.qayah.label = `${this.aurl[1]}`;
 		this.qsurah.label = QuranData.Sura[this.aurl[0]][6];
 	}
 
@@ -136,6 +153,43 @@ export const QuranPlayerWidget = GObject.registerClass({
 		}else{
 			this.aurl[1]--;
 		}
+	}
+//////////////////////////////////////////////////////////////////////////////
+//////////////////////////////////////////////////////////////////////////////
+	#setupQ(){
+		this.#iniQ();
+	}
+	// Quran Verse Funcs
+	#iniQ(){
+		const Gfile = Gio.File.new_for_path(GLib.build_filenamev([GLib.get_home_dir(), ".local", "share", "quran", "salatokapp", "ar.tanzil.txt"]));
+		Gfile.load_contents_async(null, (file, res) => {
+		  try {
+			const [, contents] = file.load_contents_finish(res);
+			let ss = new String(contents);
+			this.q = ss.split(/\n/g);
+			this.qplabel.label = this.q[QuranData.Sura[this.#getValid(this.s.getSetting("surahnumber"),1)][0]];
+		  } catch (error) {
+			print('ERROR!');
+			console.error(error);
+		  }
+		});
+	}
+	#setAQ(i){
+		this.qplabel.label = this.q[i];
+	}
+	#getValid(a,b){
+	    if (a!==0&&!a) {
+	      return b;
+	    }
+	    return a;
+	}
+	#fineUpdate(){
+		let context = this.qplabel.get_pango_context();
+		let fd = context.get_font_description();
+		fd.set_family(this.#getValid(this.s.getSetting("fonttype_name")));
+		fd.set_size(this.#getValid(this.s.getSetting("fontsize"), 20) *Pango.SCALE);
+		context.set_font_description(fd);
+		this.qplabel.justify = this.#getValid(this.s.getSetting("qjustify"), 3);
 	}
 
 });
