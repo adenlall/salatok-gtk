@@ -1,5 +1,5 @@
 import Gtk from 'gi://Gtk';
-import Soup from 'gi://Soup?version=2.4';
+import Soup from 'gi://Soup?version=3.0';
 import Pango from 'gi://Pango';
 import { Setting } from './setting.js';
 
@@ -146,3 +146,5 @@ export class Nomination {
 
 
 }
+
+
