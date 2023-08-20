@@ -1,8 +1,6 @@
 <img width="180" alt="salatokapp logo" src="/data/icons/app.salatok.gtk.gnome.svg">
 
-# Salatokapp
-
-<a href="https://www.buymeacoffee.com/adenlallI"><img src="https://img.buymeacoffee.com/button-api/?text=Buy me a coffee&emoji=&slug=adenlallI&button_colour=00ff98&font_colour=000000&font_family=Comic&outline_colour=000000&coffee_colour=FFDD00" /></a>
+# Salatokapp  <a href="https://liberapay.com/adenlall/donate"><img alt="Donate using Liberapay" src="https://liberapay.com/assets/widgets/donate.svg"></a>
 
 <img alt="salatok app screenshot" src="https://adenlall.vercel.app/screenshot2.png">
   
@@ -60,4 +58,6 @@ If you're unfamiliar with GJS, here are a few good places to start:
 
 This app is under [GPL-v3.0](https://www.gnu.org/licenses/gpl-3)
 
+## Support The Project 
 
+<a href="https://liberapay.com/adenlall/donate"><img alt="Donate using Liberapay" src="https://liberapay.com/assets/widgets/donate.svg"></a>
