@@ -49,9 +49,7 @@ export const QuranPlayerWidget = GObject.registerClass({
 
   vfunc_realize(){
 		super.vfunc_realize();
-
 		this.#initConnect();
-		this.#iniWebView();
 		this.#play();
 		this.#updateMetainfo();
 		this.#setupQ();
@@ -83,18 +81,6 @@ export const QuranPlayerWidget = GObject.registerClass({
 		  logError(message.parse());
 		});
 	  }
-  }
-
-  #iniWebView(){
-	const html = `<!DOCTYPE html><html><body>
-					<audio id="audio-element" src="${this.#getUrl()}"></audio>
-				 </body></html>`;
-	this.webView.load_html(html, null);
-	this.qwebview.append(this.webView);
-	this.webView.evaluate_javascript(`document.getElementById('audio-element').load();`,
-									  -1, null, 'console.log("error playing the audio")', null, null);
-	this.webView.evaluate_javascript("document.getElementById('audio-element').play();",
-									  48, null, 'console.log("error playing the audio")', null, null);
   }
 
   #nextAyah(){
