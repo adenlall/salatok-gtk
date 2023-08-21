@@ -16,6 +16,7 @@
 		<file>quran/widgets/main.js</file>
 		<file>quran/widgets/player.js</file>
 		<file>quran/widgets/reader.js</file>
+		<file>quran/widgets/gst-backend.js</file>
 	</gresource>
 </gresources>
 

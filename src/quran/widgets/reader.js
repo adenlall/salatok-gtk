@@ -60,10 +60,26 @@ export const QuranReaderWidget = GObject.registerClass({
 		this.#hardUpdate();
 		this.#fineUpdate();
         this.#setupCombo();
+		console.log('combo', ""+this.#getValid(this.s.getSetting("surahnumber"),1));
+
+		this.qcombo.set_active_id(""+this.#getValid(this.s.getSetting("surahnumber"),1));
+		this.qcombo.connect("changed", (combobox)=>{
+			this.#setQ(combobox.get_active_id());
+			this.s.setSetting(combobox.get_active_id(), "surahnumber");
+			this.s.setSetting(1, "ayahnumber");
+		});
+  }
+
+  vfunc_map(){
+  	super.vfunc_map();
+  	if(this.qcombo.get_active_id() !== this.s.getSetting("surahnumber")){
+  		//this.qcombo.set_active_id(""+this.#getValid(this.s.getSetting("surahnumber"),1));
+  		console.log('xx', this.#getValid(this.s.getSetting("surahnumber"),1));
+    	this.#setQ(""+this.#getValid(this.s.getSetting("surahnumber"),1));
+  	}
   }
 
   #initConnect(){
-
     this.qselectable.set_active(this.#getValid(this.s.getSetting("qselectable"),false));
 	  this.qselectable.connect("toggled", (check)=>{
 	    this.s.setSetting(check.get_active(), "qselectable");
@@ -107,7 +123,6 @@ export const QuranReaderWidget = GObject.registerClass({
 	  	this.#hardUpdate();
     });
 
-
     this.qlanguage.set_active(this.#getValid(this.s.getSetting("qlanguage"),Helper.getKey(this.qqq, "ar.tanzil.txt")));
 	this.qlanguage.connect("changed", (combo)=>{
 	  		this.s.setSetting(combo.get_active(), "qlanguage");
@@ -134,11 +149,6 @@ export const QuranReaderWidget = GObject.registerClass({
 
     this.qnext.connect("clicked", ()=>{this.#setQ(this.qindex+1)});
     this.qprev.connect("clicked", ()=>{this.#setQ(this.qindex-1)});
-    this.qcombo.connect("changed", (combobox)=>{
-    	this.#setQ(combobox.get_active_id());
-    	this.s.setSetting(combobox.get_active_id(), "surahnumber");
-    });
-
   }
 
   #setupCombo(){
@@ -180,7 +190,7 @@ export const QuranReaderWidget = GObject.registerClass({
 			this.qq="";
 			let ayyah = 0;
 			let between = this.#getValid(this.s.getSetting("ayahbetween"), "[%i]");
-			for (let i = tts[0]; i < tts[0]+tts[1]; i++) {//<span foreground="blue" size="x-large">Bt</span>
+			for (let i = tts[0]; i < tts[0]+tts[1]; i++) {
 				if (i===tts[0]) {
 					let indent = "";
 					for (let i = 0; i < this.#getValid(this.s.getSetting("indent"), 5); i++) {
@@ -194,7 +204,6 @@ export const QuranReaderWidget = GObject.registerClass({
 				ayyah = ayyah+1;
 			}
 			this.quran.label = this.qq;
-			this.qcombo.set_active_id(""+surah);
 			this.qindex = surah;
 		}
 	}

@@ -29,12 +29,13 @@ import Gst        from 'gi://Gst';
 import { QuranData  }  from './../metadata.js';
 import { Store      }  from './../../utils/store.js';
 import { Setting    }  from './../../utils/setting.js';
+import { Sound      }  from './gst-backend.js';
 
 export const QuranPlayerWidget = GObject.registerClass({
 	GTypeName: 'QuranPlayerWidget',
 	Template: 'resource:///app/salatok/gtk/ui/quran/player.ui',
 	Children: [
-		'qbackreader', 'qwebview',
+		'qbackreader',
 		'qplay', 'qnext', 'qback',
 		'qsurah', 'qayah',
 		'qplabel',
@@ -42,48 +43,35 @@ export const QuranPlayerWidget = GObject.registerClass({
 }, class extends Gtk.Widget {
 
   s = new Setting();
-  stream;
-  aurl = [this.#getValid(this.s.getSetting("surahnumber"),1), 1];
-  webView = new WebKit.WebView();
+  aurl = [this.#getValid(this.s.getSetting("surahnumber"),1), this.#getValid(this.s.getSetting("ayahnumber"),1)];
   q = [];
+  sound = new Sound();
+  play = false;
 
   vfunc_realize(){
-		super.vfunc_realize();
-		this.#initConnect();
-		this.#play();
-		this.#updateMetainfo();
-		this.#setupQ();
+	this.#setupQ();
+
+	this.sound.ini();
+
+	super.vfunc_realize();
+
+	this.#initConnect();
+	this.#play();
+	this.#updateMetainfo();
+
+	this.#playbus();
   }
   vfunc_map(){
   	super.vfunc_map();
   	this.#fineUpdate();
-  	this.aurl = [this.#getValid(this.s.getSetting("surahnumber"),1), 1];
-  	this.#updateAyah();
-  }
-
-  #play(){
-	  Gst.init(null);
-	  let url = this.#getUrl();
-
-	  let playbin = Gst.ElementFactory.make('playbin', 'playbin');
-	  if (playbin) {
-		playbin.set_property('uri', url);
-
-		let bus = playbin.get_bus();
-		playbin.set_state(Gst.State.PLAYING);
-
-		bus.add_signal_watch();
-		bus.connect('message::eos', function() {
-		  playbin.set_state(Gst.State.NULL);
-		});
-		bus.connect('message::error', function(message) {
-		  playbin.set_state(Gst.State.NULL);
-		  logError(message.parse());
-		});
-	  }
+  	if(this.#getValid(this.s.getSetting("surahnumber"),1)!==this.aurl[0]){
+  		this.aurl = [this.#getValid(this.s.getSetting("surahnumber"),1), this.#getValid(this.s.getSetting("ayahnumber"),1)];
+	  	this.#updateAyah();
+  	}
   }
 
   #nextAyah(){
+	this.sound.destroy();
 	this.#isLastAyah();
 	this.#updateAyah();
   }
@@ -92,9 +80,31 @@ export const QuranPlayerWidget = GObject.registerClass({
 	this.#updateAyah();
   }
 
+  #play(){
+  	this.sound.play(this.#getUrl());
+  	this.play = true;
+  }
+  #pause(){
+  	this.sound.pause();
+  	this.play = false;
+  }
+
+  #playbus(){
+	this.sound.bus = this.sound.playbin.get_bus();
+	this.sound.bus.add_signal_watch();
+	this.sound.bus.connect('message::eos', ()=>{
+	  this.#nextAyah();
+	});
+	this.sound.bus.connect('message::error', (message)=>{
+	  this.sound.destroy();
+	  this.#play();
+	  print(message);
+	});
+  }
+
   #updateAyah(){
   	this.#updateMetainfo();
-  	this.qplabel.label = this.q[QuranData.Sura[this.aurl[0]][0]+this.aurl[1]-1];
+  	this.#setAQ(QuranData.Sura[this.aurl[0]][0]+this.aurl[1]-1);
   	this.#play();
   }
   #getUrl(){
@@ -123,7 +133,11 @@ export const QuranPlayerWidget = GObject.registerClass({
 	  		this.get_parent().set_visible_child_name("reader");
 		});
 		this.qplay.connect("clicked", ()=>{
-			this.#play();
+			if(!this.play){
+				this.#play();
+			}else{
+				this.#pause();
+			}
 		});
 		this.qnext.connect("clicked", ()=>{
 			this.#nextAyah();
@@ -134,7 +148,7 @@ export const QuranPlayerWidget = GObject.registerClass({
 	}
 
 	#updateMetainfo(){
-		this.qayah.label = `${this.aurl[1]}`;
+		this.qayah.label = `ayyah : ${this.aurl[1]}  `;
 		this.qsurah.label = QuranData.Sura[this.aurl[0]][6];
 	}
 
@@ -145,6 +159,8 @@ export const QuranPlayerWidget = GObject.registerClass({
 		}else{
 			this.aurl[1]++;
 		}
+		this.s.setSetting(this.aurl[1] ,"ayahnumber");
+		this.s.setSetting(this.aurl[0] ,"surahnumber");
 	}
 	#isFirstAyah(){
 		if(this.aurl[1]===1){
@@ -169,7 +185,7 @@ export const QuranPlayerWidget = GObject.registerClass({
 			const [, contents] = file.load_contents_finish(res);
 			let ss = new String(contents);
 			this.q = ss.split(/\n/g);
-			this.qplabel.label = this.q[QuranData.Sura[this.#getValid(this.s.getSetting("surahnumber"),1)][0]];
+			this.#setAQ(QuranData.Sura[this.#getValid(this.s.getSetting("surahnumber"),1)][0]+this.#getValid(this.s.getSetting("ayahnumber"),1)-1);
 		  } catch (error) {
 			print('ERROR!');
 			console.error(error);
@@ -177,7 +193,8 @@ export const QuranPlayerWidget = GObject.registerClass({
 		});
 	}
 	#setAQ(i){
-		this.qplabel.label = this.q[i];
+		console.log('setqlabel i',i);
+		this.qplabel.label = this.#getValid(this.q[i], "LOADING...");
 	}
 	#getValid(a,b){
 	    if (a!==0&&!a) {

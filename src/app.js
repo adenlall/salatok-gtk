@@ -50,7 +50,7 @@ export const salatApp = GObject.registerClass({
 	vfunc_activate() {
     this.window = new Window({ application: this });
     if (this.setting.getSetting("firsttime")) {
-  		this._setsettingpage();
+    	this.window.mainstack.set_visible_child_full("setting", Gtk.StackTransitionType.NONE);
   		this.setting.setSetting(false,"firsttime")
   	}
     this.window.stack1.set_visible_child_full(this.setting.getSetting("showchild") === 1 ? "salatsday" : "next", Gtk.StackTransitionType.NONE);
