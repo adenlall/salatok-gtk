@@ -1,4 +1,4 @@
-<img width="180" alt="salatokapp logo" src="/data/icons/app.salatok.gtk.gnome.svg">
+<img width="189" alt="salatokapp logo" src="/data/icons/app.salatok.gtk.gnome.svg">
 
 # Salatokapp  <a href="https://liberapay.com/adenlall/donate"><img alt="Donate using Liberapay" src="https://liberapay.com/assets/widgets/donate.svg"></a>
 
