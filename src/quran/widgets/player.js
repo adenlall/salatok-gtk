@@ -23,10 +23,8 @@ import GObject    from 'gi://GObject';
 import Gtk        from 'gi://Gtk';
 import GLib       from 'gi://GLib';
 import Gio        from 'gi://Gio';
-import WebKit     from 'gi://WebKit';
-import Soup       from 'gi://Soup?version=3.0';
-import Gdk        from 'gi://Gdk';
 import Pango      from 'gi://Pango';
+import Gst        from 'gi://Gst';
 
 import { QuranData  }  from './../metadata.js';
 import { Store      }  from './../../utils/store.js';
@@ -51,8 +49,10 @@ export const QuranPlayerWidget = GObject.registerClass({
 
   vfunc_realize(){
 		super.vfunc_realize();
+
 		this.#initConnect();
 		this.#iniWebView();
+		this.#play();
 		this.#updateMetainfo();
 		this.#setupQ();
   }
@@ -61,6 +61,28 @@ export const QuranPlayerWidget = GObject.registerClass({
   	this.#fineUpdate();
   	this.aurl = [this.#getValid(this.s.getSetting("surahnumber"),1), 1];
   	this.#updateAyah();
+  }
+
+  #play(){
+	  Gst.init(null);
+	  let url = this.#getUrl();
+
+	  let playbin = Gst.ElementFactory.make('playbin', 'playbin');
+	  if (playbin) {
+		playbin.set_property('uri', url);
+
+		let bus = playbin.get_bus();
+		playbin.set_state(Gst.State.PLAYING);
+
+		bus.add_signal_watch();
+		bus.connect('message::eos', function() {
+		  playbin.set_state(Gst.State.NULL);
+		});
+		bus.connect('message::error', function(message) {
+		  playbin.set_state(Gst.State.NULL);
+		  logError(message.parse());
+		});
+	  }
   }
 
   #iniWebView(){
@@ -87,13 +109,7 @@ export const QuranPlayerWidget = GObject.registerClass({
   #updateAyah(){
   	this.#updateMetainfo();
   	this.qplabel.label = this.q[QuranData.Sura[this.aurl[0]][0]+this.aurl[1]-1];
-  	this.webView.evaluate_javascript("document.getElementById('audio-element').pause();", 48, null,
-										 'console.log("error playing the audio")', null, null);
-	this.webView.evaluate_javascript(`document.getElementById('audio-element').src="${this.#getUrl()}";
-									  document.getElementById('audio-element').load();`,
-									  -1, null, 'console.log("error playing the audio")', null, null);
-	this.webView.evaluate_javascript("document.getElementById('audio-element').play();",
-									  48, null, 'console.log("error playing the audio")', null, null);
+  	this.#play();
   }
   #getUrl(){
 	let a = `https://everyayah.com/data/AbdulSamad_64kbps_QuranExplorer.Com/${this.#getThreeNumber(0)}${this.#getThreeNumber(1)}.mp3`;
@@ -121,7 +137,7 @@ export const QuranPlayerWidget = GObject.registerClass({
 	  		this.get_parent().set_visible_child_name("reader");
 		});
 		this.qplay.connect("clicked", ()=>{
-			this.webView.evaluate_javascript("document.getElementById('audio-element').play();", 48, null, 'console.log("error playing the audio")', null, null);
+			this.#play();
 		});
 		this.qnext.connect("clicked", ()=>{
 			this.#nextAyah();
