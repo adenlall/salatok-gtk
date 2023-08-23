@@ -61,4 +61,3 @@ This app is under [GPL-v3.0](https://www.gnu.org/licenses/gpl-3)
 ## Support The Project 
 
 <a href="https://liberapay.com/adenlall/donate"><img alt="Donate using Liberapay" src="https://liberapay.com/assets/widgets/donate.svg"></a>
-
