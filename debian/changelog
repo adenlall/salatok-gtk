@@ -1,3 +1,13 @@
+salatokapp (1.1.3) unstable; urgency=low
+
+  * new Quran player (beta).
+  * new Quran reader UI.
+  * represent current time with icon in salat home.
+  * Quran reader bug fixes.
+  * app structure redesign
+
+ -- aden lall <adenlall@skiff.com>  Wed, 23 Aug 2023 13:58:00 +0000
+
 salatokapp (1.0.0) unstable; urgency=medium
 
   * major bugs fixes and features update

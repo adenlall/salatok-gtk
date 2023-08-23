@@ -1,5 +1,5 @@
 /*
- * main.js
+ * reader.js
  *
  * Copyright 2023 aden lall <adenlall@skiff.com>
  *
@@ -25,19 +25,20 @@ import Gio     from 'gi://Gio';
 import GLib    from 'gi://GLib';
 import Pango   from 'gi://Pango';
 
-import { QuranData  }  from './metadata.js';
-import { Store      }  from './../utils/store.js';
-import { Setting    }  from './../utils/setting.js';
-import { Helper     }  from './../utils/helper.js';
+import { QuranData  }  from './../metadata.js';
+import { Store      }  from './../../utils/store.js';
+import { Setting    }  from './../../utils/setting.js';
+import { Helper     }  from './../../utils/helper.js';
 
-export const QuranWidget = GObject.registerClass({
-	GTypeName: 'QuranWidget',
-	Template: 'resource:///app/salatok/gtk/ui/quran.ui',
+export const QuranReaderWidget = GObject.registerClass({
+	GTypeName: 'QuranReaderWidget',
+	Template: 'resource:///app/salatok/gtk/ui/quran/reader.ui',
 	Children: [
 	  'quran', 'qnext', 'qprev',
 	  'qcombo', 'qlanguage', 'fonttype', 'fontsize', 'qselectable', 'ayahbetween',
 	  'qindent',
 	  'qjustifycenter', 'qjustifyfill', 'qjustifyleft', 'qjustifyright',
+	  'qlistenbutton',
 	],
 }, class extends Gtk.Widget {
 
@@ -45,7 +46,7 @@ export const QuranWidget = GObject.registerClass({
   s = new Setting();
 
   q = "";
-  qindex = 1;
+  qindex = this.#getValid(this.s.getSetting("surahnumber"), 1);
   qq = "Loading...";
   nn;
   ttt = [];
@@ -59,10 +60,26 @@ export const QuranWidget = GObject.registerClass({
 		this.#hardUpdate();
 		this.#fineUpdate();
         this.#setupCombo();
+		console.log('combo', ""+this.#getValid(this.s.getSetting("surahnumber"),1));
+
+		this.qcombo.set_active_id(""+this.#getValid(this.s.getSetting("surahnumber"),1));
+		this.qcombo.connect("changed", (combobox)=>{
+			this.#setQ(combobox.get_active_id());
+			this.s.setSetting(combobox.get_active_id(), "surahnumber");
+			this.s.setSetting(1, "ayahnumber");
+		});
+  }
+
+  vfunc_map(){
+  	super.vfunc_map();
+  	if(this.qcombo.get_active_id() !== this.s.getSetting("surahnumber")){
+  		//this.qcombo.set_active_id(""+this.#getValid(this.s.getSetting("surahnumber"),1));
+  		console.log('xx', this.#getValid(this.s.getSetting("surahnumber"),1));
+    	this.#setQ(""+this.#getValid(this.s.getSetting("surahnumber"),1));
+  	}
   }
 
   #initConnect(){
-
     this.qselectable.set_active(this.#getValid(this.s.getSetting("qselectable"),false));
 	  this.qselectable.connect("toggled", (check)=>{
 	    this.s.setSetting(check.get_active(), "qselectable");
@@ -85,6 +102,10 @@ export const QuranWidget = GObject.registerClass({
         console.error(err);
     }
 
+    this.qlistenbutton.connect("clicked", ()=>{
+  		this.get_parent().set_visible_child_name("player");
+    });
+
     this.qjustifyleft.connect("clicked", ()=>{this.s.setSetting(0 ,"qjustify");this.quran.justify = this.#getValid(this.s.getSetting("qjustify"), 3)});
     this.qjustifyright.connect("clicked", ()=>{this.s.setSetting(1 ,"qjustify");this.quran.justify = this.#getValid(this.s.getSetting("qjustify"), 3)});
     this.qjustifycenter.connect("clicked", ()=>{this.s.setSetting(2 ,"qjustify");this.quran.justify = this.#getValid(this.s.getSetting("qjustify"), 3)});
@@ -102,10 +123,10 @@ export const QuranWidget = GObject.registerClass({
 	  	this.#hardUpdate();
     });
 
-
     this.qlanguage.set_active(this.#getValid(this.s.getSetting("qlanguage"),Helper.getKey(this.qqq, "ar.tanzil.txt")));
 	this.qlanguage.connect("changed", (combo)=>{
 	  		this.s.setSetting(combo.get_active(), "qlanguage");
+	  		this.s.setSetting(this.qqq[combo.get_active()], "qlanguage_name");
 	  		this.#hardUpdate();
   	});
 
@@ -113,6 +134,7 @@ export const QuranWidget = GObject.registerClass({
 	  this.fonttype.connect("changed", (combo)=>{
 	  	this.quran.label = "loading...";
 	    this.s.setSetting(combo.get_active(), "fonttype");
+	    this.s.setSetting(this.ttt[combo.get_active()], "fonttype_name");
 	    this.#fineUpdate();
 	    this.quran.label = this.qq;
 	  });
@@ -127,8 +149,6 @@ export const QuranWidget = GObject.registerClass({
 
     this.qnext.connect("clicked", ()=>{this.#setQ(this.qindex+1)});
     this.qprev.connect("clicked", ()=>{this.#setQ(this.qindex-1)});
-    this.qcombo.connect("changed", (combobox)=>{this.#setQ(combobox.get_active_id())});
-
   }
 
   #setupCombo(){
@@ -170,7 +190,7 @@ export const QuranWidget = GObject.registerClass({
 			this.qq="";
 			let ayyah = 0;
 			let between = this.#getValid(this.s.getSetting("ayahbetween"), "[%i]");
-			for (let i = tts[0]; i < tts[0]+tts[1]; i++) {//<span foreground="blue" size="x-large">Bt</span>
+			for (let i = tts[0]; i < tts[0]+tts[1]; i++) {
 				if (i===tts[0]) {
 					let indent = "";
 					for (let i = 0; i < this.#getValid(this.s.getSetting("indent"), 5); i++) {
@@ -184,7 +204,6 @@ export const QuranWidget = GObject.registerClass({
 				ayyah = ayyah+1;
 			}
 			this.quran.label = this.qq;
-			this.qcombo.set_active_id(""+surah);
 			this.qindex = surah;
 		}
 	}

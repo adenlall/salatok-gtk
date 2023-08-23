@@ -31,7 +31,7 @@ import { Store      }  from './utils/store.js';
 import { Setting    }  from './utils/setting.js';
 import { Nomination }  from './utils/nomination.api.js';
 
-import './quran/widget.js';
+import './quran/widgets/main.js';
 
 
 export const salatApp = GObject.registerClass({
@@ -50,7 +50,7 @@ export const salatApp = GObject.registerClass({
 	vfunc_activate() {
     this.window = new Window({ application: this });
     if (this.setting.getSetting("firsttime")) {
-  		this._setsettingpage();
+    	this.window.mainstack.set_visible_child_full("setting", Gtk.StackTransitionType.NONE);
   		this.setting.setSetting(false,"firsttime")
   	}
     this.window.stack1.set_visible_child_full(this.setting.getSetting("showchild") === 1 ? "salatsday" : "next", Gtk.StackTransitionType.NONE);

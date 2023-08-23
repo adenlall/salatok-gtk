@@ -81,10 +81,10 @@
                         <property name="vexpand">1</property>
                         <property name="orientation">vertical</property>
                         <child>
-                          <object class="GtkImage">
+                          <object class="GtkImage" id="welcomeicon">
                             <property name="vexpand">1</property>
                             <property name="pixel-size">205</property>
-                            <property name="icon-name">globe</property>
+                            <property name="icon-name">weather-clear</property>
                           </object>
                         </child>
                         <child>
@@ -109,7 +109,7 @@
                                 <property name="margin-bottom">2</property>
                                 <property name="label" translatable="1">...</property>
                                 <style>
-                                  <class name="label-35"/>
+                                  <class name="label-55"/>
                                   <class name="extrabold"/>
                                 </style>
                               </object>
@@ -403,7 +403,7 @@
 				<property name="child">
            <object class="QuranWidget">
            </object>
-        </property>
+        </property>y>
 		</object>
 		</child>
 
@@ -1294,5 +1294,6 @@
     </property>
 
   </template>
-</interface>
+</interface
+>
 

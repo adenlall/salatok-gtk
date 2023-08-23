@@ -1,0 +1,134 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<interface>
+	<template class="QuranPlayerWidget">
+      <property name="layout-manager">
+          <object class="GtkBoxLayout">
+             <property name="orientation">vertical</property>
+          </object>
+      </property>
+      <child>
+          <object class="GtkBox">
+            <property name="orientation">vertical</property>
+            <property name="margin-start">10</property>
+            <property name="margin-end">10</property>
+            <property name="margin-bottom">10</property>
+            <property name="margin-top">5</property>
+            <property name="hexpand">1</property>
+            <property name="vexpand">1</property>
+            <child>
+              <object class="GtkBox">
+                <property name="spacing">10</property>
+                <property name="valign">0</property>
+                <property name="halign">0</property>
+                <property name="margin-bottom">10</property>
+
+                <child>
+                   <object class="GtkButton" id="qbackreader">
+                        <property name="child">
+                          <object class="GtkBox" id="qgtkbox">
+                            <property name="spacing">5</property>
+                            <child>
+                              <object class="GtkImage">
+                                <property name="icon-name">go-previous-symbolic</property>
+                                <property name="icon-size">1</property>
+                              </object>
+                            </child>
+                            <child>
+                              <object class="GtkLabel">
+                               <property name="label">go back</property>
+                              </object>
+                            </child>
+                          </object>
+                        </property>
+                   </object>
+                </child>
+
+                <child>
+                  <object class="GtkLabel">
+                    <property name="halign">end</property>
+                    <property name="label" translatable="1">beta</property>
+                    <style>
+                      <class name="bold"/>
+                      <class name="come"/>
+                      <class name="label-15"/>
+                    </style>
+                  </object>
+                </child>
+
+            </object>
+          </child>
+
+
+        <child>
+          <object class="GtkScrolledWindow">
+            <property name="hscrollbar-policy">3</property>
+            <property name="hexpand">1</property>
+            <property name="vexpand">1</property>
+            <property name="margin-top">10</property>
+              <child>
+                <object class="GtkLabel" id="qplabel">
+                    <property name="wrap">1</property>
+                    <property name="vexpand">1</property>
+                    <property name="hexpand">1</property>
+                    <property name="justify">3</property>
+                </object>
+              </child>
+            </object>
+          </child>
+
+
+
+            <child>
+              <object class="GtkBox" id="qwebview">
+                <property name="hexpand">1</property>
+                 <property name="margin-top">10</property>
+
+		<child>
+			<object class="GtkBox">
+				<property name="tooltip-text">toolbar, osd</property>
+				<style><class name="toolbar"/><class name="osd"/></style>
+			  <child>
+			    <object class="GtkBox">
+            <property name="halign">start</property>
+						<property name="spacing">10</property>
+				    <child>
+					    <object class="GtkButton" id="qback">
+						    <property name="icon-name">media-skip-backward-symbolic</property>
+					    </object>
+				    </child>
+				    <child>
+					    <object class="GtkButton" id="qplay">
+						    <property name="icon-name">media-playback-pause-symbolic</property>
+					    </object>
+				    </child>
+				    <child>
+					    <object class="GtkButton" id="qnext">
+						    <property name="icon-name">media-skip-forward-symbolic</property>
+					    </object>
+				    </child>
+			    </object>
+			  </child>
+				<child>
+					<object class="GtkLabel" id="qsurah">
+            <property name="halign">start</property>
+						<property name="hexpand">1</property>
+						<property name="label">AL-Fatiha</property>
+					</object>
+				</child>
+				<child>
+					<object class="GtkLabel" id="qayah">
+            <property name="halign">end</property>
+						<property name="label">001</property>
+					</object>
+				</child>
+			</object>
+		</child>
+
+            </object>
+          </child>
+
+
+        </object>
+      </child>
+  </template>
+</interface>

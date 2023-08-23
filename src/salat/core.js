@@ -1,4 +1,6 @@
 import Gtk from 'gi://Gtk';
+import Gio from 'gi://Gio';
+import GLib from 'gi://GLib';
 import { SalatAPI } from './api.js';
 import { Setting  } from './../utils/setting.js';
 export class Core {

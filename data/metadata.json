@@ -3,7 +3,7 @@
 		"id": "app.salatok.gtk",
 		"dev": "adenDev-adenlall",
 		"name": "salatokapp",
-		"version": "1.0.0-stable",
+		"version": "1.1.3-beta",
 		"license": "GPL-3.0-or-later"
 	}
 }

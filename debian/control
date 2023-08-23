@@ -31,7 +31,7 @@ Depends: geoclue-2.0 (>= 2.3.1),
          gjs (>= 1.71.0),
          libglib2.0-bin (>= 2.40),
          ${misc:Depends}
-Description: fully controlled Muslims pray times and Quran reader.
+Description: controlled Muslims pray times and Quran reader.
  Get pray times at your desktop.
  with full control over the methods adjustment.
  this app can work without connection or sending your IP address anywhere.

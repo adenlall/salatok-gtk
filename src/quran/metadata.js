@@ -470,7 +470,7 @@ QuranData.Page = [
 ];
 
 
-//------------------ Sajda Data --------------------- https://everyayah.com/data/AbdulSamad_64kbps_QuranExplorer.Com/001003.mp3
+//------------------ Sajda Data ---------------------
 
 QuranData.Sajda = [
 	[7,  206, 'recommended'],
