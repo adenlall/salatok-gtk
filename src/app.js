@@ -175,12 +175,12 @@ export const salatApp = GObject.registerClass({
 	  }
 	  if (q&&q!=="") {
 		  let n = new Nomination();
-		  let dd = n.widget(n.getByQ(q));
-		  if (dd) {
+		  n.getByQ(q).then((data)=>{
+        let dd = n.widget(data);
 			  this.window.searchcontainer.append(dd);
-		  }
-	  }
-	}
+      }).catch(err=>console.log('errr',err));
+    }
+    }
 	
 	updateCore(){
 	  if (this.window.myPageSalats.get_first_child()) {

@@ -1,33 +1,51 @@
 import Gtk from 'gi://Gtk';
+import Gio from 'gi://Gio';
+import GLib from 'gi://GLib';
 import Soup from 'gi://Soup?version=3.0';
 import Pango from 'gi://Pango';
 import { Setting } from './setting.js';
+
+Gio._promisify(
+  Soup.Session.prototype,
+  "send_and_read_async",
+  "send_and_read_finish",
+);
+
+const http_session = new Soup.Session();
+http_session.user_agent = "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_11_2) AppleWebKit/601.3.9 (KHTML, like Gecko) Version/9.0.2 Safari/601.3.9";
 
 export class Nomination {
 
     setting = new Setting();
 
-     getByQ(q){
+     async getByQ(q){
           let uri = `https://nominatim.openstreetmap.org/search?q=${q}&addressdetails=1&limit=3&format=json`;
-          let res = this.Response(uri);
-          let data = this.#parse(res);
-          return data;
+          let data = await this.Response(uri);
+          let xdata = this.#parse(data);
+          return xdata;
      }
 
 
-     Response(uri){
-          try {
-            let ss = new Soup.Session();
-            ss.user_agent = "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_11_2) AppleWebKit/601.3.9 (KHTML, like Gecko) Version/9.0.2 Safari/601.3.9";
-            let msg = Soup.Message.new('GET', uri);
-            ss.send_message(msg);
-            return JSON.parse(msg.response_body.data);
-          } catch (err) {
-              print('Promise Error Nomination@Response');
-              console.error(err);
-          }
-     }
+      async Response(url) {
 
+        const message = Soup.Message.new("GET", url);
+
+        const bytes = await http_session.send_and_read_async(
+          message,
+          GLib.PRIORITY_DEFAULT,
+          null,
+        );
+
+        if (message.status_code !== 200) {
+          console.error(`HTTP Status ${message.status_code}`);
+          return;
+        }
+
+        const text_decoder = new TextDecoder("utf-8");
+        const decoded_text = text_decoder.decode(bytes.toArray().buffer);
+        const json = JSON.parse(decoded_text);
+        return json;
+      }
 
      #parse(res){
           let arr=[];
@@ -95,6 +113,8 @@ export class Nomination {
      }
 
      widget(res){
+      console.log('WIDGET::LOADED; ::::::::::::::::::::::::::::::::::::::::::::::::');
+
       if (res.length !== 0) {
         let container = this.#getListBox();
         container.hexpand= 1;
@@ -146,5 +166,6 @@ export class Nomination {
 
 
 }
+
 
 
