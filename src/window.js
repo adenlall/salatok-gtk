@@ -102,7 +102,7 @@ export const Window = GObject.registerClass({
 	
   _about(){
         let aboutDialog = new Gtk.AboutDialog({
-            program_name: "salatokapp lite",
+            program_name: "app.salatok.gtk lite",
         	artists: ['adenlall <adenlall@skiff.com>'],
             authors: ['adenlall <adenlall@skiff.com>'],
             comments: "get muslims pray times and Quran reader",

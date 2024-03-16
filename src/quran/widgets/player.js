@@ -38,7 +38,7 @@ export const QuranPlayerWidget = GObject.registerClass({
 		'qbackreader',
 		'qplay', 'qnext', 'qback',
 		'qsurah', 'qayah',
-		'qplabel',
+		'qplabel','reciteriu'
 	],
 }, class extends Gtk.Widget {
 
@@ -68,6 +68,7 @@ export const QuranPlayerWidget = GObject.registerClass({
   		this.aurl = [this.#getValid(this.s.getSetting("surahnumber"),1), this.#getValid(this.s.getSetting("ayahnumber"),1)];
 	  	this.#updateAyah();
   	}
+  	this.reciter = this.s.getSetting("reciter")??"Minshawy_Mujawwad_192kbps";
   }
 
   #nextAyah(){
@@ -93,12 +94,14 @@ export const QuranPlayerWidget = GObject.registerClass({
 	this.sound.bus = this.sound.playbin.get_bus();
 	this.sound.bus.add_signal_watch();
 	this.sound.bus.connect('message::eos', ()=>{
+	  console.log('GSTREAM::BUS : EOS');
 	  this.#nextAyah();
 	});
 	this.sound.bus.connect('message::error', (message)=>{
+	  console.log('GSTREAM::BUS : ERROR');
+
 	  this.sound.destroy();
 	  this.#play();
-	  print(message);
 	});
   }
 
@@ -108,7 +111,7 @@ export const QuranPlayerWidget = GObject.registerClass({
   	this.#play();
   }
   #getUrl(){
-	let a = `https://everyayah.com/data/AbdulSamad_64kbps_QuranExplorer.Com/${this.#getThreeNumber(0)}${this.#getThreeNumber(1)}.mp3`;
+	let a = `https://everyayah.com/data/${this.reciter}/${this.#getThreeNumber(0)}${this.#getThreeNumber(1)}.mp3`;
 	return a;
   }
   #getImageUrl(){
@@ -145,6 +148,11 @@ export const QuranPlayerWidget = GObject.registerClass({
 		this.qback.connect("clicked", ()=>{
 			this.#backAyah();
 		});
+		this.reciteriu.set_active_id(""+this.s.getSetting("reciter"))
+		this.reciteriu.connect("changed", (combobox)=>{
+			this.reciter = combobox.get_active_id();
+      this.s.setSetting(combobox.get_active_id(),"reciter");
+		});
 	}
 
 	#updateMetainfo(){
@@ -179,7 +187,7 @@ export const QuranPlayerWidget = GObject.registerClass({
 	}
 	// Quran Verse Funcs
 	#iniQ(){
-		const Gfile = Gio.File.new_for_path(GLib.build_filenamev([GLib.get_home_dir(), ".local", "share", "quran", "salatokapp", "ar.tanzil.txt"]));
+		const Gfile = Gio.File.new_for_path(GLib.build_filenamev([GLib.get_home_dir(), ".local", "share", "quran", "app.salatok.gtk", "ar.tanzil.txt"]));
 		Gfile.load_contents_async(null, (file, res) => {
 		  try {
 			const [, contents] = file.load_contents_finish(res);
@@ -193,7 +201,6 @@ export const QuranPlayerWidget = GObject.registerClass({
 		});
 	}
 	#setAQ(i){
-		console.log('setqlabel i',i);
 		this.qplabel.label = this.#getValid(this.q[i], "LOADING...");
 	}
 	#getValid(a,b){

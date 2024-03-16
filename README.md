@@ -1,4 +1,4 @@
-<img width="200" alt="salatokapp logo" src="/data/icons/app.salatok.gtk.gnome.svg">
+<img width="200" alt="app.salatok.gtk logo" src="/data/icons/app.salatok.gtk.gnome.svg">
 
 <a href="https://www.linux.org/" title="Go to Linux homepage"><img src="https://img.shields.io/badge/OS-Linux-blue?logo=linux&logoColor=white" alt="OS - Linux"></a> <a href="https://www.javascript.com/" title="Go to JavaScript homepage"><img src="https://img.shields.io/badge/Made_with-JavaScript-blue?logo=javascript&logoColor=white" alt="Made with JavaScript"></a> <img src="https://img.shields.io/badge/maintained-yes-blue" alt="maintained - yes"> <img alt="GitHub User's stars" src="https://img.shields.io/github/stars/adenlall">
 
@@ -35,12 +35,12 @@ For Debian/Ubuntu :
           
                * visit : https://tanzil.net/trans/ and select "Text" for file format, and download all you need from the list there.
                
-               * then copy all .txt files downloaded into this location `$HOME/.local/share/quran/salatokapp/`
+               * then copy all .txt files downloaded into this location `$HOME/.local/share/quran/app.salatok.gtk/`
                - the file name should be something like : <Language>.<Translator>.txt ex: ar.tanzil.txt
                
           **Fonts**
           
-               * download or copy any .ttf or otf font files into `$HOME/.local/share/fonts/salatokapp/`
+               * download or copy any .ttf or otf font files into `$HOME/.local/share/fonts/app.salatok.gtk/`
                - name the file like his font name plus language of the font. ex: if you have Ubuntu Font, the name should be exactly like this : Ubunutu.latin.ttf
 
                

@@ -1,4 +1,4 @@
-Source: salatokapp
+Source: app.salatok.gtk
 Section: utils
 Priority: optional
 Maintainer: aden lall <adenlall@skiff.com>
@@ -21,7 +21,7 @@ Vcs-Browser: https://salsa.debian.org/adenlall/salatok-gtk4
 Vcs-Git: https://salsa.debian.org/adenlall/salatok-gtk4.git
 Homepage: https://salatok.vercek.app/
 
-Package: salatokapp
+Package: app.salatok.gtk
 Architecture: all
 Depends: geoclue-2.0 (>= 2.3.1),
          gir1.2-geoclue-2.0 (>= 0.12.99),

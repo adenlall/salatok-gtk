@@ -1,8 +1,8 @@
 app-id: app.salatok.gtk
 runtime: org.gnome.Platform
-runtime-version: '40'
-sdk: org.gnome.Sdk/i386
-command: salatokapp
+runtime-version: '44'
+sdk: org.gnome.Sdk
+command: app.salatok.gtk
 
 finish-args:
   - --socket=wayland

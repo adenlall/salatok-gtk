@@ -12,7 +12,7 @@ export class Store {
 		const [, fc] = metadata.load_contents(null);
 		const newv = JSON.parse(fc).app.version;
 
-		let ff = Gio.File.new_for_path(GLib.build_filenamev([GLib.get_user_config_dir(), "salatokapp", "user.json"]));
+		let ff = Gio.File.new_for_path(GLib.build_filenamev([GLib.get_user_config_dir(), "app.salatok.gtk", "user.json"]));
      	if (!ff.query_exists(null)){
      		print("FILE `user.json` NOT FOUND !");
      		print("TRYING RESET");
@@ -44,7 +44,7 @@ export class Store {
         this.#installQuran();
         this.#installFonts();
         let data = new Data();
-        this.write("user.json", "salatokapp", {
+        this.write("user.json", "app.salatok.gtk", {
           config: data.config,
           method: data.method,
           adjusting: data.adjusting,
@@ -120,12 +120,12 @@ export class Store {
             fileEnum = null;
         }
         if (fileEnum != null) {
-			this.#checkDirDir([".local","share","fonts", "salatokapp"], true);
+			this.#checkDirDir([".local","share","fonts", "app.salatok.gtk"], true);
             let info;
             while (info = fileEnum.next_file(null)){
                 if (this.#getExtension(info.get_display_name())==="ttf" || this.#getExtension(info.get_display_name())==="otf" ){
 					let ff = Gio.File.new_for_uri("resource:///app/salatok/gtk/fonts/"+info.get_display_name());
-					let dist = Gio.File.new_for_path(GLib.build_filenamev([GLib.get_home_dir(), ".local", "share", "fonts", "salatokapp", info.get_display_name()]));
+					let dist = Gio.File.new_for_path(GLib.build_filenamev([GLib.get_home_dir(), ".local", "share", "fonts", "app.salatok.gtk", info.get_display_name()]));
 					ff.copy(dist, Gio.FileCopyFlags.OVERWRITE, null, null);
                 }
             }
@@ -147,7 +147,7 @@ export class Store {
           const directoryPath = GLib.build_filenamev([GLib.get_user_config_dir(), name]);
           if (!GLib.file_test(directoryPath, GLib.FileTest.EXISTS)) {
             if(create){
-               this.#mkdir("salatokapp");
+               this.#mkdir("app.salatok.gtk");
             }
             return false;
           }else{
@@ -155,7 +155,7 @@ export class Store {
           }
      }
      #cleanDir(name){
-     	let dir = Gio.File.new_for_path(GLib.build_filenamev([GLib.get_home_dir(), ".local", "share", name, "salatokapp"]));
+     	let dir = Gio.File.new_for_path(GLib.build_filenamev([GLib.get_home_dir(), ".local", "share", name, "app.salatok.gtk"]));
         let fileEnum;
         try {
             fileEnum = dir.enumerate_children('standard::name,standard::type',
@@ -194,8 +194,8 @@ export class Store {
           }
      }
      #write_File_to_local_dir(GFile, file){
-          this.#checkDirDir([".local","share","quran", "salatokapp"], true);
-          let dist = Gio.File.new_for_path(GLib.build_filenamev([GLib.get_home_dir(), ".local", "share", "quran", "salatokapp", file]));
+          this.#checkDirDir([".local","share","quran", "app.salatok.gtk"], true);
+          let dist = Gio.File.new_for_path(GLib.build_filenamev([GLib.get_home_dir(), ".local", "share", "quran", "app.salatok.gtk", file]));
           GFile.copy(dist, Gio.FileCopyFlags.OVERWRITE, null, null);
      }
      #getExtension(str){

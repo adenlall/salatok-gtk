@@ -2,3 +2,6 @@ build
 obj-i686-linux-gnu
 debian/.debhelper
 debian/salatokapp
+flatpak-builder
+.flatpak-builder
+repo
