@@ -22,20 +22,6 @@ install_data(
 	'icons' / APP_ID + '.symbolic.svg',
 	install_dir: get_option('datadir') / 'icons' / 'hicolor' / 'symbolic' / 'apps'
 )
-install_data(
-	'icons' / APP_ID + '.gnome.svg',
-	install_dir: get_option('datadir') / 'icons' / 'hicolor' / 'scalable' / 'apps'
-)
-
-install_data(
-	'icons' / APP_ID + '.colorful.svg',
-	install_dir: get_option('datadir') / 'icons' / 'hicolor' / 'scalable' / 'apps'
-)
-
-install_data(
-	'icons' / APP_ID + '.colorful.svg',
-	install_dir: get_option('datadir') / 'icons' / 'hicolor' / 'scalable' / 'apps'
-)
 
 # Translate and install the desktop file
 i18n.merge_file(
@@ -82,3 +68,5 @@ i18n.merge_file(
 	install_dir: get_option('datadir') / 'metainfo'
 
 )
+
+subdir('icons')
