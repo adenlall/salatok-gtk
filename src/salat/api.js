@@ -44,7 +44,7 @@ export class SalatAPI {
          }
          #showenabled(){
             let store = new Store();
-            let data = store.read("user.json", "app.salatok.gtk");
+            let data = store.read("user.json", "io.github.adenlall.salatok-gtk");
             
             return data.config.enabled
             

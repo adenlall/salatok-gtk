@@ -1,4 +1,0 @@
-[D-BUS Service]
-Name=@APP_ID@
-Exec=@BINDIR@/app.salatok.gtk --gapplication-service
-

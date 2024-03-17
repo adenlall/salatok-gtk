@@ -12,7 +12,7 @@ Files: src/quran/metadata.js
 Copyright: 2007–2023, tanzil.net
 License: CC-BY-3.0
 
-Files: data/app.salatok.gtk.appdata.xml
+Files: data/io.github.adenlall.salatok-gtk.appdata.xml
 Copyright: adenlall <adenlall@skiff.com>
 License: CC-BY-3.0
 

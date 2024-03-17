@@ -1,0 +1,4 @@
+[D-BUS Service]
+Name=@APP_ID@
+Exec=@BINDIR@/io.github.adenlall.salatok-gtk --gapplication-service
+

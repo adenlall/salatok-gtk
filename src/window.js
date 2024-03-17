@@ -102,13 +102,13 @@ export const Window = GObject.registerClass({
 	
   _about(){
         let aboutDialog = new Gtk.AboutDialog({
-            program_name: "app.salatok.gtk lite",
+            program_name: "io.github.adenlall.salatok-gtk lite",
         	artists: ['adenlall <adenlall@skiff.com>'],
             authors: ['adenlall <adenlall@skiff.com>'],
             comments: "get muslims pray times and Quran reader",
             copyright: 'Copyright 2023 adenlall, <adenlall@skiff.com>',
             license_type: Gtk.License.GPL_3_0,
-            logo_icon_name: 'app.salatok.gtk.gnome',
+            logo_icon_name: 'io.github.adenlall.salatok-gtk.gnome',
             version: pkg.version,
             website: 'http://salatok.vercel.app/',
             website_label: 'salatok website',

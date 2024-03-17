@@ -187,7 +187,7 @@ export const QuranPlayerWidget = GObject.registerClass({
 	}
 	// Quran Verse Funcs
 	#iniQ(){
-		const Gfile = Gio.File.new_for_path(GLib.build_filenamev([GLib.get_home_dir(), ".local", "share", "quran", "app.salatok.gtk", "ar.tanzil.txt"]));
+		const Gfile = Gio.File.new_for_path(GLib.build_filenamev([GLib.get_home_dir(), ".local", "share", "quran", "io.github.adenlall.salatok-gtk", "ar.tanzil.txt"]));
 		Gfile.load_contents_async(null, (file, res) => {
 		  try {
 			const [, contents] = file.load_contents_finish(res);
