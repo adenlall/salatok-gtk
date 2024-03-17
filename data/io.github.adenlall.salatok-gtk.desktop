@@ -2,8 +2,8 @@
 Name=Salatok App
 GenericName=Muslim Pray Times
 Comment=Get salat ( prayer ) timing with Quran reader and reciter intergated
-Icon=@APP_ID@.gnome
-Exec=@BINDIR@/io.github.adenlall.salatok-gtk
+Icon=@APP_ID@
+Exec=@BINDIR@/@APP_ID@
 StartupNotify=true
 Type=Application
 Terminal=false
