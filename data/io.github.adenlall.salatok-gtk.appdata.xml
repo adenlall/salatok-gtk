@@ -7,7 +7,7 @@
 
 	<name>Salatok App</name>
      <name xml:lang="ar">مواقيت صلاة المسلم</name>
-	<summary>Get salat timing and Quran reader at your linux desktop</summary>
+	<summary>Get salat ( prayer ) timing with Quran reader and reciter intergated</summary>
 	<summary xml:lang="ar">الاطلاع على مواقيت الصلاة بدون حاجة للاتصال بالانترنت وكدلك قراءة القرأن</summary>
 	<description>
 		<p>A privacy-first application designed for simplicity as well as full featured controls over the </p>

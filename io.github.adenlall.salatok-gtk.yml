@@ -26,16 +26,6 @@ cleanup:
   - /lib/girepository-1.0
   - /share/gir-1.0
 
-build-options:
-  test-args:
-    - --socket=x11
-    - --share=network
-    - --socket=pulseaudio
-  build-args:
-    - --share=network
-    - --socket=pulseaudio
-
-
 modules:
   - name: io.github.adenlall.salatok-gtk
     builddir: true
