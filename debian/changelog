@@ -19,7 +19,7 @@ io.github.adenlall.salatok-gtk (1.0.0) unstable; urgency=medium
 
 io.github.adenlall.salatok-gtk (0.9.10) unstable; urgency=low
 
-  * full implementation of Quran into the app.
+  * full implementation of Quran into the
   * add multiple translations of Quran.
   * add Quran fonts.
   * fixes of salat calculations.

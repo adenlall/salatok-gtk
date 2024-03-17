@@ -88,11 +88,11 @@ export const QuranReaderWidget = GObject.registerClass({
 
     let store = new Store();
     try {
-      this.qqq = store.getAllFilesInDir(".local/share/quran/io.github.adenlall.salatok-gtk/");
+      this.qqq = store.getAllFilesInDir("quran");
       for (let i = 0; i < this.qqq.length; i++) {
         this.qlanguage.append(""+i, this.qqq[i].split(".")[0]+" - "+this.qqq[i].split(".")[1]);
       }
-      let fonts_s = store.getAllFilesInDir(".local/share/fonts/io.github.adenlall.salatok-gtk/");
+      let fonts_s = store.getAllFilesInDir("fonts");
       for (let i = 0; i < fonts_s.length; i++) {
       	let txt = fonts_s[i].split(".");
       	this.ttt.push(txt[0].replace(/_/g, " "));
@@ -159,7 +159,7 @@ export const QuranReaderWidget = GObject.registerClass({
 
   #hardUpdate(){
     this.nn = this.qqq[this.#getValid(this.s.getSetting("qlanguage"),Helper.getKey(this.qqq, "ar.tanzil.txt"))];
-    const Gfile = Gio.File.new_for_path(GLib.build_filenamev([GLib.get_home_dir(), ".local", "share", "quran", "io.github.adenlall.salatok-gtk", this.nn]));
+    const Gfile = Gio.File.new_for_path(GLib.build_filenamev([GLib.get_user_config_dir(), "quran", this.nn]));
     Gfile.load_contents_async(null, (file, res) => {
       try {
         const [, contents] = file.load_contents_finish(res);
@@ -216,4 +216,5 @@ export const QuranReaderWidget = GObject.registerClass({
 	}
 
 });
+
 

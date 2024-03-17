@@ -10,7 +10,7 @@
 	<summary>Get salat timing and Quran reader at your linux desktop</summary>
 	<summary xml:lang="ar">الاطلاع على مواقيت الصلاة بدون حاجة للاتصال بالانترنت وكدلك قراءة القرأن</summary>
 	<description>
-		<p>A privacy-first application designed for simplicity as well as full featured controls over the app.</p>
+		<p>A privacy-first application designed for simplicity as well as full featured controls over the </p>
 	</description>
 
      <metadata_license>CC-BY-3.0</metadata_license>
@@ -56,7 +56,7 @@
       <p>First stable release with major bug fixes :</p>
       <ul>
         <li>the app now can remember your selected Quran translation.
-  so you don't need to re select your language every time you launch the app.</li>
+  so you don't need to re select your language every time you launch the </li>
         <li>fix cache issues.</li>
         <li> fix salat countdown issues.</li>
       </ul>

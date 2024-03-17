@@ -12,7 +12,7 @@ imports.package.init({
 
 // Import the main module and run the main function
 const loop = new GLib.MainLoop(null, false);
-import('resource:///io/github/adenlall/salatok-gtk/js/main.js')
+import('resource:///io/github/adenlall/salatok-gtk/main.js')
 	.then((main) => {
 		GLib.idle_add(GLib.PRIORITY_DEFAULT_IDLE, () => {
 			loop.quit();
