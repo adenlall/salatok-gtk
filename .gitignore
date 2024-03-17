@@ -5,3 +5,6 @@ debian/salatokapp
 flatpak-builder
 .flatpak-builder
 repo
+git
+dir
+build-dir

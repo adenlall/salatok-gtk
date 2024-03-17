@@ -26,7 +26,7 @@ import GLib from 'gi://GLib';
 
 export const Window = GObject.registerClass({
 	GTypeName: 'salatWindow',
-	Template: 'resource:///app/salatok/gtk/ui/window.ui',
+	Template: 'resource:///io/github/adenlall/salatok-gtk/ui/window.ui',
 	Children: [
 	  'myPageSalats', 
 	  'methodcombobox', 'higherlatitudescombobox', 'formatcombobox', 'midnightcombobox','asrcombobox',

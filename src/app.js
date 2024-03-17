@@ -63,7 +63,7 @@ export const salatApp = GObject.registerClass({
 	}
   #loadStylesheet() {
 		const provider = new Gtk.CssProvider();
-		provider.load_from_resource('/app/salatok/gtk/css/salatWidget.css');
+		provider.load_from_resource('/io/github/adenlall/salatok-gtk/css/salatWidget.css');
 		Gtk.StyleContext.add_provider_for_display(
 			Gdk.Display.get_default(),
 			provider,

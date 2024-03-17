@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <gresources>
-	<gresource prefix="/app/salatok/gtk">
+	<gresource prefix="/io/github/adenlall/salatok-gtk">
 
 	     <file>ui/window.ui</file>
 	     <file>ui/quran/main.ui</file>

@@ -32,7 +32,7 @@ import { Helper     }  from './../../utils/helper.js';
 
 export const QuranReaderWidget = GObject.registerClass({
 	GTypeName: 'QuranReaderWidget',
-	Template: 'resource:///app/salatok/gtk/ui/quran/reader.ui',
+	Template: 'resource:///io/github/adenlall/salatok-gtk/ui/quran/reader.ui',
 	Children: [
 	  'quran', 'qnext', 'qprev',
 	  'qcombo', 'qlanguage', 'fonttype', 'fontsize', 'qselectable', 'ayahbetween',

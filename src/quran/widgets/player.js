@@ -33,7 +33,7 @@ import { Sound      }  from './gst-backend.js';
 
 export const QuranPlayerWidget = GObject.registerClass({
 	GTypeName: 'QuranPlayerWidget',
-	Template: 'resource:///app/salatok/gtk/ui/quran/player.ui',
+	Template: 'resource:///io/github/adenlall/salatok-gtk/ui/quran/player.ui',
 	Children: [
 		'qbackreader',
 		'qplay', 'qnext', 'qback',

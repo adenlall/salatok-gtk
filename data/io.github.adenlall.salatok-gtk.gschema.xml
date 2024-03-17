@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <schemalist>
-	<schema id="io.github.adenlall.salatok-gtk" path="/app/salatok/gtk/">
+	<schema id="io.github.adenlall.salatok-gtk" path="/io/github/adenlall/salatok-gtk/">
 		<key name="window-width" type="i">
 			<default>-1</default>
 		</key>

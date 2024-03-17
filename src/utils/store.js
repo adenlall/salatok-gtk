@@ -8,11 +8,11 @@ export class Store {
 
      /*  Public Methods  */
      setup(){
-	 	const metadata = Gio.File.new_for_uri("resource:///app/salatok/gtk/metadata.json");
+	 	const metadata = Gio.File.new_for_uri("resource:///io/github/adenlall/salatok-gtk/metadata.json");
 		const [, fc] = metadata.load_contents(null);
 		const newv = JSON.parse(fc).app.version;
 
-		let ff = Gio.File.new_for_path(GLib.build_filenamev([GLib.get_user_config_dir(), "io.github.adenlall.salatok-gtk", "user.json"]));
+		let ff = Gio.File.new_for_path(GLib.build_filenamev([GLib.get_user_runtime_dir(), 'app', Gio.Application.application_id, "user.json"]));
      	if (!ff.query_exists(null)){
      		print("FILE `user.json` NOT FOUND !");
      		print("TRYING RESET");
@@ -56,19 +56,19 @@ export class Store {
      }
      write(file, dir, jsonData){
           let exist = this.#checkDir(dir, true);
-          const filePath = GLib.build_filenamev([GLib.get_user_config_dir(), dir, file]);
+          const filePath = GLib.build_filenamev([GLibGLib.get_user_runtime_dir(), 'app', Gio.Application.application_id, dir, file]);
           let Gfile = Gio.File.new_for_path(filePath);
           Gfile.replace_contents(JSON.stringify(jsonData), null, false, Gio.FileCreateFlags.NONE, null);
      }
      read(file, dir){
-          const filePath = GLib.build_filenamev([GLib.get_user_config_dir(), dir, file]);
+          const filePath = GLib.build_filenamev([GLib.get_user_runtime_dir(), 'app', Gio.Application.application_id, dir, file]);
           const Gfile = Gio.File.new_for_path(filePath);
           const [, fileContents] = Gfile.load_contents(null);
           const loadedData = JSON.parse(fileContents);
           return loadedData;
      }
      getAllFilesInDir(path){
-          let dir = Gio.File.new_for_path(GLib.build_filenamev([GLib.get_home_dir(), path]));
+          let dir = Gio.File.new_for_path(GLib.build_filenamev([GLib.get_user_runtime_dir(), 'app', Gio.Application.application_id, path]));
           let fileEnum;
           try {
               fileEnum = dir.enumerate_children('standard::name,standard::type',
@@ -93,7 +93,7 @@ export class Store {
 
      /*  Private Methods  */
      #installQuran(){
-        let dir = Gio.File.new_for_uri("resource:///app/salatok/gtk/quran");
+        let dir = Gio.File.new_for_uri("resource:///io/github/adenlall/salatok-gtk/quran");
         let fileEnum;
         try {
             fileEnum = dir.enumerate_children('standard::name,standard::type',
@@ -111,7 +111,7 @@ export class Store {
         }
      }
      #installFonts(){
-        let dir = Gio.File.new_for_uri("resource:///app/salatok/gtk/fonts");
+        let dir = Gio.File.new_for_uri("resource:///io/github/adenlall/salatok-gtk/fonts");
         let fileEnum;
         try {
             fileEnum = dir.enumerate_children('standard::name,standard::type',
@@ -120,19 +120,19 @@ export class Store {
             fileEnum = null;
         }
         if (fileEnum != null) {
-			this.#checkDirDir([".local","share","fonts", "io.github.adenlall.salatok-gtk"], true);
+			this.#checkDirDir([GLib.get_user_runtime_dir(), 'app', Gio.Application.application_id, 'fonts'], true);
             let info;
             while (info = fileEnum.next_file(null)){
                 if (this.#getExtension(info.get_display_name())==="ttf" || this.#getExtension(info.get_display_name())==="otf" ){
-					let ff = Gio.File.new_for_uri("resource:///app/salatok/gtk/fonts/"+info.get_display_name());
-					let dist = Gio.File.new_for_path(GLib.build_filenamev([GLib.get_home_dir(), ".local", "share", "fonts", "io.github.adenlall.salatok-gtk", info.get_display_name()]));
+					let ff = Gio.File.new_for_uri("resource:///io/github/adenlall/salatok-gtk/fonts/"+info.get_display_name());
+					let dist = Gio.File.new_for_path(GLib.build_filenamev([GLib.get_user_runtime_dir(), 'app', Gio.Application.application_id, 'fonts', info.get_display_name()]));
 					ff.copy(dist, Gio.FileCopyFlags.OVERWRITE, null, null);
                 }
             }
         }
      }
      #mkdir(name){
-          const directoryPath = GLib.build_filenamev([GLib.get_user_config_dir(), name]);
+          const directoryPath = GLib.build_filenamev([GLib.get_user_runtime_dir(), 'app', Gio.Application.application_id, name]);
           const result = GLib.mkdir_with_parents(directoryPath, 0o755);
           if (result === 0) {
             print('Directory created:', directoryPath);
@@ -144,7 +144,7 @@ export class Store {
      }
 
      #checkDir(name, create){
-          const directoryPath = GLib.build_filenamev([GLib.get_user_config_dir(), name]);
+          const directoryPath = GLib.build_filenamev([GLib.get_user_runtime_dir(), 'app', Gio.Application.application_id, name]);
           if (!GLib.file_test(directoryPath, GLib.FileTest.EXISTS)) {
             if(create){
                this.#mkdir("io.github.adenlall.salatok-gtk");
@@ -155,7 +155,7 @@ export class Store {
           }
      }
      #cleanDir(name){
-     	let dir = Gio.File.new_for_path(GLib.build_filenamev([GLib.get_home_dir(), ".local", "share", name, "io.github.adenlall.salatok-gtk"]));
+     	let dir = Gio.File.new_for_path(GLib.build_filenamev([GLib.get_user_runtime_dir(), 'app', Gio.Application.application_id, name]));
         let fileEnum;
         try {
             fileEnum = dir.enumerate_children('standard::name,standard::type',
@@ -173,7 +173,7 @@ export class Store {
      #checkDirDir(name, create){
           let temp = "";
           for(let i=0; i<=name.length; i++){
-               const directoryPath = GLib.build_filenamev([GLib.get_home_dir(), temp]);
+               const directoryPath = GLib.build_filenamev([GLib.get_user_runtime_dir(), 'app', Gio.Application.application_id, temp]);
                if (!GLib.file_test(directoryPath, GLib.FileTest.EXISTS)) {
                  if(create){
                     this.#mkfontdir(temp);
@@ -183,7 +183,7 @@ export class Store {
           }
      }
      #mkfontdir(name){
-          const directoryPath = GLib.build_filenamev([GLib.get_home_dir(), name]);
+          const directoryPath = GLib.build_filenamev([GLib.get_user_runtime_dir(), 'app', Gio.Application.application_id, name]);
           const result = GLib.mkdir_with_parents(directoryPath, 0o755);
           if (result === 0) {
             print('Directory created:', directoryPath);
@@ -194,8 +194,8 @@ export class Store {
           }
      }
      #write_File_to_local_dir(GFile, file){
-          this.#checkDirDir([".local","share","quran", "io.github.adenlall.salatok-gtk"], true);
-          let dist = Gio.File.new_for_path(GLib.build_filenamev([GLib.get_home_dir(), ".local", "share", "quran", "io.github.adenlall.salatok-gtk", file]));
+          this.#checkDirDir([GLib.get_user_runtime_dir(), 'app', Gio.Application.application_id, 'quran',], true);
+          let dist = Gio.File.new_for_path(GLib.build_filenamev([GLib.get_user_runtime_dir(), 'app', Gio.Application.application_id, 'quran', file]));
           GFile.copy(dist, Gio.FileCopyFlags.OVERWRITE, null, null);
      }
      #getExtension(str){
