@@ -1,4 +1,4 @@
-<img width="200" alt="io.github.adenlall.salatok-gtk logo" src="/data/icons/io.github.adenlall.salatok-gtk.svg">
+<img width="200" alt="com.github.adenlall.salatok-gtk logo" src="/data/icons/com.github.adenlall.salatok-gtk.svg">
 
 <a href="https://www.linux.org/" title="Go to Linux homepage"><img src="https://img.shields.io/badge/OS-Linux-blue?logo=linux&logoColor=white" alt="OS - Linux"></a> <a href="https://www.javascript.com/" title="Go to JavaScript homepage"><img src="https://img.shields.io/badge/Made_with-JavaScript-blue?logo=javascript&logoColor=white" alt="Made with JavaScript"></a> <img src="https://img.shields.io/badge/maintained-yes-blue" alt="maintained - yes"> <img alt="GitHub User's stars" src="https://img.shields.io/github/stars/adenlall">
 
