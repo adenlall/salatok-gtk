@@ -15,7 +15,7 @@ export class Data {
           	force:false,
           	appversion: "master",
           	reset: false,
-            showborder: true,
+            showborder: false,
             firsttime: true,
           },
           enabled: [

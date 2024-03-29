@@ -1,0 +1,27 @@
+{
+  "name": "salatok",
+  "version": "1.0.0",
+  "main": "src/main.ts",
+  "repository": "git@gitlab.gnome.org:World/salatok.git",
+  "contributors": [
+    "Meg Ford <medford@gnome.org>",
+    "Bilal Elmoussaoui <bil.elmoussaoui@gmail.com>",
+    "Felipe Borges <felipeborges@gnome.org>",
+    "Kavan Mevada <kavanmevada@gmail.com>",
+    "Christopher Davis <christopherdavis@gnome.org>"
+  ],
+  "license": "GPL-3.0-or-later",
+  "dependencies": {
+    "typescript": "^5.3.3"
+  },
+  "devDependencies": {
+    "@typescript-eslint/eslint-plugin": "^6.18.1",
+    "@typescript-eslint/parser": "^6.18.1",
+    "eslint": "^8.56.0",
+    "eslint-config-prettier": "^9.1.0",
+    "eslint-plugin-prettier": "^5.1.2"
+  },
+  "scripts": {
+    "typecheck": "tsc --strict"
+  }
+}

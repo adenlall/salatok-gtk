@@ -1,10 +1,10 @@
 # Configure the entry point
 configure_file(
-	input : APP_ID + '.js',
-	output : APP_ID,
+	input : application_id + '.js',
+	output : application_id,
 	configuration: {
 		'GJS': find_program('gjs').full_path(),
-		'PACKAGE_NAME': APP_ID,
+		'PACKAGE_NAME': application_id,
 		'PACKAGE_VERSION': meson.project_version(),
 		'PREFIX': get_option('prefix'),
 		'LIBDIR': get_option('prefix') / get_option('libdir')
@@ -15,9 +15,9 @@ configure_file(
 
 # Compile the resources
 app_resource = gnome.compile_resources(
-	APP_ID + '.src',
-	APP_ID + '.src.gresource.xml',
+	application_id + '.src',
+	application_id + '.src.gresource.xml',
 	gresource_bundle: true,
 	install: true,
-	install_dir : get_option('datadir') / APP_ID
+	install_dir : get_option('datadir') / application_id
 )

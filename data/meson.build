@@ -1,40 +1,44 @@
 # Compile the resources
 gnome.compile_resources(
-	APP_ID + '.data',
-	APP_ID + '.data.gresource.xml',
+	application_id + '.data',
+	application_id + '.data.gresource.xml',
 	gresource_bundle: true,
 	install: true,
-	install_dir: get_option('datadir') / APP_ID
+	install_dir: get_option('datadir') / application_id
 )
 
 # Install the settings schema
 install_data(
-	APP_ID + '.gschema.xml',
+	application_id + '.gschema.xml',
 	install_dir: get_option('datadir') / 'glib-2.0' / 'schemas'
 )
 
 # Install the application icons
+icon_dir = 'icons' / 'hicolor' / 'scalable' / 'apps'
 install_data(
-	'icons' / APP_ID + '.svg',
-	install_dir: get_option('datadir') / 'icons' / 'hicolor' / 'scalable' / 'apps'
+  'icons' / '@0@.svg'.format(application_id),
+  install_dir:  salatok_datadir / icon_dir
 )
+icon_dir = 'icons' / 'hicolor' / 'symbolic' / 'apps'
 install_data(
-	'icons' / APP_ID + '.symbolic.svg',
-	install_dir: get_option('datadir') / 'icons' / 'hicolor' / 'symbolic' / 'apps'
+  'icons' / 'com.github.adenlall.salatok-gtk.svg',
+  rename: '@0@-symbolic.svg'.format(application_id),
+  install_dir: salatok_datadir / icon_dir
 )
+
 
 # Translate and install the desktop file
 i18n.merge_file(
 	type: 'desktop',
 	input: configure_file(
-		input: APP_ID + '.desktop',
-		output: APP_ID + '.desktop.in',
+		input: application_id + '.desktop',
+		output: application_id + '.desktop.in',
 		configuration: {
-			'APP_ID': APP_ID,
+			'APP_ID': application_id,
 			'BINDIR': get_option('prefix') / get_option('bindir')
 		}
 	),
-	output: APP_ID + '.desktop',
+	output: application_id + '.desktop',
 	po_dir: meson.project_source_root() / 'po',
 	install: true,
 	install_dir: get_option('datadir') / 'applications'
@@ -42,10 +46,10 @@ i18n.merge_file(
 
 # Install the D-Bus service file
 configure_file(
-	input: APP_ID + '.service',
-	output: APP_ID + '.service',
+	input: application_id + '.service',
+	output: application_id + '.service',
 	configuration: {
-		'APP_ID': APP_ID,
+		'APP_ID': application_id,
 		'BINDIR': get_option('prefix') / get_option('bindir')
 	},
 	install: true,
@@ -55,13 +59,13 @@ configure_file(
 # Translate and install the AppStream metadata
 i18n.merge_file(
 	input: configure_file(
-		input: APP_ID + '.appdata.xml',
-		output: APP_ID + '.appdata.xml.in',
+		input: application_id + '.appdata.xml',
+		output: application_id + '.appdata.xml.in',
 		configuration: {
-			'APP_ID': APP_ID,
+			'APP_ID': application_id,
 		}
 	),
-	output: APP_ID + '.appdata.xml',
+	output: application_id + '.appdata.xml',
 	type: 'xml',
 	po_dir: meson.project_source_root() / 'po',
 	install: true,
