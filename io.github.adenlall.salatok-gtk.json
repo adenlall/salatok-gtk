@@ -1,13 +1,13 @@
 {
-    "id" : "com.github.adenlall.salatok-gtk",
+    "id" : "io.github.adenlall.salatok-gtk",
     "runtime" : "org.gnome.Platform",
-    "runtime-version" : "master",
+    "runtime-version" : "45",
     "sdk" : "org.gnome.Sdk",
     "sdk-extensions" : [
         "org.freedesktop.Sdk.Extension.node18",
         "org.freedesktop.Sdk.Extension.typescript"
     ],
-    "command" : "com.github.adenlall.salatok-gtk",
+    "command" : "io.github.adenlall.salatok-gtk",
     "tags" : [
         "nightly"
     ],
@@ -18,17 +18,16 @@
         "--socket=wayland",
         "--socket=pulseaudio"
     ],
-    "modules" : [
+    "modules": [
         {
-            "name" : "salatok",
-            "buildsystem" : "meson",
-            "config-opts" : [
-            	"-Dprofile=development"
-            ],
-            "sources" : [
+            "name": "salatok",
+            "builddir": true,
+            "buildsystem": "meson",
+            "sources": [
                 {
-                    "type" : "git",
-                    "url" : "https://github.com/adenlall/salatok-gtk.git"
+                    "type": "git",
+                    "url": "https://github.com/adenlall/salatok-gtk.git",
+                    "commit": "d8ea63f32c2d644ae909fb463897b11cf1e709d5"
                 }
             ]
         }

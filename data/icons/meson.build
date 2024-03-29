@@ -1,4 +1,4 @@
-application_id = 'com.github.adenlall.salatok-gtk'
+application_id = 'io.github.adenlall.salatok-gtk'
 
 scalable_dir = join_paths('scalable')
 install_data(

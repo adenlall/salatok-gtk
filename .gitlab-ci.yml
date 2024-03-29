@@ -5,11 +5,11 @@ include:
 variables:
     GIT_SUBMODULE_STRATEGY: recursive
     GIT_SUBMODULE_DEPTH: 1
-    MANIFEST_PATH: "com.github.adenlall.salatok-gtk.json"
+    MANIFEST_PATH: "io.github.adenlall.salatok-gtk.json"
     BUNDLE: "salatok.flatpak"
     FLATPAK_MODULE: "salatok"
     RUNTIME_REPO: "https://nightly.gnome.org/gnome-nightly.flatpakrepo"
-    APP_ID: "com.github.adenlall.salatok-gtk"
+    APP_ID: "io.github.adenlall.salatok-gtk"
 
 flatpak:
   extends: '.flatpak@x86_64'

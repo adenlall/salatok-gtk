@@ -21,7 +21,7 @@ install_data(
 )
 icon_dir = 'icons' / 'hicolor' / 'symbolic' / 'apps'
 install_data(
-  'icons' / 'com.github.adenlall.salatok-gtk.svg',
+  'icons' / 'io.github.adenlall.salatok-gtk.svg',
   rename: '@0@-symbolic.svg'.format(application_id),
   install_dir: salatok_datadir / icon_dir
 )

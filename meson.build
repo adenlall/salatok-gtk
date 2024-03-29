@@ -21,7 +21,7 @@ else
   version_suffix = ''
 endif
 
-application_id = 'com.github.adenlall.salatok-gtk@0@'.format(profile)
+application_id = 'io.github.adenlall.salatok-gtk@0@'.format(profile)
 
 gettext_package = application_id
 salatok_prefix = get_option('prefix')

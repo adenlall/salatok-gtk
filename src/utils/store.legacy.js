@@ -44,7 +44,7 @@ export class Store {
         this.#installQuran();
         this.#installFonts();
         let data = new Data();
-        this.write("user.json", "com.github.adenlall.salatok-gtk", {
+        this.write("user.json", "io.github.adenlall.salatok-gtk", {
             config: data.config,
             method: data.method,
             adjusting: data.adjusting,
@@ -115,12 +115,12 @@ export class Store {
             fileEnum = null;
         }
         if (fileEnum != null) {
-            this.#checkDirDir([".local", "share", "fonts", "com.github.adenlall.salatok-gtk"], true);
+            this.#checkDirDir([".local", "share", "fonts", "io.github.adenlall.salatok-gtk"], true);
             let info;
             while (info = fileEnum.next_file(null)) {
                 if (this.#getExtension(info.get_display_name()) === "ttf" || this.#getExtension(info.get_display_name()) === "otf") {
                     let ff = Gio.File.new_for_uri("resource:///io/github/adenlall/salatok-gtk/fonts/" + info.get_display_name());
-                    let dist = Gio.File.new_for_path(GLib.build_filenamev([GLib.get_home_dir(), ".local", "share", "fonts", "com.github.adenlall.salatok-gtk", info.get_display_name()]));
+                    let dist = Gio.File.new_for_path(GLib.build_filenamev([GLib.get_home_dir(), ".local", "share", "fonts", "io.github.adenlall.salatok-gtk", info.get_display_name()]));
                     ff.copy(dist, Gio.FileCopyFlags.OVERWRITE, null, null);
                 }
             }
@@ -142,7 +142,7 @@ export class Store {
         const directoryPath = GLib.build_filenamev([GLib.get_user_config_dir(), name]);
         if (!GLib.file_test(directoryPath, GLib.FileTest.EXISTS)) {
             if (create) {
-                this.#mkdir("com.github.adenlall.salatok-gtk");
+                this.#mkdir("io.github.adenlall.salatok-gtk");
             }
             return false;
         } else {
@@ -150,7 +150,7 @@ export class Store {
         }
     }
     #cleanDir(name) {
-        let dir = Gio.File.new_for_path(GLib.build_filenamev([GLib.get_home_dir(), ".local", "share", name, "com.github.adenlall.salatok-gtk"]));
+        let dir = Gio.File.new_for_path(GLib.build_filenamev([GLib.get_home_dir(), ".local", "share", name, "io.github.adenlall.salatok-gtk"]));
         let fileEnum;
         try {
             fileEnum = dir.enumerate_children('standard::name,standard::type',

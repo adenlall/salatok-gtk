@@ -108,7 +108,7 @@ export const Window = GObject.registerClass({
             comments: "get muslims pray times and Quran reader",
             copyright: 'Copyright 2023 adenlall, <adenlall@skiff.com>',
             license_type: Gtk.License.GPL_3_0,
-            logo_icon_name: 'com.github.adenlall.salatok-gtk.gnome',
+            logo_icon_name: 'io.github.adenlall.salatok-gtk.gnome',
             version: pkg.version,
             website: 'http://salatok.vercel.app/',
             website_label: 'salatok website',
