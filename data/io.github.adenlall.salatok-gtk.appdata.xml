@@ -5,45 +5,55 @@
 
   <id>@APP_ID@</id>
 
-	<name>Salatok App</name>
-     <name xml:lang="ar">مواقيت صلاة المسلم</name>
-	<summary>Get salat ( prayer ) timing with Quran reader and reciter intergated</summary>
-	<summary xml:lang="ar">الاطلاع على مواقيت الصلاة بدون حاجة للاتصال بالانترنت وكدلك قراءة القرأن</summary>
-	<description>
-		<p>A privacy-first application designed for simplicity as well as full featured controls over the </p>
-	</description>
+  <name>Salatok App</name>
+  <name xml:lang="ar">مواقيت صلاة المسلم</name>
+  <summary>Gnome muslim salat ( prayer ) times and quran reader app.</summary>
+  <summary xml:lang="ar">الاطلاع على مواقيت الصلاة بدون حاجة للاتصال بالانترنت وكدلك قراءة القرأن</summary>
+  <description>
+    <p>A customization-first application designed for simplicity.</p>
+  </description>
 
-     <metadata_license>CC-BY-3.0</metadata_license>
-     <project_license>GPL-3.0+</project_license>
-     <kudos>
-          <kudo>HiDpiIcon</kudo>
-          <kudo>HighContrast</kudo>
-          <kudo>ModernToolkit</kudo>
-          <kudo>SearchProvider</kudo>
-     </kudos>
+  <metadata_license>CC-BY-3.0</metadata_license>
+  <project_license>GPL-3.0+</project_license>
+  <kudos>
+    <kudo>HiDpiIcon</kudo>
+    <kudo>HighContrast</kudo>
+    <kudo>ModernToolkit</kudo>
+    <kudo>SearchProvider</kudo>
+  </kudos>
 
-     <update_contact>https://github.com/adenlall/salatok-gtk/issues</update_contact>
-     <content_rating type="oars-1.1"/>
+  <update_contact>https://github.com/adenlall/salatok-gtk/issues</update_contact>
+  <content_rating type="oars-1.1"/>
+  
+  <branding>
+    <color type="primary" scheme_preference="light">#3db5ad</color>
+    <color type="primary" scheme_preference="dark">#3db5ad</color>
+  </branding>
 
-  <project_group>GNOME</project_group>
   <screenshots>
     <screenshot type="default">
       <image>https://adenlall.vercel.app/screenshot1.png</image>
+      <caption>screenshot 1</caption>
     </screenshot>
     <screenshot>
       <image>https://adenlall.vercel.app/screenshot2.png</image>
+      <caption>screenshot 2</caption>
     </screenshot>
     <screenshot>
       <image>https://adenlall.vercel.app/screenshot3.png</image>
+      <caption>screenshot 3</caption>
     </screenshot>
     <screenshot>
       <image>https://adenlall.vercel.app/screenshot4.png</image>
+      <caption>screenshot 4</caption>
     </screenshot>
     <screenshot>
       <image>https://adenlall.vercel.app/screenshot5.png</image>
+      <caption>screenshot 5</caption>
     </screenshot>
     <screenshot>
       <image>https://adenlall.vercel.app/screenshot6.png</image>
+      <caption>screenshot 6</caption>
     </screenshot>
   </screenshots>
   <launchable type="desktop-id">@APP_ID@.desktop</launchable>
@@ -53,27 +63,21 @@
   <url type="donation">https://ko-fi.com/adenlall</url>
   <releases>
     <release date="2023-07-28" version="1.0.0">
-      <p>First stable release with major bug fixes :</p>
-      <ul>
-        <li>the app now can remember your selected Quran translation.
+      <url type="details">https://github.com/adenlall/salatok-gtk/releases/tag/v1.0.0</url>
+      <description>
+        <p>First stable release with major bug fixes :</p>
+        <ul>
+          <li>the app now can remember your selected Quran translation.
   so you don't need to re select your language every time you launch the </li>
-        <li>fix cache issues.</li>
-        <li> fix salat countdown issues.</li>
-      </ul>
-      <p>It also comes with more Quran translations:</p>
-      <ul>
-        <li>Japanese</li>
-        <li>Korean</li>
-        <li>Urdu</li>
-        <li>Italian</li>
-        <li>French</li>
-      </ul>
-    </release>
-   </releases>
+          <li>fix cache issues.</li>
+          <li> fix salat countdown issues.</li>
+        </ul>
+      </release>
+    </description>
+  </releases>
 
   <custom>
     <value key="Purism::form_factor">workstation</value>
-    <value key="Purism::form_factor">mobile</value>
   </custom>
 </component>
 
