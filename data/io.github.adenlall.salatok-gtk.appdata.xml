@@ -24,7 +24,7 @@
 
   <update_contact>https://github.com/adenlall/salatok-gtk/issues</update_contact>
   <content_rating type="oars-1.1"/>
-  
+
   <branding>
     <color type="primary" scheme_preference="light">#3db5ad</color>
     <color type="primary" scheme_preference="dark">#3db5ad</color>
@@ -72,13 +72,14 @@
           <li>fix cache issues.</li>
           <li> fix salat countdown issues.</li>
         </ul>
-      </release>
-    </description>
+      </description>
+    </release>
   </releases>
 
   <custom>
     <value key="Purism::form_factor">workstation</value>
   </custom>
+
 </component>
 
 
