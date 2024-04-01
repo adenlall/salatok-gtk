@@ -103,10 +103,10 @@ export const Window = GObject.registerClass({
   _about(){
         let aboutDialog = new Gtk.AboutDialog({
             program_name: "Salatok App",
-        	artists: ['adenlall <adenlall@skiff.com>'],
-            authors: ['adenlall <adenlall@skiff.com>'],
+        	artists: ['adenlall <adenlall@proton.me>'],
+            authors: ['adenlall <adenlall@proton.me>'],
             comments: "get muslims pray times and Quran reader",
-            copyright: 'Copyright 2023 adenlall, <adenlall@skiff.com>',
+            copyright: 'Copyright 2023 adenlall, <lalladen@naver.com>',
             license_type: Gtk.License.GPL_3_0,
 
             version: pkg.version,
