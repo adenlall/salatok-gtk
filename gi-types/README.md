@@ -1,1 +1,0 @@
-# GI Typescript Definitions
