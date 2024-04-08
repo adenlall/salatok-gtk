@@ -19,13 +19,34 @@ gtk4 app for Muslims prayer times; Get salat timing at your linux desktop with f
 
 **Homepage**: https://github.com/adenlall/salatok-gtk
 
+**Web Client**: https://salatok.vercel.app
+
 **Report issues**: https://github.com/adenlall/salatok-gtk/issues/
 
 **Donate**: https://ko-fi.com/adenlall/
 
-## Installation
+## Installation :
 
-For Debian/Ubuntu :
+### Flatpak
+install it from terminal or from [flathub](https://flathub.org/apps/io.github.adenlall.salatok-gtk) 
+```python
+flatpak install flathub io.github.adenlall.salatok-gtk
+```
+then, run it with :
+```python
+flatpak run io.github.adenlall.salatok-gtk
+```
+
+### .deb package
+ download the .deb package from releases and install it from the terminal.
+         
+    sudo apt install ./salatokapp_1.1.3_all.deb
+ or open it in your software app (ex: GNOME Software)
+ 
+ this package will be available soon on Debian repos
+
+
+### Configuration for .deb package (NOT FLATPAK PACKAGE) :
 
      download the .deb package from releases and install it.
      
@@ -43,14 +64,6 @@ For Debian/Ubuntu :
                * download or copy any .ttf or otf font files into `$HOME/.local/share/fonts/io.github.adenlall.salatok-gtk/`
                - name the file like his font name plus language of the font. ex: if you have Ubuntu Font, the name should be exactly like this : Ubunutu.latin.ttf
 
-               
-For non Debian-based distros :
-
-     Until now This application is only available for the Dibian, we encourage you to package it for you distro by following the steps below :
-     
-     * clone the repo and open it with GNOME-builder and buildit from there.
-     
-     * for packaging you should folow your distro policy and guidelines.
 
 ## Hacking
 
