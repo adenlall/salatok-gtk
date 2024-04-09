@@ -1,0 +1,15 @@
+{
+  "files": {
+    "main.css": "/salatok/static/css/main.7af8215e.css",
+    "main.js": "/salatok/static/js/main.b59e2670.js",
+    "static/js/787.c51e0b28.chunk.js": "/salatok/static/js/787.c51e0b28.chunk.js",
+    "index.html": "/salatok/index.html",
+    "main.7af8215e.css.map": "/salatok/static/css/main.7af8215e.css.map",
+    "main.b59e2670.js.map": "/salatok/static/js/main.b59e2670.js.map",
+    "787.c51e0b28.chunk.js.map": "/salatok/static/js/787.c51e0b28.chunk.js.map"
+  },
+  "entrypoints": [
+    "static/css/main.7af8215e.css",
+    "static/js/main.b59e2670.js"
+  ]
+}

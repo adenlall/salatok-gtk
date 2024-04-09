@@ -1,30 +1,24 @@
-<img alt="salatok logo" src="https://salatok.vercel.app/salatokLogoWide.svg">
+# Your Favicon Package
 
-# salatok <a href="https://liberapay.com/adenlall/donate"><img alt="Donate using Liberapay" src="https://liberapay.com/assets/widgets/donate.svg"></a>
+This package was generated with [RealFaviconGenerator](https://realfavicongenerator.net/) [v0.16](https://realfavicongenerator.net/change_log#v0.16)
 
- your prayer time manager and quran player.
- **anywhere, anytime**
+## Install instructions
 
-### stable
+To install this package:
 
- - main instance: https://salatok.vercel.app ***using praytimes.org library***
- - old instance: https://salatok-git-old-adenlall.vercel.app ***using muslimsalat.com api***
+Extract this package in the root of your web site. If your site is <code>http://www.example.com</code>, you should be able to access a file named <code>http://www.example.com/favicon.ico</code>.
 
-### beta
-   where I push all the new features and bugfixes
- - https://salatok-git-beta-adenlall.vercel.app
+Insert the following code in the `head` section of your pages:
 
-## Hacking
+    <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
+    <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
+    <link rel="icon" type="image/png" sizes="194x194" href="/favicon-194x194.png">
+    <link rel="icon" type="image/png" sizes="192x192" href="/android-chrome-192x192.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png">
+    <link rel="manifest" href="/site.webmanifest">
+    <link rel="mask-icon" href="/safari-pinned-tab.svg" color="#5bbad5">
+    <meta name="msapplication-TileColor" content="#2d89ef">
+    <meta name="msapplication-TileImage" content="/mstile-144x144.png">
+    <meta name="theme-color" content="#ffffff">
 
-this app is 100% made with react and daisyui, resources:
-
-* [React official docs](https://react.dev/)
-* [DaisyUI official website](https://daisyui.com/)
-* [GNOME frontend of the app](https://github.com/adenlall/salatok-gtk)
-
-
-## License
- This app is under [GPL-v3.0](https://www.gnu.org/licenses/gpl-3.0.html)
-
-## Support the project
-<a href="https://liberapay.com/adenlall/donate"><img alt="Donate using Liberapay" src="https://liberapay.com/assets/widgets/donate.svg"></a>
+*Optional* - Check your favicon with the [favicon checker](https://realfavicongenerator.net/favicon_checker)
