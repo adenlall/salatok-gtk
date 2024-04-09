@@ -17,8 +17,6 @@ object-assign
 
 /*! For license information please see index.js.LICENSE.txt */
 
-/*! regenerator-runtime -- Copyright (c) 2014-present, Facebook, Inc. -- license (MIT): https://github.com/facebook/regenerator/blob/main/LICENSE */
-
 /**
  * @remix-run/router v1.6.2
  *
