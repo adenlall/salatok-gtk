@@ -1,10 +1,13 @@
+
 <img width="200" alt="com.github.adenlall.salatok-gtk logo" src="/data/icons/io.github.adenlall.salatok-gtk.svg">
 
-<a href="https://www.linux.org/" title="Go to Linux homepage"><img src="https://img.shields.io/badge/OS-Linux-blue?logo=linux&logoColor=white" alt="OS - Linux"></a> <a href="https://www.javascript.com/" title="Go to JavaScript homepage"><img src="https://img.shields.io/badge/Made_with-JavaScript-blue?logo=javascript&logoColor=white" alt="Made with JavaScript"></a> <img src="https://img.shields.io/badge/maintained-yes-blue" alt="maintained - yes"> <img alt="GitHub User's stars" src="https://img.shields.io/github/stars/adenlall">
+<img src="https://img.shields.io/badge/maintained-yes-blue" alt="maintained - yes"> <img alt="GitHub User's stars" src="https://img.shields.io/github/stars/adenlall">
+![Flathub Version](https://img.shields.io/flathub/v/io.github.adenlall.salatok-gtk?logo=flatpak)
+ <img alt="GitHub all releases" src="https://img.shields.io/github/downloads/adenlall/salatok-gtk/total">
 
-
-<img alt="GitHub" src="https://img.shields.io/github/license/adenlall/salatok-gtk"> <img alt="GitHub all releases" src="https://img.shields.io/github/downloads/adenlall/salatok-gtk/total">
-
+<a href='https://flathub.org/apps/org.gimp.GIMP'>
+  <img width='240' alt='Download on Flathub' src='https://flathub.org/api/badge?locale=ja'/>
+</a>
 
 # Salatokapp  <a href="https://liberapay.com/adenlall/donate"><img alt="Donate using Liberapay" src="https://liberapay.com/assets/widgets/donate.svg"></a>
 
