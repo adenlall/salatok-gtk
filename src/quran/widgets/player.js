@@ -187,7 +187,7 @@ export const QuranPlayerWidget = GObject.registerClass({
 	}
 	// Quran Verse Funcs
 	#iniQ(){
-		const Gfile = Gio.File.new_for_path(GLib.build_filenamev([GLib.get_user_config_dir(), "quran", "ar.tanzil.txt"]));
+		const Gfile = Gio.File.new_for_path(GLib.build_filenamev([GLib.get_user_config_dir(), "quran", this.s.getSetting("qlanguage_name")]));
 		Gfile.load_contents_async(null, (file, res) => {
 		  try {
 			const [, contents] = file.load_contents_finish(res);
@@ -210,6 +210,7 @@ export const QuranPlayerWidget = GObject.registerClass({
 	    return a;
 	}
 	#fineUpdate(){
+	    this.#iniQ();
 		let context = this.qplabel.get_pango_context();
 		let fd = context.get_font_description();
 		fd.set_family(this.#getValid(this.s.getSetting("fonttype_name")));

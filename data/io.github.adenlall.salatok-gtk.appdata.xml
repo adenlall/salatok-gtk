@@ -7,7 +7,7 @@
   <name>Salatok</name>
   <name xml:lang="ar">مواقيت صلاة المسلم</name>
 
-  <summary>get offline salat ( prayer ) times with quran reader and reciter app</summary>
+  <summary>keep track on your prayer times</summary>
   <summary xml:lang="ar">الاطلاع على مواقيت الصلاة بدون حاجة للاتصال بالانترنت وكدلك قراءة القرأن</summary>
   <description>
     <p>tweakable application designed for simplicity with many features :</p>
@@ -51,7 +51,7 @@
   <content_rating type="oars-1.1"/>
 
   <branding>
-    <color type="primary" scheme_preference="light">#cdf2f0</color>
+    <color type="primary" scheme_preference="light">#feb</color>
     <color type="primary" scheme_prefcdf2f0="dark">#0c1e1d</color>
   </branding>
 
@@ -116,28 +116,40 @@
 
   <screenshots>
     <screenshot type="default">
-      <image>https://adenlall.vercel.app/screenshot1.png</image>
-      <caption>screenshot 1</caption>
+      <image>https://adenlall.vercel.app/salatok-gtk/1.png</image>
+      <caption>default home screen</caption>
     </screenshot>
     <screenshot>
-      <image>https://adenlall.vercel.app/screenshot2.png</image>
-      <caption>screenshot 2</caption>
+      <image>https://adenlall.vercel.app/salatok-gtk/2.png</image>
+      <caption>all day salats times screen</caption>
     </screenshot>
     <screenshot>
-      <image>https://adenlall.vercel.app/screenshot3.png</image>
-      <caption>screenshot 3</caption>
+      <image>https://adenlall.vercel.app/salatok-gtk/3.png</image>
+      <caption>salats screen UI tweaks</caption>
     </screenshot>
     <screenshot>
-      <image>https://adenlall.vercel.app/screenshot4.png</image>
-      <caption>screenshot 4</caption>
+      <image>https://adenlall.vercel.app/salatok-gtk/4.png</image>
+      <caption>Quran reader default screen</caption>
     </screenshot>
     <screenshot>
-      <image>https://adenlall.vercel.app/screenshot5.png</image>
-      <caption>screenshot 5</caption>
+      <image>https://adenlall.vercel.app/salatok-gtk/5.png</image>
+      <caption>Quran reader with English</caption>
     </screenshot>
     <screenshot>
-      <image>https://adenlall.vercel.app/screenshot6.png</image>
-      <caption>screenshot 6</caption>
+      <image>https://adenlall.vercel.app/salatok-gtk/6.png</image>
+      <caption>Quran reader with Korean</caption>
+    </screenshot>
+    <screenshot>
+      <image>https://adenlall.vercel.app/salatok-gtk/7.png</image>
+      <caption>Quran reader with Russian</caption>
+    </screenshot>
+    <screenshot>
+      <image>https://adenlall.vercel.app/salatok-gtk/9.png</image>
+      <caption>Quran player with many reciters</caption>
+    </screenshot>
+    <screenshot>
+      <image>https://adenlall.vercel.app/salatok-gtk/10.png</image>
+      <caption>Settings screen</caption>
     </screenshot>
   </screenshots>
 

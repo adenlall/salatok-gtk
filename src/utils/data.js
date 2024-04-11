@@ -18,6 +18,7 @@ export class Data {
             ayahbetween:"{%i}",
             fonttype:3,
             showchild:1,
+            qlanguage_name:"ar.tanzil.txt"
           },
           enabled: [
 		                ['imsak' , false],
