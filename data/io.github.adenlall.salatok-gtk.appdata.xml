@@ -1,20 +1,45 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<!-- Copyright 2014 Giovanni Campagna -->
+<!-- Copyright 2024 adenlall <adenlall@proton.me> -->
 <component type="desktop">
-
 
   <id>@APP_ID@</id>
 
-  <name>Salatok App</name>
+  <name>Salatok</name>
   <name xml:lang="ar">مواقيت صلاة المسلم</name>
-  <summary>Gnome muslim salat ( prayer ) times and quran reader app.</summary>
+
+  <summary>get offline salat ( prayer ) times with quran reader and reciter app</summary>
   <summary xml:lang="ar">الاطلاع على مواقيت الصلاة بدون حاجة للاتصال بالانترنت وكدلك قراءة القرأن</summary>
   <description>
-    <p>A customization-first application designed for simplicity.</p>
+    <p>tweakable application designed for simplicity with many features :</p>
+    <ul>
+      <li>Salat times without any need for internet connection</li>
+      <li>highly customizable Salat calculation methods and adjustments</li>
+      <li>Holy Quran integration</li>
+      <li>Listen to Quran from long list of reciters</li>
+    </ul>
   </description>
 
   <metadata_license>CC-BY-3.0</metadata_license>
   <project_license>GPL-3.0+</project_license>
+
+  <categories>
+    <category>Utility</category>
+    <category>Clock</category>
+  </categories>
+
+  <keywords>
+    <keyword translate="no">salat</keyword>
+    <keyword>salat</keyword>
+    <keyword>muslim</keyword>
+    <keyword>quran</keyword>
+    <keyword xml:lang="en">Holy Quran</keyword>
+    <keyword xml:lang="ar">صلاة</keyword>
+    <keyword xml:lang="ar">القران</keyword>
+    <keyword xml:lang="ar">مواقيت الصلاة</keyword>
+    <keyword xml:lang="fr">Horaires de prière</keyword>
+    <keyword xml:lang="de">Gebetszeiten</keyword>
+  </keywords>
+
   <kudos>
     <kudo>HiDpiIcon</kudo>
     <kudo>HighContrast</kudo>
@@ -26,9 +51,68 @@
   <content_rating type="oars-1.1"/>
 
   <branding>
-    <color type="primary" scheme_preference="light">#3db5ad</color>
-    <color type="primary" scheme_preference="dark">#3db5ad</color>
+    <color type="primary" scheme_preference="light">#cdf2f0</color>
+    <color type="primary" scheme_prefcdf2f0="dark">#0c1e1d</color>
   </branding>
+
+  <developer id="io.github.adenlall">
+      <name>adenlall</name>
+      <url>https://github.com/adenlall</url>
+  </developer>
+
+  <launchable type="desktop-id">@APP_ID@.desktop</launchable>
+  <url type="homepage">https://github.com/adenlall/salatok-gtk</url>
+  <url type="bugtracker">https://github.com/adenlall/salatok-gtk/issues</url>
+  <url type="contribute">https://github.com/adenlall/salatok-gtk/pulls</url>
+  <url type="contact">https://github.com/adenlall/issues</url>
+  <url type="donation">https://liberapay.com/adenlall</url>
+
+  <releases>
+    <release date="2024-03-28" type="stable" urgency="high" version="1.1.3">
+      <url type="details">https://github.com/adenlall/salatok-gtk/releases/tag/v1.1.3</url>
+      <description>
+        <p>
+          major improvements on Quran reader UI and new Quran player and many more features
+        </p>
+        <ul>
+          <li>new Quran player</li>
+          <li>
+            the app now can remember your selected Quran surah (chapter) and current  (verse).
+          </li>
+          <li>
+            fix cache issues when selecting surah number.
+          </li>
+          <li>
+            you can select what to put between verses.
+          </li>
+          <li>
+            you can select text indent length.
+          </li>
+          <li>
+            you can select justify type.
+          </li>
+        </ul>
+      </description>
+    </release>
+    <release date="2023-07-28" type="development" version="1.0.0">
+      <url type="details">https://github.com/adenlall/salatok-gtk/releases/tag/v1.0.0</url>
+      <description>
+        <p>First stable release with major bug fixes :</p>
+        <ul>
+          <li>the app now can remember your selected Quran translation.
+  so you don't need to re select your language every time you launch the </li>
+          <li>fix cache issues.</li>
+          <li> fix salat countdown issues.</li>
+        </ul>
+      </description>
+    </release>
+  </releases>
+
+
+  <custom>
+    <value key="Purism::form_factor">workstation</value>
+  </custom>
+
 
   <screenshots>
     <screenshot type="default">
@@ -56,30 +140,6 @@
       <caption>screenshot 6</caption>
     </screenshot>
   </screenshots>
-  <launchable type="desktop-id">@APP_ID@.desktop</launchable>
-  <developer_name>adenlall</developer_name>
-  <url type="homepage">https://github.com/adenlall/salatok-gtk</url>
-  <url type="bugtracker">https://github.com/adenlall/salatok-gtk/issues</url>
-  <url type="donation">https://ko-fi.com/adenlall</url>
-  <releases>
-    <release date="2023-07-28" version="1.0.0">
-      <url type="details">https://github.com/adenlall/salatok-gtk/releases/tag/v1.0.0</url>
-      <description>
-        <p>First stable release with major bug fixes :</p>
-        <ul>
-          <li>the app now can remember your selected Quran translation.
-  so you don't need to re select your language every time you launch the </li>
-          <li>fix cache issues.</li>
-          <li> fix salat countdown issues.</li>
-        </ul>
-      </description>
-    </release>
-  </releases>
 
-  <custom>
-    <value key="Purism::form_factor">workstation</value>
-  </custom>
 
 </component>
-
-

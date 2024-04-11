@@ -1,12 +1,9 @@
-
 export class Data {
 
-
-    /*   Default Data for ini     */
      config = {
-          coordinates: ["32.6507792","-8.4242087"],
-          city: "Sidi Bennour",
-          country: "MOROCCO",
+          coordinates: ["51.50853","-0.12574"],
+          city: "London",
+          country: "UK",
           timezone: 0,
           check_timezone: false,
           dst: "auto",
@@ -17,6 +14,10 @@ export class Data {
           	reset: false,
             showborder: false,
             firsttime: true,
+            fontsize:23,
+            ayahbetween:"{%i}",
+            fonttype:3,
+            showchild:1,
           },
           enabled: [
 		                ['imsak' , false],
