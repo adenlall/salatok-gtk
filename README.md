@@ -5,7 +5,7 @@
 ![Flathub Version](https://img.shields.io/flathub/v/io.github.adenlall.salatok-gtk?logo=flatpak)
  <img alt="GitHub all releases" src="https://img.shields.io/github/downloads/adenlall/salatok-gtk/total">
 
-<a href='https://flathub.org/apps/org.gimp.GIMP'>
+<a href='https://flathub.org/apps/io.github.adenlall.salatok-gtk'>
   <img width='240' alt='Download on Flathub' src='https://flathub.org/api/badge?locale=ja'/>
 </a>
 
