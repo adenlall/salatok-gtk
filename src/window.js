@@ -101,6 +101,7 @@ export const Window = GObject.registerClass({
 	
 	
   _about(){
+
         let aboutDialog = new Gtk.AboutDialog({
             program_name: "Salatok App",
         	artists: ['adenlall <adenlall@proton.me>'],
