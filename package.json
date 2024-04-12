@@ -1,14 +1,10 @@
 {
   "name": "salatok",
-  "version": "1.0.0",
+  "version": "1.1.31",
   "main": "src/main.ts",
-  "repository": "git@gitlab.gnome.org:World/salatok.git",
+  "repository": "git@github.com:adenlall/salatok-gtk.git",
   "contributors": [
-    "Meg Ford <medford@gnome.org>",
-    "Bilal Elmoussaoui <bil.elmoussaoui@gmail.com>",
-    "Felipe Borges <felipeborges@gnome.org>",
-    "Kavan Mevada <kavanmevada@gmail.com>",
-    "Christopher Davis <christopherdavis@gnome.org>"
+    "adenlall <adenlall@proton.me>"
   ],
   "license": "GPL-3.0-or-later",
   "dependencies": {
