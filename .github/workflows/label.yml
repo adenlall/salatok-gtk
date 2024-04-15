@@ -28,10 +28,5 @@ jobs:
         mode: exactly
         count: 0
         labels: "buggy, awaiting, cannot merge"
-    - uses: mheap/github-action-required-labels@v5
-      with:
-        mode: exactly
-        count: 1
-        applied: "cannot merge"
         add_comment: true
         message: "This PR is being prevented from merging because you have added one of our blocking labels: {{ provided }}. You'll need to remove it before this PR can be merged."
