@@ -13,19 +13,6 @@ install_data(
 	install_dir: get_option('datadir') / 'glib-2.0' / 'schemas'
 )
 
-# Install the application icons
-icon_dir = 'icons' / 'hicolor' / 'scalable' / 'apps'
-install_data(
-  'icons' / '@0@.svg'.format(application_id),
-  install_dir:  salatok_datadir / icon_dir
-)
-icon_dir = 'icons' / 'hicolor' / 'symbolic' / 'apps'
-install_data(
-  'icons' / '@0@.svg'.format(application_id),
-  install_dir:  salatok_datadir / icon_dir
-)
-
-
 # Translate and install the desktop file
 i18n.merge_file(
 	type: 'desktop',

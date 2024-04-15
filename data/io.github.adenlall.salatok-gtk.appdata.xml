@@ -7,7 +7,7 @@
   <name>Salatok</name>
   <name xml:lang="ar">مواقيت صلاة المسلم</name>
 
-  <summary>view all day prayer times</summary>
+  <summary>Get all day prayer times</summary>
   <summary xml:lang="ar">الاطلاع على مواقيت الصلاة بدون حاجة للاتصال بالانترنت وكدلك قراءة القرأن</summary>
   <description>
     <p>tweakable application designed for simplicity with many features :</p>
@@ -51,8 +51,8 @@
   <content_rating type="oars-1.1"/>
 
   <branding>
-    <color type="primary" scheme_preference="light">#ffedb9</color>
-    <color type="primary" scheme_prefcdf2f0="dark">#0c1e1d</color>
+    <color type="primary" scheme_preference="light">#fbe533</color>
+    <color type="primary" scheme_prefcdf2f0="dark">#2d594f</color>
   </branding>
 
   <developer id="io.github.adenlall">

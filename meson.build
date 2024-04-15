@@ -1,5 +1,5 @@
 project(
-  'salatok',
+  'io.github.adenlall.salatok-gtk',
   version: '1.1.31',
   license: 'GPL2+',
   meson_version: '>= 0.63.0',
@@ -21,7 +21,7 @@ else
   version_suffix = ''
 endif
 
-application_id = 'io.github.adenlall.salatok-gtk@0@'.format(profile)
+application_id = 'io.github.adenlall.salatok-gtk'
 
 gettext_package = application_id
 salatok_prefix = get_option('prefix')
