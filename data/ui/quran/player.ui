@@ -55,6 +55,100 @@
                   </object>
                 </child>
 
+                <child>
+                  <object class="GtkBox">
+                  <property name="halign">end</property>
+                    <child>
+                      <object class="GtkComboBoxText" id="reciteriu">
+                         <items>
+                           <item id="AbdulSamad_64kbps_QuranExplorer.Com">Abdul Basit Abdul Samad </item>
+                            <item id="Abdul_Basit_Mujawwad_128kbps">Abdul Basit Mujawwad </item>
+                            <item id="Abdul_Basit_Murattal_192kbps">Abdul Basit Murattal </item>
+                            <item id="Abdul_Basit_Murattal_64kbps">Abdul Basit Murattal </item>
+                            <item id="Abdullaah_3awwaad_Al-Juhaynee_128kbps">Abdullaah Awaad Al-Juhaynee </item>
+                            <item id="Abdullah_Basfar_192kbps">Abdullah Basfar </item>
+                            <item id="Abdullah_Basfar_32kbps">Abdullah Basfar </item>
+                            <item id="Abdullah_Basfar_64kbps">Abdullah Basfar </item>
+                            <item id="Abdullah_Matroud_128kbps">Abdullah Matroud </item>
+                            <item id="Abdurrahmaan_As-Sudais_192kbps">Abdurrahmaan As-Sudais </item>
+                            <item id="Abdurrahmaan_As-Sudais_64kbps">Abdurrahmaan As-Sudais </item>
+                            <item id="Abu_Bakr_Ash-Shaatree_128kbps">Abu Bakr Ash-Shaatree </item>
+                            <item id="Abu_Bakr_Ash-Shaatree_64kbps">Abu Bakr_Ash-Shaatree </item>
+                            <item id="Ahmed_Neana_128kbps">Ahmed Neana </item>
+                            <item id="Ahmed_ibn_Ali_al-Ajamy_128kbps_ketaballah.net">Ahmed Ibn Ali Al-Ajamy </item>
+                            <item id="Ahmed_ibn_Ali_al-Ajamy_64kbps_QuranExplorer.Com">Ahmed Ibn Ali Al-Ajamy </item>
+                            <item id="Akram_AlAlaqimy_128kbps">Akram AlAlaqimy </item>
+                            <item id="Alafasy_128kbps">Alafasy </item>
+                            <item id="Alafasy_64kbps">Alafasy </item>
+                            <item id="Ali_Hajjaj_AlSuesy_128kbps">Ali Hajjaj AlSuesy </item>
+                            <item id="Ali_Jaber_64kbps">Ali Jaber </item>
+                            <item id="Ayman_Sowaid_64kbps">Ayman Sowaid </item>
+                            <item id="English/Sahih_Intnl_Ibrahim_Walk_192kbps">Sahih Ibrahim - English </item>
+                            <item id="Fares_Abbad_64kbps">Fares Abbad </item>
+                            <item id="Ghamadi_40kbps">Ghamadi </item>
+                            <item id="Hani_Rifai_192kbps">Hani Rifai </item>
+                            <item id="Hani_Rifai_64kbps">Hani Rifai </item>
+                            <item id="Hudhaify_128kbps">Hudhaify </item>
+                            <item id="Hudhaify_32kbps">Hudhaify </item>
+                            <item id="Hudhaify_64kbps">Hudhaify </item>
+                            <item id="Husary_128kbps">Al Husary </item>
+                            <item id="Husary_128kbps_Mujawwad">Al Husary - Mujawwad </item>
+                            <item id="Husary_64kbps">Al Husary </item>
+                            <item id="Husary_Muallim_128kbps">Al Husary - Muallim </item>
+                            <item id="Husary_Mujawwad_64kbps">Al Husary - Mujawwad </item>
+                            <item id="Ibrahim_Akhdar_32kbps">Ibrahim Akhdar </item>
+                            <item id="Ibrahim_Akhdar_64kbps">Ibrahim Akhdar </item>
+                            <item id="Karim_Mansoori_40kbps">Karim Mansoori </item>
+                            <item id="Khaalid_Abdullaah_al-Qahtaanee_192kbps">Khaalid Abdullaah Al-Qahtaanee </item>
+                            <item id="MaherAlMuaiqly128kbps">Maher AlMuaiqly </item>
+                            <item id="Maher_AlMuaiqly_64kbps">Maher AlMuaiqly </item>
+                            <item id="Menshawi_16kbps">Al Menshawi </item>
+                            <item id="Menshawi_32kbps">Al Menshawi </item>
+                            <item id="Minshawy_Mujawwad_192kbps">Al Minshawy - Mujawwad </item>
+                            <item id="Minshawy_Mujawwad_64kbps">Al Minshawy - Mujawwad </item>
+                            <item id="Minshawy_Murattal_128kbps">Al Minshawy - Murattal </item>
+                            <item id="Mohammad_al_Tablaway_128kbps">Mohammad Al Tablaway </item>
+                            <item id="Mohammad_al_Tablaway_64kbps">Mohammad Al Tablaway </item>
+                            <item id="Muhammad_AbdulKareem_128kbps">Muhammad AbdulKareem </item>
+                            <item id="Muhammad_Ayyoub_128kbps">Muhammad Ayyoub </item>
+                            <item id="Muhammad_Ayyoub_32kbps">Muhammad Ayyoub </item>
+                            <item id="Muhammad_Ayyoub_64kbps">Muhammad Ayyoub </item>
+                            <item id="Muhammad_Jibreel_128kbps">Muhammad Jibreel </item>
+                            <item id="Muhammad_Jibreel_64kbps">Muhammad Jibreel </item>
+                            <item id="Muhsin_Al_Qasim_192kbps">Muhsin Al Qasim </item>
+                            <item id="MultiLanguage/Basfar_Walk_192kbps">Basfar - MultiLanguage </item>
+                            <item id="Mustafa_Ismail_48kbps">Mustafa Ismail </item>
+                            <item id="Nabil_Rifa3i_48kbps">Nabil Rifa3i </item>
+                            <item id="Nasser_Alqatami_128kbps">Nasser Alqatami </item>
+                            <item id="Parhizgar_48kbps">Parhizgar </item>
+                            <item id="Sahl_Yassin_128kbps">Sahl Yassin </item>
+                            <item id="Salaah_AbdulRahman_Bukhatir_128kbps">Salaah AbdulRahman Bukhatir </item>
+                            <item id="Salah_Al_Budair_128kbps">Salah Al Budair </item>
+                            <item id="Shuraym_128kbps">Saood Ash-Shuraym </item>
+                            <item id="Shuraym_64kbps">Saood Ash-Shuraym </item>
+                            <item id="Yaser_Salamah_128kbps">Yaser Salamah </item>
+                            <item id="Dussary_128kbps">Yasser Ad-Dussary </item>
+                            <item id="ahmed_ibn_ali_al_ajamy_128kbps">Ahmed Ibn Ali Al-Ajamy </item>
+                            <item id="aziz_alili_128kbps">Aziz Alili </item>
+                            <item id="khalefa_al_tunaiji_64kbps">Khalefa Al Tunaiji </item>
+                            <item id="mahmoud_ali_al_banna_32kbps">Mahmoud Ali Al Banna </item>
+                            <item id="translations/Fooladvand_Hedayatfar_40Kbps">Hedayatfar - with translations by Fooladvand </item>
+                            <item id="translations/Makarem_Kabiri_16Kbps">Makarem Kabiri - with translations </item>
+                            <item id="translations/azerbaijani/balayev">Balayev - with azerbaijani translations </item>
+                            <item id="translations/besim_korkut_ajet_po_ajet">Besim Korkut - with translations </item>
+                            <item id="translations/urdu_farhat_hashmi">Farhat Hashmi - with Urdu translations </item>
+                            <item id="translations/urdu_shamshad_ali_khan_46kbps">Shamshad Ali Khan - with Urdu translations </item>
+                            <item id="warsh/warsh_Abdul_Basit_128kbps">Abdul Basit - warsh </item>
+                            <item id="warsh/warsh_ibrahim_aldosary_128kbps">Ibrahim Al Dosary - warsh </item>
+                            <item id="warsh/warsh_yassin_al_jazaery_64kbps">Yassin Al Jazaery - warsh </item>
+
+                          </items>
+                      </object>
+                    </child>
+                  </object>
+                </child>
+
+
             </object>
           </child>
 

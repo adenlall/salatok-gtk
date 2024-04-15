@@ -1,4 +1,9 @@
-build
-obj-i686-linux-gnu
-debian/.debhelper
-debian/salatokapp
+_build
+**/*.swp
+**/*.*~
+**/tags.*
+.flatpak
+node_modules/
+.vscode/
+.fenv/
+.flatpak-builder/

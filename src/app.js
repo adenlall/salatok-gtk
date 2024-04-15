@@ -63,7 +63,7 @@ export const salatApp = GObject.registerClass({
 	}
   #loadStylesheet() {
 		const provider = new Gtk.CssProvider();
-		provider.load_from_resource('/app/salatok/gtk/css/salatWidget.css');
+		provider.load_from_resource('/io/github/adenlall/salatok-gtk/css/salatWidget.css');
 		Gtk.StyleContext.add_provider_for_display(
 			Gdk.Display.get_default(),
 			provider,
@@ -175,12 +175,12 @@ export const salatApp = GObject.registerClass({
 	  }
 	  if (q&&q!=="") {
 		  let n = new Nomination();
-		  let dd = n.widget(n.getByQ(q));
-		  if (dd) {
+		  n.getByQ(q).then((data)=>{
+        let dd = n.widget(data);
 			  this.window.searchcontainer.append(dd);
-		  }
-	  }
-	}
+      }).catch(err=>console.log('errr',err));
+    }
+    }
 	
 	updateCore(){
 	  if (this.window.myPageSalats.get_first_child()) {

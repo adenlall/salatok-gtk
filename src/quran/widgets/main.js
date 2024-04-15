@@ -27,6 +27,6 @@ import './player.js';
 
 export const QuranWidget = GObject.registerClass({
 	GTypeName: 'QuranWidget',
-	Template: 'resource:///app/salatok/gtk/ui/quran/main.ui',
+	Template: 'resource:///io/github/adenlall/salatok-gtk/ui/quran/main.ui',
 	Children: [],
 }, class extends Gtk.Widget {});

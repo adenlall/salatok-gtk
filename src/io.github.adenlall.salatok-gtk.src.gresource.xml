@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<gresources>
+	<gresource prefix="/io/github/adenlall/salatok-gtk">
+		<file>main.js</file>
+		<file>window.js</file>
+		<file>app.js</file>
+		<file>salat/core.js</file>
+		<file>salat/PrayTimes.org.js</file>
+		<file>salat/api.js</file>
+		<file>utils/store.js</file>
+		<file>utils/data.js</file>
+		<file>utils/helper.js</file>
+		<file>utils/setting.js</file>
+		<file>utils/nomination.api.js</file>
+		<file>quran/metadata.js</file>
+		<file>quran/widgets/main.js</file>
+		<file>quran/widgets/player.js</file>
+		<file>quran/widgets/reader.js</file>
+		<file>quran/widgets/gst-backend.js</file>
+	</gresource>
+</gresources>
+

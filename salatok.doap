@@ -1,0 +1,24 @@
+<Project xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+         xmlns:rdfs="http://www.w3.org/2000/01/rdf-schema#"
+         xmlns:foaf="http://xmlns.com/foaf/0.1/"
+         xmlns:gnome="http://api.gnome.org/doap-extensions#"
+         xmlns="http://usefulinc.com/ns/doap#">
+
+  <name xml:lang="en">Salatok</name>
+  <shortdesc xml:lang="en">Make simple recordings from your desktop</shortdesc>
+  <description>A simple sound recorder for your desktop</description>
+  <bug-database rdf:resource="https://github.com/adenlall/salatok-gtk/issues/" />
+
+  <category rdf:resource="http://api.gnome.org/doap-extensions#apps" />
+  <programming-language>JavaScript</programming-language>
+
+  <maintainer>
+    <foaf:Person>
+      <foaf:name>Christopher Davis</foaf:name>
+      <foaf:mbox rdf:resource="mailto:christopherdavis@gnome.org" />
+      <gnome:userid>christopherdavis</gnome:userid>
+    </foaf:Person>
+  </maintainer>
+</Project>
+
+

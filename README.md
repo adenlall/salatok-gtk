@@ -1,8 +1,21 @@
-<img width="200" alt="salatokapp logo" src="/data/icons/app.salatok.gtk.gnome.svg">
+
+<img width="200" alt="com.github.adenlall.salatok-gtk logo" src="/data/icons/io.github.adenlall.salatok-gtk.svg">
+
+<img src="https://img.shields.io/badge/maintained-yes-blue" alt="maintained - yes"> <img alt="GitHub User's stars" src="https://img.shields.io/github/stars/adenlall">
+![Flathub Version](https://img.shields.io/flathub/v/io.github.adenlall.salatok-gtk?logo=flatpak)
+ <img alt="GitHub all releases" src="https://img.shields.io/github/downloads/adenlall/salatok-gtk/total">
+
+<a href='https://flathub.org/apps/io.github.adenlall.salatok-gtk'>
+  <img width='240' alt='Download on Flathub' src='https://flathub.org/api/badge?locale=ja'/>
+</a>
 
 # Salatokapp  <a href="https://liberapay.com/adenlall/donate"><img alt="Donate using Liberapay" src="https://liberapay.com/assets/widgets/donate.svg"></a>
-
-<img alt="salatok app screenshot" src="https://adenlall.vercel.app/screenshot2.png">
+<div>
+<img width="49%" alt="salatok app screenshot" src="https://adenlall.vercel.app/salatok-gtk/1.png">
+<img width="49%" alt="salatok app screenshot" src="https://adenlall.vercel.app/salatok-gtk/2.png">
+<img width="49%" alt="salatok app screenshot" src="https://adenlall.vercel.app/salatok-gtk/4.png">
+<img width="49%" alt="salatok app screenshot" src="https://adenlall.vercel.app/salatok-gtk/6.png">
+</div>
   
 gtk4 app for Muslims prayer times; Get salat timing at your linux desktop with full control over the methods adjustment. this app can work without connection or sending your personal ip adress to any random api servers.
 
@@ -13,13 +26,34 @@ gtk4 app for Muslims prayer times; Get salat timing at your linux desktop with f
 
 **Homepage**: https://github.com/adenlall/salatok-gtk
 
+**Web Client**: https://salatok.vercel.app
+
 **Report issues**: https://github.com/adenlall/salatok-gtk/issues/
 
 **Donate**: https://ko-fi.com/adenlall/
 
-## Installation
+## Installation :
 
-For Debian/Ubuntu :
+### Flatpak
+install it from terminal or from [flathub](https://flathub.org/apps/io.github.adenlall.salatok-gtk) 
+```python
+flatpak install flathub io.github.adenlall.salatok-gtk
+```
+then, run it with :
+```python
+flatpak run io.github.adenlall.salatok-gtk
+```
+
+### .deb package
+ download the .deb package from releases and install it from the terminal.
+         
+    sudo apt install ./salatokapp_1.1.3_all.deb
+ or open it in your software app (ex: GNOME Software)
+ 
+ this package will be available soon on Debian repos
+
+
+### Configuration for .deb package (NOT FLATPAK PACKAGE) :
 
      download the .deb package from releases and install it.
      
@@ -29,22 +63,14 @@ For Debian/Ubuntu :
           
                * visit : https://tanzil.net/trans/ and select "Text" for file format, and download all you need from the list there.
                
-               * then copy all .txt files downloaded into this location `$HOME/.local/share/quran/salatokapp/`
+               * then copy all .txt files downloaded into this location `$HOME/.local/share/quran/io.github.adenlall.salatok-gtk/`
                - the file name should be something like : <Language>.<Translator>.txt ex: ar.tanzil.txt
                
           **Fonts**
           
-               * download or copy any .ttf or otf font files into `$HOME/.local/share/fonts/salatokapp/`
+               * download or copy any .ttf or otf font files into `$HOME/.local/share/fonts/io.github.adenlall.salatok-gtk/`
                - name the file like his font name plus language of the font. ex: if you have Ubuntu Font, the name should be exactly like this : Ubunutu.latin.ttf
 
-               
-For non Debian-based distros :
-
-     Until now This application is only available for the Dibian, we encourage you to package it for you distro by following the steps below :
-     
-     * clone the repo and open it with GNOME-builder and buildit from there.
-     
-     * for packaging you should folow your distro policy and guidelines.
 
 ## Hacking
 
@@ -61,3 +87,5 @@ This app is under [GPL-v3.0](https://www.gnu.org/licenses/gpl-3)
 ## Support The Project 
 
 <a href="https://liberapay.com/adenlall/donate"><img alt="Donate using Liberapay" src="https://liberapay.com/assets/widgets/donate.svg"></a>
+
+ - [hooanime stream anime online](https://ar.hooanime.com)

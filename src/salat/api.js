@@ -44,7 +44,7 @@ export class SalatAPI {
          }
          #showenabled(){
             let store = new Store();
-            let data = store.read("user.json", "salatokapp");
+            let data = store.read("user.json", "meta");
             
             return data.config.enabled
             

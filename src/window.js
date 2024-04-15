@@ -26,7 +26,7 @@ import GLib from 'gi://GLib';
 
 export const Window = GObject.registerClass({
 	GTypeName: 'salatWindow',
-	Template: 'resource:///app/salatok/gtk/ui/window.ui',
+	Template: 'resource:///io/github/adenlall/salatok-gtk/ui/window.ui',
 	Children: [
 	  'myPageSalats', 
 	  'methodcombobox', 'higherlatitudescombobox', 'formatcombobox', 'midnightcombobox','asrcombobox',
@@ -101,15 +101,18 @@ export const Window = GObject.registerClass({
 	
 	
   _about(){
+
         let aboutDialog = new Gtk.AboutDialog({
-            program_name: "salatokapp lite",
-        	artists: ['adenlall <adenlall@skiff.com>'],
-            authors: ['adenlall <adenlall@skiff.com>'],
+            program_name: "Salatok App",
+        	artists: ['adenlall <adenlall@proton.me>'],
+            authors: ['adenlall <adenlall@proton.me>'],
             comments: "get muslims pray times and Quran reader",
-            copyright: 'Copyright 2023 adenlall, <adenlall@skiff.com>',
+            copyright: 'Copyright 2023 adenlall, <lalladen@naver.com>',
             license_type: Gtk.License.GPL_3_0,
-            logo_icon_name: 'app.salatok.gtk.gnome',
+
             version: pkg.version,
+            logo_icon_name: pkg.name,
+
             website: 'http://salatok.vercel.app/',
             website_label: 'salatok website',
             wrap_license: true,
