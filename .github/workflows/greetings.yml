@@ -1,6 +1,6 @@
 name: Greetings
 
-on: [pull_request_target, issues, fork, commit_comment, watch]
+on: [pull_request_target, issues, fork]
 
 jobs:
   greeting:
