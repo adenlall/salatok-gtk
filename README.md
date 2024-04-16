@@ -1,5 +1,5 @@
 
-<img width="200" alt="com.github.adenlall.salatok-gtk logo" src="/data/icons/io.github.adenlall.salatok-gtk.svg">
+<img width="200" alt="com.github.adenlall.salatok-gtk logo" src="/data/icons/scalable/io.github.adenlall.salatok-gtk.svg">
 
 <img src="https://img.shields.io/badge/maintained-yes-blue" alt="maintained - yes"> <img alt="GitHub User's stars" src="https://img.shields.io/github/stars/adenlall">
 ![Flathub Version](https://img.shields.io/flathub/v/io.github.adenlall.salatok-gtk?logo=flatpak)
