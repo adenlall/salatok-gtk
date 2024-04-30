@@ -17,7 +17,7 @@
 <img width="49%" alt="salatok app screenshot" src="https://adenlall.vercel.app/salatok-gtk/6.png">
 </div>
   
-gtk4 app for Muslims prayer times; Get salat timing at your linux desktop with full control over the methods adjustment. this app can work without connection or sending your personal ip adress to any random api servers.
+gtk4 offline app for Muslims prayer times; Get salat timing at your linux desktop with full control over the methods adjustment. this app can work without connection or sending your personal ip adress to any random api servers.
 
  we use nomination.openstreetmaps.org ( free and open source api ) to proved you an api that can return lat & long from your given adress.
  we recommend you to read privacy policy pf nomination api.
