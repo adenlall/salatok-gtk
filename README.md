@@ -11,10 +11,7 @@
 
 # Salatokapp  <a href="https://liberapay.com/adenlall/donate"><img alt="Donate using Liberapay" src="https://liberapay.com/assets/widgets/donate.svg"></a>
 <div>
-<img width="49%" alt="salatok app screenshot" src="https://adenlall.vercel.app/salatok-gtk/1.png">
-<img width="49%" alt="salatok app screenshot" src="https://adenlall.vercel.app/salatok-gtk/2.png">
-<img width="49%" alt="salatok app screenshot" src="https://adenlall.vercel.app/salatok-gtk/4.png">
-<img width="49%" alt="salatok app screenshot" src="https://adenlall.vercel.app/salatok-gtk/6.png">
+<img width="49%" alt="salatok app screenshot" src="https://adenlall.vercel.app/projects/salatok-gtk/2.png">
 </div>
   
 gtk4 offline app for Muslims prayer times; Get salat timing at your linux desktop with full control over the methods adjustment. this app can work without connection or sending your personal ip adress to any random api servers.
