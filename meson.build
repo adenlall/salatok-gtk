@@ -1,6 +1,6 @@
 project(
   'io.github.adenlall.salatok-gtk',
-  version: '1.1.31',
+  version: '1.5.0',
   license: 'GPL2+',
   meson_version: '>= 0.63.0',
 )
